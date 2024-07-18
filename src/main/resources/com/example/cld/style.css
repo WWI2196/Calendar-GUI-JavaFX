@@ -1,0 +1,127 @@
+
+.root{
+    -fx-background-color: #EAEEFA;
+}
+
+.side_ankerpane {
+    -fx-background-color: #0E123E;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 0 20px 20px 0;
+    -fx-background-radius: 0 20px 20px 0;
+    -fx-border-style: solid;
+}
+
+.inner_pane{
+    -fx-background-color: #ffe066;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+
+.most_inner_pane{
+    -fx-background-color: #6780E2;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+
+#btm_addEvent{
+    -fx-background-color: #FDC437;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #FDC437;
+}
+
+#check_button{
+    -fx-background-color: #ffe57f;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #ffe066;
+}
+
+#btm_dayOff{
+    -fx-background-color: #DD493D;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #DD493D;
+}
+
+#btm_deleteEvent{
+    -fx-background-color: #13BA6A;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #13BA6A;
+}
+
+#btm_shiftEvent{
+    -fx-background-color: #6200EE;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #6200EE;
+}
+
+.today_pane{
+    -fx-background-color: #748Cf1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #748Cf1;
+}
+
+.events_on_txt_box {
+    -fx-background-color: transparent; /* Make the background transparent to see the content background */
+    -fx-padding: 0; /* Remove padding to avoid additional background */
+}
+
+.events_on_txt_box .content {
+    -fx-background-color: #FFFFFF; /* Set the background color for the content */
+    -fx-background-insets: 2; /* Adjust insets to match the border width */
+    -fx-background-radius: 30px; /* Set the background radius */
+    -fx-border-radius: 30px; /* Set the border radius */
+    -fx-padding: 20px;
+}
+
+.events_on_txt_box .scroll-pane {
+    -fx-padding: 0; /* Adjust padding as needed */
+}
+
+.events_on_txt_box .scroll-pane .viewport {
+    -fx-background-color: #FFFFFF; /* Match the background color */
+    -fx-background-radius: 30px; /* Set the radius for the viewport */
+}
+
+.events_today_txt_box {
+    -fx-background-color: transparent; /* Make the background transparent to see the content background */
+    -fx-padding: 0; /* Remove padding to avoid additional background */
+}
+
+.events_today_txt_box .content {
+    -fx-background-color: #FFFFFF; /* Set the background color for the content */
+    -fx-background-insets: 2; /* Adjust insets to match the border width */
+    -fx-background-radius: 30px; /* Set the background radius */
+    -fx-border-radius: 30px; /* Set the border radius */
+    -fx-padding: 20px;
+}
+
+.events_today_txt_box .scroll-pane {
+    -fx-padding: 0; /* Adjust padding as needed */
+}
+
+.events_today_txt_box .scroll-pane .viewport {
+    -fx-background-color: #FFFFFF; /* Match the background color */
+    -fx-background-radius: 30px; /* Set the radius for the viewport */
+}

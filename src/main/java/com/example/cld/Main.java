@@ -24,18 +24,6 @@ public class Main extends Application {
         File file = new File("src/main/resources/com/example/cld/Icons/appLogo.png");
         Image icon = new Image(file.toURI().toString());
 
-//        File file01 = new File("src/image02.jpg");
-//        Image image01 = new Image(file01.toURI().toString());
-//        ImageView imageView01 = new ImageView(image01);
-//        imageView01.setFitHeight(750);
-//        imageView01.setFitWidth(400);
-//        imageView01.setLayoutX(0);
-//        imageView01.setLayoutY(0);
-//
-//        if (root instanceof Pane) {
-//            ((Pane) root).getChildren().add(imageView01);
-//        }
-
         primaryStage.setTitle("Scheduler");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

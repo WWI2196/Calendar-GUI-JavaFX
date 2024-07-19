@@ -17,7 +17,7 @@
       <children>
          <AnchorPane fx:id="side_ankerpane" prefHeight="798.0" prefWidth="342.0" styleClass="side_ankerpane" stylesheets="@../style.css">
             <children>
-               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="106.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
+               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="106.0" onAction="#switchToAddEventDetails" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
@@ -27,7 +27,7 @@
                      <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="194.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="194.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>

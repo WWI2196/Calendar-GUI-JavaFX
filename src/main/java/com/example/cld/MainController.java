@@ -25,7 +25,7 @@ public class MainController {
     private Stage stage;
     private Scene scene;
 
-    @FXML
+     @FXML
     private JFXButton btm_addEvent;
 
     @FXML
@@ -131,16 +131,16 @@ public class MainController {
     private JFXButton btm_shiftEvent;
 
     @FXML
-    private JFXButton check_button;
+    private Label events_on_selected_day_label;
 
     @FXML
-    private TextArea events_on_txt_box;
-
-    @FXML
-    private TextArea events_today_txt_box;
+    private Label events_on_today_label;
 
     @FXML
     private ImageView inner_pane_image1;
+
+    @FXML
+    private JFXButton profile_button;
 
     @FXML
     private HBox root;
@@ -184,6 +184,12 @@ public class MainController {
 
     public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/DeleteEvent.fxml")));
+
+        EventAction(event, root);
+    }
+
+    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ShiftEvent.fxml")));
 
         EventAction(event, root);
     }

@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,12 +51,12 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="369.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="369.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="44.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="44.0" layoutY="357.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/shiftEvent.png" />
                   </image>
@@ -313,13 +312,9 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <Pane fx:id="today_pane1" layoutX="29.0" layoutY="518.0" prefHeight="241.0" prefWidth="398.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane1" layoutX="43.0" layoutY="518.0" prefHeight="241.0" prefWidth="375.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
-               <TextArea fx:id="events_today_txt_box" layoutX="22.0" layoutY="17.0" prefHeight="207.0" prefWidth="355.0" styleClass="events_today_txt_box" stylesheets="@../style.css" text="Today events">
-                  <font>
-                     <Font name="Century Gothic" size="14.0" />
-                  </font>
-               </TextArea>
+               <Label fx:id="events_on_today_label" layoutX="27.0" layoutY="24.0" prefHeight="198.0" prefWidth="321.0" styleClass="events_on_today_label" stylesheets="@../style.css" text="Label" />
             </children>
          </Pane>
          <Label layoutX="40.0" layoutY="35.0" prefHeight="52.0" prefWidth="214.0" text="2024 July">
@@ -327,7 +322,7 @@
                <Font name="Century Gothic Bold" size="41.0" />
             </font>
          </Label>
-         <Pane fx:id="today_pane11" layoutX="484.0" layoutY="506.0" prefHeight="257.0" prefWidth="433.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane11" layoutX="483.0" layoutY="518.0" prefHeight="241.0" prefWidth="417.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
                <Label fx:id="today_pane_day_number_label11" layoutX="14.0" layoutY="77.0" text="31" textFill="WHITE">
                   <font>
@@ -339,11 +334,7 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <TextArea fx:id="events_on_txt_box" layoutX="71.0" layoutY="22.0" prefHeight="214.0" prefWidth="339.0" styleClass="events_on_txt_box" stylesheets="@../style.css" text="hello world&#10;" wrapText="true">
-                  <font>
-                     <Font name="Century Gothic" size="14.0" />
-                  </font>
-               </TextArea>
+               <Label fx:id="events_on_selected_day_label" layoutX="73.0" layoutY="23.0" prefHeight="198.0" prefWidth="321.0" stylesheets="@../style.css" text="Label" />
             </children>
          </Pane>
          <Label layoutX="40.0" layoutY="466.0" prefHeight="41.0" prefWidth="147.0" text="Events Today" textFill="#9a9a9a">
@@ -356,7 +347,7 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="858.0" layoutY="21.0" prefHeight="52.0" prefWidth="58.0" styleClass="check_button" stylesheets="@../style.css" text="Button">
+         <JFXButton fx:id="profile_button" contentDisplay="GRAPHIC_ONLY" layoutX="858.0" layoutY="21.0" prefHeight="52.0" prefWidth="58.0" styleClass="check_button" stylesheets="@../style.css" text="Button">
             <graphic>
                <ImageView fx:id="inner_pane_image1" fitHeight="50.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                   <image>

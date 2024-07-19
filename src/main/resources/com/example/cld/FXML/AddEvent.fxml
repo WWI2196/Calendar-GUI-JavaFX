@@ -123,7 +123,7 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="enter_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" styleClass="check_button" stylesheets="@../style.css" text="Button">
+         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_add_event.css" text="Button">
             <graphic>
                <ImageView fx:id="inner_pane_image1" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -138,7 +138,7 @@
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="348.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style.css">
+         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>

@@ -16,3 +16,21 @@
     -fx-border-color: #F26A40;
 }
 
+#check_button{
+    -fx-background-color: #9a9a9a;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #9a9a9a;
+}
+
+#enter_date_txt_field {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-padding: 10px;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}

@@ -38,20 +38,12 @@
     -fx-border-color: #FDC437;
 }
 
-#check_button{
+#profile_button{
     -fx-background-color: #ffe57f;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #ffe066;
-}
-
-#enter_button{
-    -fx-background-color: #9a9a9a;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
-    -fx-border-style: solid;
-    -fx-border-color: #9a9a9a;
 }
 
 #btm_dayOff{
@@ -133,7 +125,7 @@
     -fx-alignment: top-left; /* Align text to start from the top */
 }
 
-.events_on_enter_day_label {
+.events_on_today_label {
     -fx-background-color: transparent; /* Make the background transparent */
     -fx-padding: 0; /* Remove padding to avoid additional background */
     -fx-background-color: #FFFFFF; /* Set the background color */
@@ -145,28 +137,16 @@
     -fx-alignment: top-left; /* Align text to start from the top */
 }
 
-/*#date_picker .arrow,*/
-/*#date_picker .date-picker-popup {*/
-/*    -fx-border-color: transparent;*/
-
-/*}*/
-
-/*#date_picker .text-field {*/
-/*    -fx-background-color: transparent;*/
-/*    -fx-border-color: transparent;*/
-/*    -fx-background-radius: 30;*/
-/*    -fx-border-radius: 30;*/
-/*}*/
-
-#enter_date_txt_field {
-    -fx-background-color: white;
-    -fx-border-color: black;
-    -fx-background-radius: 15px;
-    -fx-border-radius: 15px;
-    -fx-padding: 10px;
-    -fx-font-family: "Century Gothic";
-    -fx-font-size: 14px;
-    -fx-text-fill: #333333;
+#events_on_selected_day_label{
+    -fx-background-color: transparent; /* Make the background transparent */
+    -fx-padding: 0; /* Remove padding to avoid additional background */
+    -fx-background-color: #FFFFFF; /* Set the background color */
+    -fx-background-radius: 30px; /* Set the background radius */
+    -fx-border-radius: 30px; /* Set the border radius */
+    -fx-padding: 20px;
+    -fx-font-family: "Century Gothic"; /* Set the font family */
+    -fx-font-size: 14px; /* Adjust the font size as needed */
+    -fx-alignment: top-left; /* Align text to start from the top */
 }
 
 #enter_event_name_txt_field{
@@ -224,24 +204,4 @@
     -fx-background-radius: 5px; /* Rounded corners */
 }
 
-.events_today_txt_box {
-    -fx-background-color: transparent; /* Make the background transparent to see the content background */
-    -fx-padding: 0; /* Remove padding to avoid additional background */
-}
 
-.events_today_txt_box .content {
-    -fx-background-color: #FFFFFF; /* Set the background color for the content */
-    -fx-background-insets: 2; /* Adjust insets to match the border width */
-    -fx-background-radius: 30px; /* Set the background radius */
-    -fx-border-radius: 30px; /* Set the border radius */
-    -fx-padding: 20px;
-}
-
-.events_today_txt_box .scroll-pane {
-    -fx-padding: 0; /* Adjust padding as needed */
-}
-
-.events_today_txt_box .scroll-pane .viewport {
-    -fx-background-color: #FFFFFF; /* Match the background color */
-    -fx-background-radius: 30px; /* Set the radius for the viewport */
-}

@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
         Scene scene = new Scene(root, 1221, 784);
 
         File file = new File("src/main/resources/com/example/cld/Icons/appLogo.png");
@@ -41,8 +41,6 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(icon);
         primaryStage.show();
-
-
 
     }
 }

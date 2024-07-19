@@ -1,0 +1,18 @@
+#confirm_btm_addEvent{
+    -fx-background-color: #7F39FB;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #7F39FB;
+}
+
+#back_to_main_btm{
+    -fx-background-color: #F26A40;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #F26A40;
+}
+

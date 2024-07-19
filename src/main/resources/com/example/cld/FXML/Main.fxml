@@ -12,63 +12,63 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="1221.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cld.MainController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="1221.0" styleClass="root" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cld.MainController">
    <VBox prefHeight="784.0" prefWidth="280.0">
       <children>
-         <AnchorPane fx:id="side_ankerpane" prefHeight="798.0" prefWidth="342.0" styleClass="side_ankerpane" stylesheets="@style.css">
+         <AnchorPane fx:id="side_ankerpane" prefHeight="798.0" prefWidth="342.0" styleClass="side_ankerpane" stylesheets="@../style.css">
             <children>
-               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="106.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@style.css" text="          Add Event" textFill="WHITE">
+               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="106.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
                <ImageView fitHeight="83.0" fitWidth="86.0" layoutX="37.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@Icons/addEvent.png" />
+                     <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="194.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="194.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
                <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@Icons/dayOff.png" />
+                     <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="283.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="283.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
                <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@Icons/deleteEvent.png" />
+                     <Image url="@../Icons/deleteEvent.png" />
                   </image>
                </ImageView>
                <ImageView fitHeight="280.0" fitWidth="282.0" layoutX="3.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@Icons/wavePattern-modified.png" />
+                     <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="369.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="369.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
                <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="44.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@Icons/shiftEvent.png" />
+                     <Image url="@../Icons/shiftEvent.png" />
                   </image>
                </ImageView>
             </children>
          </AnchorPane>
       </children>
    </VBox>
-   <Pane prefHeight="784.0" prefWidth="938.0" stylesheets="@style.css">
+   <Pane prefHeight="784.0" prefWidth="938.0" stylesheets="@../style.css">
       <children>
-         <Pane fx:id="today_pane" layoutX="41.0" layoutY="210.0" prefHeight="171.0" prefWidth="166.0" styleClass="today_pane" stylesheets="@style.css">
+         <Pane fx:id="today_pane" layoutX="41.0" layoutY="210.0" prefHeight="171.0" prefWidth="166.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
                <Label fx:id="today_pane_day_number_label" layoutX="33.0" layoutY="31.0" text="1" textFill="WHITE">
                   <font>
@@ -117,32 +117,32 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <JFXButton fx:id="btm_date1" layoutX="359.0" layoutY="148.0" prefHeight="41.0" prefWidth="50.0" styleClass="btm_date1" stylesheets="@style_date_btm.css" text="1" textFill="WHITE">
+         <JFXButton fx:id="btm_date1" layoutX="359.0" layoutY="148.0" prefHeight="41.0" prefWidth="50.0" styleClass="btm_date1" stylesheets="@../style_date_btm.css" text="1" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date2" layoutX="450.0" layoutY="148.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date2" stylesheets="@style_date_btm.css" text="2" textFill="WHITE">
+         <JFXButton fx:id="btm_date2" layoutX="450.0" layoutY="148.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date2" stylesheets="@../style_date_btm.css" text="2" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date3" layoutX="545.0" layoutY="148.0" prefHeight="51.0" prefWidth="58.0" styleClass="btm_date3" stylesheets="@style_date_btm.css" text="3" textFill="WHITE">
+         <JFXButton fx:id="btm_date3" layoutX="545.0" layoutY="148.0" prefHeight="51.0" prefWidth="58.0" styleClass="btm_date3" stylesheets="@../style_date_btm.css" text="3" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date4" layoutX="634.0" layoutY="148.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date4" stylesheets="@style_date_btm.css" text="4" textFill="WHITE">
+         <JFXButton fx:id="btm_date4" layoutX="634.0" layoutY="148.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date4" stylesheets="@../style_date_btm.css" text="4" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date5" layoutX="722.0" layoutY="148.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date5" stylesheets="@style_date_btm.css" text="5" textFill="WHITE">
+         <JFXButton fx:id="btm_date5" layoutX="722.0" layoutY="148.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date5" stylesheets="@../style_date_btm.css" text="5" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date6" layoutX="816.0" layoutY="148.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date6" stylesheets="@style_date_btm.css" text="6" textFill="WHITE">
+         <JFXButton fx:id="btm_date6" layoutX="816.0" layoutY="148.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date6" stylesheets="@../style_date_btm.css" text="6" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -152,40 +152,32 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <JFXButton fx:id="btm_date7" layoutX="267.0" layoutY="213.0" prefHeight="54.0" prefWidth="37.0" styleClass="btm_date7" stylesheets="@style_date_btm.css" text="7" textFill="WHITE">
+         <JFXButton fx:id="btm_date7" layoutX="267.0" layoutY="213.0" prefHeight="54.0" prefWidth="37.0" styleClass="btm_date7" stylesheets="@../style_date_btm.css" text="7" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date8" layoutX="359.0" layoutY="213.0" prefHeight="33.0" prefWidth="50.0" styleClass="btm_date8" stylesheets="@style_date_btm.css" text="8" textFill="WHITE">
+         <JFXButton fx:id="btm_date8" layoutX="359.0" layoutY="213.0" prefHeight="33.0" prefWidth="50.0" styleClass="btm_date8" stylesheets="@../style_date_btm.css" text="8" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date9" layoutX="450.0" layoutY="213.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date9" stylesheets="@style_date_btm.css" text="9" textFill="WHITE">
+         <JFXButton fx:id="btm_date9" layoutX="450.0" layoutY="213.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date9" stylesheets="@../style_date_btm.css" text="9" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date10" layoutX="536.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date10" stylesheets="@style_date_btm.css" text="10" textFill="WHITE">
+         <JFXButton fx:id="btm_date10" layoutX="536.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date10" stylesheets="@../style_date_btm.css" text="10" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date11" layoutX="625.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date11" stylesheets="@style_date_btm.css" text="11" textFill="WHITE">
+         <JFXButton fx:id="btm_date11" layoutX="625.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date11" stylesheets="@../style_date_btm.css" text="11" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date12" layoutX="718.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date12" stylesheets="@style_date_btm.css" text="12" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-         </JFXButton>
-         <JFXButton fx:id="btm_date13" layoutX="812.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date13" stylesheets="@style_date_btm.css" text="13" textFill="WHITE">
+         <JFXButton fx:id="btm_date12" layoutX="718.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date12" stylesheets="@../style_date_btm.css" text="12" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -193,17 +185,7 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date14" layoutX="263.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date14" stylesheets="@style_date_btm.css" text="14" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date15" layoutX="355.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date15" stylesheets="@style_date_btm.css" text="15" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date16" layoutX="442.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date16" stylesheets="@style_date_btm.css" text="16" textFill="WHITE">
+         <JFXButton fx:id="btm_date13" layoutX="812.0" layoutY="213.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date13" stylesheets="@../style_date_btm.css" text="13" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -211,7 +193,17 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date17" layoutX="536.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date17" stylesheets="@style_date_btm.css" text="17" textFill="WHITE">
+         <JFXButton fx:id="btm_date14" layoutX="263.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date14" stylesheets="@../style_date_btm.css" text="14" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date15" layoutX="355.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date15" stylesheets="@../style_date_btm.css" text="15" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date16" layoutX="442.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date16" stylesheets="@../style_date_btm.css" text="16" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -219,12 +211,7 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date18" layoutX="630.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date18" stylesheets="@style_date_btm.css" text="18" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date19" layoutX="718.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date19" stylesheets="@style_date_btm.css" text="19" textFill="WHITE">
+         <JFXButton fx:id="btm_date17" layoutX="536.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date17" stylesheets="@../style_date_btm.css" text="17" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -232,7 +219,12 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date20" layoutX="812.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date20" stylesheets="@style_date_btm.css" text="20" textFill="WHITE">
+         <JFXButton fx:id="btm_date18" layoutX="630.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date18" stylesheets="@../style_date_btm.css" text="18" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date19" layoutX="718.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date19" stylesheets="@../style_date_btm.css" text="19" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -240,17 +232,7 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date21" layoutX="262.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date21" stylesheets="@style_date_btm.css" text="21" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date22" layoutX="354.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date22" stylesheets="@style_date_btm.css" text="22" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date23" layoutX="441.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date23" stylesheets="@style_date_btm.css" text="23" textFill="WHITE">
+         <JFXButton fx:id="btm_date20" layoutX="812.0" layoutY="279.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date20" stylesheets="@../style_date_btm.css" text="20" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -258,7 +240,17 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date24" layoutX="535.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date24" stylesheets="@style_date_btm.css" text="24" textFill="WHITE">
+         <JFXButton fx:id="btm_date21" layoutX="262.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date21" stylesheets="@../style_date_btm.css" text="21" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date22" layoutX="354.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date22" stylesheets="@../style_date_btm.css" text="22" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date23" layoutX="441.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date23" stylesheets="@../style_date_btm.css" text="23" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -266,12 +258,7 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date25" layoutX="629.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date25" stylesheets="@style_date_btm.css" text="25" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date26" layoutX="717.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date26" stylesheets="@style_date_btm.css" text="26" textFill="WHITE">
+         <JFXButton fx:id="btm_date24" layoutX="535.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date24" stylesheets="@../style_date_btm.css" text="24" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -279,7 +266,12 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date27" layoutX="811.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date27" stylesheets="@style_date_btm.css" text="27" textFill="WHITE">
+         <JFXButton fx:id="btm_date25" layoutX="629.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date25" stylesheets="@../style_date_btm.css" text="25" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date26" layoutX="717.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date26" stylesheets="@../style_date_btm.css" text="26" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -287,17 +279,7 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date28" layoutX="263.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date28" stylesheets="@style_date_btm.css" text="28" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date29" layoutX="355.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date29" stylesheets="@style_date_btm.css" text="29" textFill="WHITE">
-            <font>
-               <Font name="Century Gothic Bold" size="28.0" />
-            </font>
-         </JFXButton>
-         <JFXButton fx:id="btm_date30" layoutX="442.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date30" stylesheets="@style_date_btm.css" text="30" textFill="WHITE">
+         <JFXButton fx:id="btm_date27" layoutX="811.0" layoutY="345.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date27" stylesheets="@../style_date_btm.css" text="27" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -305,7 +287,17 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <JFXButton fx:id="btm_date31" layoutX="536.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date31" stylesheets="@style_date_btm.css" text="31" textFill="WHITE">
+         <JFXButton fx:id="btm_date28" layoutX="263.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date28" stylesheets="@../style_date_btm.css" text="28" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date29" layoutX="355.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date29" stylesheets="@../style_date_btm.css" text="29" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+         </JFXButton>
+         <JFXButton fx:id="btm_date30" layoutX="442.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date30" stylesheets="@../style_date_btm.css" text="30" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -313,9 +305,17 @@
                <Insets />
             </opaqueInsets>
          </JFXButton>
-         <Pane fx:id="today_pane1" layoutX="29.0" layoutY="518.0" prefHeight="241.0" prefWidth="398.0" styleClass="today_pane" stylesheets="@style.css">
+         <JFXButton fx:id="btm_date31" layoutX="536.0" layoutY="411.0" prefHeight="58.0" prefWidth="75.0" styleClass="btm_date31" stylesheets="@../style_date_btm.css" text="31" textFill="WHITE">
+            <font>
+               <Font name="Century Gothic Bold" size="28.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </JFXButton>
+         <Pane fx:id="today_pane1" layoutX="29.0" layoutY="518.0" prefHeight="241.0" prefWidth="398.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
-               <TextArea fx:id="events_today_txt_box" layoutX="22.0" layoutY="17.0" prefHeight="207.0" prefWidth="355.0" styleClass="events_today_txt_box" stylesheets="@style.css" text="Today events">
+               <TextArea fx:id="events_today_txt_box" layoutX="22.0" layoutY="17.0" prefHeight="207.0" prefWidth="355.0" styleClass="events_today_txt_box" stylesheets="@../style.css" text="Today events">
                   <font>
                      <Font name="Century Gothic" size="14.0" />
                   </font>
@@ -327,7 +327,7 @@
                <Font name="Century Gothic Bold" size="41.0" />
             </font>
          </Label>
-         <Pane fx:id="today_pane11" layoutX="484.0" layoutY="506.0" prefHeight="257.0" prefWidth="433.0" styleClass="today_pane" stylesheets="@style.css">
+         <Pane fx:id="today_pane11" layoutX="484.0" layoutY="506.0" prefHeight="257.0" prefWidth="433.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
                <Label fx:id="today_pane_day_number_label11" layoutX="14.0" layoutY="77.0" text="31" textFill="WHITE">
                   <font>
@@ -339,7 +339,7 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <TextArea fx:id="events_on_txt_box" layoutX="71.0" layoutY="22.0" prefHeight="214.0" prefWidth="339.0" styleClass="events_on_txt_box" stylesheets="@style.css" text="hello world&#10;" wrapText="true">
+               <TextArea fx:id="events_on_txt_box" layoutX="71.0" layoutY="22.0" prefHeight="214.0" prefWidth="339.0" styleClass="events_on_txt_box" stylesheets="@../style.css" text="hello world&#10;" wrapText="true">
                   <font>
                      <Font name="Century Gothic" size="14.0" />
                   </font>
@@ -356,11 +356,11 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="858.0" layoutY="21.0" prefHeight="52.0" prefWidth="58.0" styleClass="check_button" stylesheets="@style.css" text="Button">
+         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="858.0" layoutY="21.0" prefHeight="52.0" prefWidth="58.0" styleClass="check_button" stylesheets="@../style.css" text="Button">
             <graphic>
                <ImageView fx:id="inner_pane_image1" fitHeight="50.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@Icons/profile.png" />
+                     <Image url="@../Icons/profile.png" />
                   </image>
                </ImageView>
             </graphic>

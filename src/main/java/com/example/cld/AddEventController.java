@@ -1,7 +1,12 @@
 package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,8 +14,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class AddEventController {
+
+    private Stage stage;
+    private Scene scene;
 
     @FXML
     private JFXButton back_to_main_btm;
@@ -87,4 +99,12 @@ public class AddEventController {
     @FXML
     private CheckBox weekly_check_box;
 
+    public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
 }

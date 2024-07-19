@@ -2,6 +2,7 @@ package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -167,20 +169,33 @@ public class MainController {
     @FXML
     private Label today_pane_day_number_label11;
 
-    public void switchToAddEventDetails(ActionEvent event) throws IOException { // switch to add the driver details scene
+     @FXML
+    public void switchToAddEventDetails(Event event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/AddEvent.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
 
-        stage.setScene(scene);
-        stage.show();
+         EventAction(event, root);
+     }
+
+    public void switchToSetDayOff(Event event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
+
+        EventAction(event, root);
     }
 
-    public void switchToSetDayOff(ActionEvent event) throws IOException { // switch to add the driver details scene
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/DeleteEvent.fxml")));
 
+        EventAction(event, root);
+    }
+
+    private void EventAction(Event event, Parent root) {
+        if (event instanceof ActionEvent) {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        } else if (event instanceof MouseEvent) {
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        }
+
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

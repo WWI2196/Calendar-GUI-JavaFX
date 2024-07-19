@@ -1,0 +1,8 @@
+#confirm_btm_deleteEvent{
+    -fx-background-color: #7F39FB;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #7F39FB;
+}

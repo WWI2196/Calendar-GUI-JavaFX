@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SetDayOffController {
+public class DeleteEventController {
 
     private Stage stage;
     private Scene scene;
@@ -39,7 +39,7 @@ public class SetDayOffController {
     private JFXButton btm_shiftEvent;
 
     @FXML
-    private JFXButton confirm_btm_addEvent;
+    private JFXButton confirm_btm_deleteEvent;
 
     @FXML
     private Pane date_picker;
@@ -55,6 +55,9 @@ public class SetDayOffController {
 
     @FXML
     private Label enter_day_number_label;
+
+    @FXML
+    private TextField enter_event_name_txt_field;
 
     @FXML
     private Pane enter_today_pane;
@@ -80,6 +83,7 @@ public class SetDayOffController {
     @FXML
     private Pane today_pane;
 
+    @FXML
     public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

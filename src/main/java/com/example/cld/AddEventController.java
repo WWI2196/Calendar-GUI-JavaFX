@@ -27,6 +27,8 @@ import java.util.Objects;
 import java.io.IOException;
 import java.util.Objects;
 
+import static com.example.cld.Main.dayOfMonth;
+
 public class AddEventController {
 
     private Stage stage;
@@ -48,6 +50,9 @@ public class AddEventController {
     private JFXButton btm_shiftEvent;
 
     @FXML
+    private JFXButton check_button;
+
+    @FXML
     private JFXButton confirm_btm_addEvent;
 
     @FXML
@@ -55,9 +60,6 @@ public class AddEventController {
 
     @FXML
     private Pane date_picker;
-
-    @FXML
-    private JFXButton enter_button;
 
     @FXML
     private TextField enter_date_txt_field;
@@ -81,7 +83,7 @@ public class AddEventController {
     private Pane enter_today_pane;
 
     @FXML
-    private Label events_on_enter_day_label;
+    private JFXTextArea events_on_enter_day_textArea;
 
     @FXML
     private ImageView inner_pane_image1;
@@ -91,9 +93,6 @@ public class AddEventController {
 
     @FXML
     private HBox root;
-
-    @FXML
-    private AnchorPane side_ankerpane;
 
     @FXML
     private Label today_day_name_label;
@@ -106,6 +105,7 @@ public class AddEventController {
 
     @FXML
     private CheckBox weekly_check_box;
+
 
     private MainController mainController = MainController.getInstance();
 
@@ -127,6 +127,14 @@ public class AddEventController {
     @FXML
     public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToShiftEvent(event);
+
+    }
+
+    public void initialize() {
+        today_day_number_label.setText(String.valueOf(dayOfMonth));
+        today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
+
+
 
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -65,12 +66,12 @@
                </ImageView>
                <Pane fx:id="today_pane" layoutX="84.0" layoutY="64.0" prefHeight="102.0" prefWidth="108.0" styleClass="today_pane" stylesheets="@../style.css">
                   <children>
-                     <Label fx:id="today_day_number_label" layoutX="37.0" layoutY="2.0" text="1" textFill="WHITE">
+                     <Label fx:id="today_day_number_label" alignment="CENTER" layoutX="18.0" prefHeight="79.0" prefWidth="72.0" text="1" textAlignment="CENTER" textFill="WHITE">
                         <font>
-                           <Font name="Century Gothic Bold" size="60.0" />
+                           <Font name="Century Gothic Bold" size="50.0" />
                         </font>
                      </Label>
-                     <Label fx:id="today_day_name_label" layoutX="37.0" layoutY="74.0" text="Mon" textFill="WHITE">
+                     <Label fx:id="today_day_name_label" alignment="CENTER" layoutX="22.0" layoutY="68.0" prefHeight="22.0" prefWidth="65.0" text="Mon" textFill="WHITE">
                         <font>
                            <Font name="Century Gothic Bold" size="17.0" />
                         </font>
@@ -103,22 +104,22 @@
                <Font name="Century Gothic Bold" size="41.0" />
             </font>
          </Label>
-         <Pane fx:id="enter_today_pane" layoutX="327.0" layoutY="116.0" prefHeight="200.0" prefWidth="374.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="enter_today_pane" layoutX="291.0" layoutY="89.0" prefHeight="241.0" prefWidth="430.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
-               <Label fx:id="enter_day_number_label" layoutX="19.0" layoutY="51.0" text="__" textFill="WHITE">
+               <Label fx:id="enter_day_number_label" alignment="CENTER" layoutX="10.0" layoutY="51.0" prefHeight="51.0" prefWidth="47.0" text="__" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="40.0" />
                   </font>
                </Label>
-               <Label fx:id="enter_day_name_label" layoutX="32.0" layoutY="121.0" text="__" textFill="WHITE">
+               <Label fx:id="enter_day_name_label" alignment="CENTER" layoutX="8.0" layoutY="121.0" prefHeight="22.0" prefWidth="47.0" text="__" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <Label fx:id="events_on_enter_day_label" layoutX="76.0" layoutY="13.0" prefHeight="173.0" prefWidth="285.0" styleClass="events_on_label" stylesheets="@../style.css" text="__" />
+               <JFXTextArea fx:id="events_on_enter_day_textArea" layoutX="66.0" layoutY="17.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../style_add_event.css" unFocusColor="#fffefe00" />
             </children>
          </Pane>
-         <Label alignment="CENTER" layoutX="228.0" layoutY="198.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
+         <Label alignment="CENTER" layoutX="199.0" layoutY="198.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="21.0" />
             </font>

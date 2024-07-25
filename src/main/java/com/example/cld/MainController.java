@@ -135,31 +135,13 @@ public class MainController {
     private JFXButton btm_shiftEvent;
 
     @FXML
+    private Label events_on_label;
+
+    @FXML
      private JFXTextArea events_on_selected_day_textArea;
 
     @FXML
     private JFXTextArea events_on_today_textArea;
-
-    @FXML
-    private ImageView inner_pane_image1;
-
-    @FXML
-    private JFXButton profile_button;
-
-    @FXML
-    private HBox root;
-
-    @FXML
-    private AnchorPane side_ankerpane;
-
-    @FXML
-    private Pane today_pane;
-
-    @FXML
-    private Pane today_pane1;
-
-    @FXML
-    private Pane today_pane11;
 
     @FXML
     private Label today_pane_day_name_label;
@@ -259,6 +241,7 @@ public class MainController {
         int selectedDate = Integer.parseInt(button.getText());
 
         // Update the selected date label and day name label
+        events_on_label.setText("Events On");
         events_on_day_number_label.setText(String.valueOf(selectedDate));
         events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(selectedDate));
 

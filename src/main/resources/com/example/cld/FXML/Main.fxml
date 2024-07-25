@@ -349,7 +349,7 @@
                <Font name="Century Gothic Bold" size="24.0" />
             </font>
          </Label>
-         <Label alignment="CENTER" layoutX="376.0" layoutY="611.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
+         <Label fx:id="events_on_label" alignment="CENTER" layoutX="377.0" layoutY="618.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Tomorrow" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="22.0" />
             </font>

@@ -104,13 +104,10 @@ public class ShiftEventController {
     @FXML
     private Pane today_pane;
 
+    private MainController mainController = MainController.getInstance();
+
     @FXML
     public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
+        mainController.switchToMainMenu(event);
     }
 }

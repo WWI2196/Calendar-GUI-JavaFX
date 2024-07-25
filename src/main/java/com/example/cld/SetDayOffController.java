@@ -77,16 +77,11 @@ public class SetDayOffController {
     @FXML
     private Label today_day_number_label;
 
+     private MainController mainController = MainController.getInstance();
+
     @FXML
-    private Pane today_pane;
-
     public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
+        mainController.switchToMainMenu(event);
     }
 
 }

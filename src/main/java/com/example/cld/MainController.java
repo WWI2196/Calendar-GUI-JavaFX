@@ -1,6 +1,7 @@
 package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -18,15 +19,12 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.time.LocalDate;
 import java.util.Objects;
 
 import static com.example.cld.Main.dayOfMonth;
 
 
 public class MainController {
-
-    public static LocalDate currentDate;
 
     private Stage stage;
     private Scene scene;
@@ -137,10 +135,10 @@ public class MainController {
     private JFXButton btm_shiftEvent;
 
     @FXML
-    private Label events_on_selected_day_label;
+     private JFXTextArea events_on_selected_day_textArea;
 
     @FXML
-    private Label events_on_today_label;
+    private JFXTextArea events_on_today_textArea;
 
     @FXML
     private ImageView inner_pane_image1;
@@ -176,16 +174,51 @@ public class MainController {
     private Label events_on_day_name_label;
 
     public static Scheduler scheduler;
+    private static MainController instance;
+
+    public void initialize() {
+
+        // Initialize scheduler with current date
+        scheduler = new Scheduler(dayOfMonth);
+
+        // Set current date and day name
+        today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
+        today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
+
+        events_on_day_number_label.setText(String.valueOf(dayOfMonth+1));
+        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth+1));
+
+        events_on_today_textArea.setText(scheduler.displayEvents(dayOfMonth));
+        events_on_selected_day_textArea.setText(scheduler.displayEvents(dayOfMonth+1));
+
+        setupDateButtonActions();
+
+//        btm_addEvent.setOnAction(event -> {
+//            try {
+//                switchToAddEventDetails(event);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
+    }
+
+    public MainController() {
+        instance = this;
+    }
+
+    public static MainController getInstance() {
+        return instance;
+    }
 
      @FXML
     public void switchToAddEventDetails(Event event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/AddEvent.fxml")));
 
-         EventAction(event, root);
+        EventAction(event, root);
      }
 
     public void switchToSetDayOff(Event event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ShiftEvent.fxml")));
 
         EventAction(event, root);
     }
@@ -202,6 +235,12 @@ public class MainController {
         EventAction(event, root);
     }
 
+    public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
+
+        EventAction(event, root);
+    }
+
     private void EventAction(Event event, Parent root) {
         if (event instanceof ActionEvent) {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -212,18 +251,6 @@ public class MainController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void initialize() {
-
-        // Initialize scheduler with current date
-        scheduler = new Scheduler(dayOfMonth);
-
-        // Set current date and day name
-        today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
-        today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
-
-        setupDateButtonActions();
     }
 
     @FXML
@@ -240,10 +267,7 @@ public class MainController {
     }
 
     private void handleDisplayEvents(int date) {
-        // Get events for the selected date from the scheduler
-
-        // Update the events label
-        events_on_selected_day_label.setText(scheduler.displayEvents(date));
+        events_on_selected_day_textArea.setText(scheduler.displayEvents(date));
     }
 
     public void setupDateButtonActions() {

@@ -83,7 +83,7 @@ class Day {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
+//        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
 
         if (isDayOff) {
             sb.append(" (Day Off)");

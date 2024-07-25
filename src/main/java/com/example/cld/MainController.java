@@ -218,7 +218,7 @@ public class MainController {
      }
 
     public void switchToSetDayOff(Event event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ShiftEvent.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
 
         EventAction(event, root);
     }
@@ -235,7 +235,7 @@ public class MainController {
         EventAction(event, root);
     }
 
-    public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
 
         EventAction(event, root);

@@ -17,32 +17,32 @@
       <children>
          <AnchorPane fx:id="side_ankerpane" prefHeight="798.0" prefWidth="342.0" styleClass="side_ankerpane" stylesheets="@../style.css">
             <children>
-               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="199.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
+               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="199.0" onAction="#switchToAddEventDetails" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="83.0" fitWidth="86.0" layoutX="37.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="83.0" fitWidth="86.0" layoutX="37.0" layoutY="183.0" onMousePressed="#switchToAddEventDetails" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="289.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="289.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="282.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="372.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="372.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="360.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/deleteEvent.png" />
                   </image>
@@ -52,12 +52,12 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="463.0" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="463.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="451.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/shiftEvent.png" />
                   </image>
@@ -92,7 +92,7 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <JFXButton fx:id="confirm_btm_addEvent" layoutX="313.0" layoutY="510.0" prefHeight="58.0" prefWidth="100.0" stylesheets="@../style_add_event.css" text="Confirm" textFill="WHITE">
+         <JFXButton fx:id="confirm_btm_DeleteEvent" layoutX="313.0" layoutY="510.0" prefHeight="58.0" prefWidth="100.0" stylesheets="@../style_day_off.css" text="Confirm" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="16.0" />
             </font>
@@ -122,7 +122,7 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="enter_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" styleClass="check_button" stylesheets="@../style.css" text="Button">
+         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_day_off.css" text="Button">
             <graphic>
                <ImageView fx:id="inner_pane_image1" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -137,7 +137,7 @@
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="358.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style.css">
+         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_day_off.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>

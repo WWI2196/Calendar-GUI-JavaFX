@@ -19,18 +19,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -121,25 +109,24 @@ public class AddEventController {
 
     private MainController mainController = MainController.getInstance();
 
-
-    public void switchToMainMenuAd(ActionEvent event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToMainMenu(event);
     }
-
-    public void switchToAddEventDetailsAd(ActionEvent event) throws IOException { // switch to add the driver details scene
+    @FXML
+    public void switchToAddEventDetails(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToAddEventDetails(event);
     }
-
-    public void switchToSetDayOffAd(ActionEvent event) throws IOException { // switch to add the driver details scene
+    @FXML
+    public void switchToSetDayOff(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToSetDayOff(event);
     }
-
-    public void switchToDeleteEventAd(ActionEvent event) throws IOException { // switch to add the driver details scene
+    @FXML
+    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToDeleteEvent(event);
     }
-
-    public void switchToShiftEventAd(ActionEvent event) throws IOException { // switch to add the driver details scene
-        mainController.switchToDeleteEvent(event);
+    @FXML
+    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToShiftEvent(event);
 
     }
 

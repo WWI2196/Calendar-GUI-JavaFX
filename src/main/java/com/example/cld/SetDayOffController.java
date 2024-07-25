@@ -2,6 +2,7 @@ package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -45,7 +46,7 @@ public class SetDayOffController {
     private Pane date_picker;
 
     @FXML
-    private JFXButton enter_button;
+    private JFXButton check_button;
 
     @FXML
     private TextField enter_date_txt_field;
@@ -80,8 +81,25 @@ public class SetDayOffController {
      private MainController mainController = MainController.getInstance();
 
     @FXML
-    public void switchToMainMenu(ActionEvent event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToMainMenu(event);
+    }
+    @FXML
+    public void switchToAddEventDetails(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToAddEventDetails(event);
+    }
+    @FXML
+    public void switchToSetDayOff(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToSetDayOff(event);
+    }
+    @FXML
+    public void switchToDeleteEvent(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToDeleteEvent(event);
+    }
+    @FXML
+    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToShiftEvent(event);
+
     }
 
 }

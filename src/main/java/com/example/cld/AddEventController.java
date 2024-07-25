@@ -107,4 +107,5 @@ public class AddEventController {
         stage.setScene(scene);
         stage.show();
     }
+
 }

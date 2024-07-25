@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="985c43fc-cde2-476a-8d56-2b5d31bd5b3a" name="Changes" comment="Created the fxml file for AddEvent.fxml and the controller for it">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_shift_evet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/EventFile.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DateNameMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Time.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/AddEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/AddEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_add_event.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_add_event.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_delete_event.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_delete_event.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -52,31 +52,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Application.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "extract.method.default.visibility": "private",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Wansajee/Documents/CLD/src/main/resources/com/example/cld/FXML",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Wansajee/Documents/CLD/src/main/resources/com/example/cld/FXML&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\FXML" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Wansajee\Documents\CLD\src\main" />
       <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\FXML" />
       <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld" />
     </key>
@@ -109,6 +111,9 @@
       <workItem from="1721321255070" duration="1870000" />
       <workItem from="1721323274033" duration="24292000" />
       <workItem from="1721412859584" duration="5693000" />
+      <workItem from="1721458051805" duration="1429000" />
+      <workItem from="1721459530929" duration="2123000" />
+      <workItem from="1721891143086" duration="9592000" />
     </task>
     <task id="LOCAL-00001" summary="Created the basic structure">
       <option name="closed" value="true" />
@@ -137,5 +142,9 @@
     <MESSAGE value="Created the basic structure" />
     <MESSAGE value="Created the fxml file for AddEvent.fxml and the controller for it" />
     <option name="LAST_COMMIT_MESSAGE" value="Created the fxml file for AddEvent.fxml and the controller for it" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

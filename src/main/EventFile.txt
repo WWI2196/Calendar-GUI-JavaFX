@@ -1,0 +1,6 @@
+4|Meeting B|09:50|10:30|none
+4|Meeting A|10:50|11:45|weekly
+11|Meeting A|10:50|11:45|weekly
+12|Meeting C|08:45|09:50|none
+18|Meeting A|10:50|11:45|weekly
+25|Meeting A|10:50|11:45|weekly

@@ -116,22 +116,22 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <JFXButton fx:id="btm_date1" layoutX="359.0" layoutY="148.0" prefHeight="41.0" prefWidth="50.0" styleClass="btm_date1" stylesheets="@../style_date_btm.css" text="1" textFill="WHITE">
+         <JFXButton fx:id="btm_date1" layoutX="359.0" layoutY="148.0" onAction="#setupDateButtonActions" prefHeight="41.0" prefWidth="50.0" styleClass="btm_date1" stylesheets="@../style_date_btm.css" text="1" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date2" layoutX="450.0" layoutY="148.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date2" stylesheets="@../style_date_btm.css" text="2" textFill="WHITE">
+         <JFXButton fx:id="btm_date2" layoutX="450.0" layoutY="148.0" onAction="#setupDateButtonActions" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date2" stylesheets="@../style_date_btm.css" text="2" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date3" layoutX="545.0" layoutY="148.0" prefHeight="51.0" prefWidth="58.0" styleClass="btm_date3" stylesheets="@../style_date_btm.css" text="3" textFill="WHITE">
+         <JFXButton fx:id="btm_date3" layoutX="545.0" layoutY="148.0" onAction="#setupDateButtonActions" prefHeight="51.0" prefWidth="58.0" styleClass="btm_date3" stylesheets="@../style_date_btm.css" text="3" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date4" layoutX="634.0" layoutY="148.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date4" stylesheets="@../style_date_btm.css" text="4" textFill="WHITE">
+         <JFXButton fx:id="btm_date4" layoutX="634.0" layoutY="148.0" onAction="#setupDateButtonActions" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date4" stylesheets="@../style_date_btm.css" text="4" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -324,17 +324,17 @@
          </Label>
          <Pane fx:id="today_pane11" layoutX="483.0" layoutY="518.0" prefHeight="241.0" prefWidth="417.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
-               <Label fx:id="today_pane_day_number_label11" layoutX="14.0" layoutY="77.0" text="31" textFill="WHITE">
+               <Label fx:id="events_on_day_number_label" layoutX="14.0" layoutY="77.0" text="31" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="40.0" />
                   </font>
                </Label>
-               <Label fx:id="today_pane_day_name_label11" layoutX="17.0" layoutY="165.0" text="Mon" textFill="WHITE">
+               <Label fx:id="events_on_day_name_label" layoutX="17.0" layoutY="165.0" text="Mon" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <Label fx:id="events_on_selected_day_label" layoutX="73.0" layoutY="23.0" prefHeight="198.0" prefWidth="321.0" stylesheets="@../style.css" text="Label" />
+               <Label fx:id="events_on_selected_day_label" layoutX="73.0" layoutY="23.0" prefHeight="198.0" prefWidth="321.0" stylesheets="@../style.css" />
             </children>
          </Pane>
          <Label layoutX="40.0" layoutY="466.0" prefHeight="41.0" prefWidth="147.0" text="Events Today" textFill="#9a9a9a">

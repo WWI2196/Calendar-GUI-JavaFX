@@ -9,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -18,9 +17,16 @@ import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.time.LocalDate;
 import java.util.Objects;
 
+import static com.example.cld.Main.dayOfMonth;
+
+
 public class MainController {
+
+    public static LocalDate currentDate;
 
     private Stage stage;
     private Scene scene;
@@ -161,13 +167,15 @@ public class MainController {
     private Label today_pane_day_name_label;
 
     @FXML
-    private Label today_pane_day_name_label11;
+    private Label events_on_day_number_label;
 
     @FXML
     private Label today_pane_day_number_label;
 
     @FXML
-    private Label today_pane_day_number_label11;
+    private Label events_on_day_name_label;
+
+    public static Scheduler scheduler;
 
      @FXML
     public void switchToAddEventDetails(Event event) throws IOException {
@@ -205,5 +213,55 @@ public class MainController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void initialize() {
+
+        // Initialize scheduler with current date
+        scheduler = new Scheduler(dayOfMonth);
+
+        // Set current date and day name
+        today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
+        today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
+
+        setupDateButtonActions();
+    }
+
+    @FXML
+   private void handleDateButtonPressed(ActionEvent event) {
+        JFXButton button = (JFXButton) event.getSource();
+        int selectedDate = Integer.parseInt(button.getText());
+
+        // Update the selected date label and day name label
+        events_on_day_number_label.setText(String.valueOf(selectedDate));
+        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(selectedDate));
+
+        // Display events for the selected date
+        handleDisplayEvents(selectedDate);
+    }
+
+    private void handleDisplayEvents(int date) {
+        // Get events for the selected date from the scheduler
+
+        // Update the events label
+        events_on_selected_day_label.setText(scheduler.displayEvents(date));
+    }
+
+    public void setupDateButtonActions() {
+        // Assign handleDateButtonPressed to each date button
+        for (int i = 1; i <= 31; i++) {
+            try {
+                Field field = getClass().getDeclaredField("btm_date" + i);
+                field.setAccessible(true); // Make private fields accessible
+                JFXButton button = (JFXButton) field.get(this);
+                if (button != null) {
+                    button.setOnAction(this::handleDateButtonPressed);
+                }
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
 }

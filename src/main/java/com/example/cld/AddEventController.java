@@ -135,7 +135,6 @@ public class AddEventController {
         today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
 
 
-
     }
 
 }

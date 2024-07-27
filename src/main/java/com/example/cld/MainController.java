@@ -167,11 +167,12 @@ public class MainController {
         today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
         today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
 
-        events_on_day_number_label.setText(String.valueOf(dayOfMonth+1));
+        events_on_day_number_label.setText(String.valueOf((dayOfMonth+1)>31? 31:dayOfMonth+1));
         events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth+1));
 
         events_on_today_textArea.setText(scheduler.displayEvents(dayOfMonth));
-        events_on_selected_day_textArea.setText(scheduler.displayEvents(dayOfMonth+1));
+        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth+1)>31? 31:dayOfMonth+1));
+        events_on_label.setText((dayOfMonth+1)>31? "Events On": "Tomorrow");
 
         setupDateButtonActions();
 

@@ -3,29 +3,18 @@ package com.example.cld;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import javafx.stage.Modality;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.stage.Window;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Objects;
-
-import java.io.IOException;
-import java.util.Objects;
 
 import static com.example.cld.Main.dayOfMonth;
 
@@ -54,9 +43,6 @@ public class AddEventController {
 
     @FXML
     private JFXButton confirm_btm_addEvent;
-
-    @FXML
-    private CheckBox daily_check_box;
 
     @FXML
     private Pane date_picker;
@@ -89,9 +75,6 @@ public class AddEventController {
     private ImageView inner_pane_image1;
 
     @FXML
-    private CheckBox one_time_check_box;
-
-    @FXML
     private HBox root;
 
     @FXML
@@ -102,9 +85,6 @@ public class AddEventController {
 
     @FXML
     private Pane today_pane;
-
-    @FXML
-    private CheckBox weekly_check_box;
 
     @FXML
     private RadioButton one_time_radio_btn;
@@ -143,62 +123,107 @@ public class AddEventController {
     }
 
     @FXML
-    private void Error(ActionEvent event) {
+    private void Error() {
+        Window owner = confirm_btm_addEvent.getScene().getWindow();
         // Create the alert
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Message");
-        alert.setContentText("There is a problem with entered values; check whether the entered values are in correct format");
-        alert.setHeaderText("Error");
-
-        // Set a custom image for the alert
-        Image customImage = new Image(getClass().getResourceAsStream("/com/example/cld/Icons/CrossSign.png"));
-        ImageView imageView = new ImageView(customImage);
-        imageView.setFitWidth(40); // Set desired width
-        imageView.setFitHeight(40); // Set desired height
-        alert.setGraphic(imageView);
-
-        // Set a custom icon for the application window
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/example/cld/Icons/Message.png")));
-
-        // Show the alert and wait for user response
-        alert.showAndWait();
+        MainController.AlertHelper.showAlert(
+            Alert.AlertType.INFORMATION,owner,
+            "Schedule Event",
+            "Error",
+            "There is a problem with entered values; check whether the entered values are in correct format",
+            "/com/example/cld/Icons/CrossSign.png",
+            "/com/example/cld/Icons/addEvent.png"
+        );
     }
 
     @FXML
-    private void Success(ActionEvent event) {
+    private void successPopup() {
+        Window owner = confirm_btm_addEvent.getScene().getWindow();
         // Create the alert
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Message");
-        alert.setContentText("Event Successfully added");
-        alert.setHeaderText("Success");
-
-        // Set a custom image for the alert
-        Image customImage = new Image(getClass().getResourceAsStream("/com/example/cld/Icons/Done_img_1.png"));
-        ImageView imageView = new ImageView(customImage);
-        imageView.setFitWidth(40); // Set desired width
-        imageView.setFitHeight(40); // Set desired height
-        alert.setGraphic(imageView);
-
-        // Set a custom icon for the application window
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/example/cld/Icons/Message.png")));
-
-        // Show the alert and wait for user response
-        alert.showAndWait();
+        MainController.AlertHelper.showAlert(
+            Alert.AlertType.INFORMATION,owner,
+            "Schedule Event",
+            "Success",
+            "Event Successfully added",
+            "/com/example/cld/Icons/Done_img_1.png",
+            "/com/example/cld/Icons/addEvent.png"
+        );
     }
 
     public void initialize() {
+
+//        confirm_btm_addEvent.setOnAction(event -> {// when the submitted button is clicked
+//            try {
+
+//                if (enter_date_txt_field.getText().isEmpty()) { // check if the name field is empty
+//                    throw new IllegalArgumentException("Date cannot be empty."); // if the name field is empty, throw exception
+//                }
+//                if (nameTextField.getText().isEmpty()) { // check if the name field is empty
+//                    throw new IllegalArgumentException("Name cannot be empty."); // if the name field is empty, throw exception
+//                }
+//
+//                for (DriverDetails item : dataRepository) { // check if the name already exists
+//                    if (nameTextField.getText().toUpperCase().equals(item.getName())) {
+//                        throw new IllegalArgumentException("Name already exists.");
+//                    }
+//                }
+//
+//                try {
+//                    Integer.parseInt(ageField.getText());
+//                    if (ageField.getText().isEmpty() || Integer.parseInt(ageField.getText()) < 15
+//                            || Integer.parseInt(ageField.getText()) > 99) { // check if the age is between 15 and 99
+//                        throw new NumberFormatException();
+//                    }
+//                } catch (NumberFormatException e) {
+//                    throw new IllegalArgumentException("Enter a valid age.");
+//                }
+//
+//                try {
+//                    Integer.parseInt(pointsField.getText());
+//                } catch (NumberFormatException e) { // check if points is an integer number
+//                    throw new IllegalArgumentException("Points must be a integer.");
+//                }
+//
+//                String name = nameTextField.getText().toUpperCase(); // get name from text field
+//                int age = Integer.parseInt(ageField.getText()); // get age from text field
+//                String team = teamTextField.getText(); // get team from text field
+//                String carModel = carTextField.getText(); // get a car model from text field
+//                int points = Integer.parseInt(pointsField.getText()); // get points from text field
+//
+//                dataRepository.add(new DriverDetails(name, age, team, carModel, points)); // add driver details to data repository
+//
+//                successText.setText("Driver details added successfully");
+//                nameTextField.clear();
+//                ageField.clear();
+//                teamTextField.clear();
+//                carTextField.clear();
+//                pointsField.clear();
+//
+//
+//                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event01 -> successText.setText(null)));
+//                timeline.play();
+//
+//            } catch (IllegalArgumentException e) { // if the fields are empty or invalid, show an error message
+//                Window owner = submitButton.getScene().getWindow(); // get window
+//                MainController.AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Error",
+//                        "Invalid input. "+e.getMessage());
+//            }
+//        });
+
         today_day_number_label.setText(String.valueOf(dayOfMonth));
         today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
+
+        if(dayOfMonth != 31) {
+            enter_date_txt_field.setPromptText(dayOfMonth + " - 31");
+        }else {
+            enter_date_txt_field.setText(String.valueOf(dayOfMonth));
+        }
 
           // Configure the ToggleGroup for repeatType
         ToggleGroup repeatTypeGroup = new ToggleGroup();
         one_time_radio_btn.setToggleGroup(repeatTypeGroup);
         daily_radio_btn.setToggleGroup(repeatTypeGroup);
         weekly_radio_btn.setToggleGroup(repeatTypeGroup);
-
-
 
         // Add an event handler for the confirm button
         confirm_btm_addEvent.setOnAction(this::onConfirmButtonClick);
@@ -237,10 +262,10 @@ public class AddEventController {
 
             String title = enter_event_name_txt_field.getText(); // done
 
-            scheduler = new Scheduler(dayToschedule);
+
             enter_day_number_label.setText(String.valueOf(dayToschedule));
             enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToschedule));
-            events_on_enter_day_textArea.setText(scheduler.displayEvents(dayToschedule));
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToschedule));
 
             Time startTime = new Time();
             Time endTime = new Time();
@@ -256,38 +281,31 @@ public class AddEventController {
 
             com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
 
-            scheduler.scheduleEvent(dayToschedule, event);
+            mainController.getScheduler().scheduleEvent(dayToschedule, event);
+            successPopup();
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToschedule));
 
 
         } catch (NumberFormatException e) {
-            showErrorPopup("Invalid number format for time fields.");
+            showPopup("Invalid number format for time fields.");
         } catch (IllegalArgumentException e) {
-            showErrorPopup(e.getMessage());
+            showPopup(e.getMessage());
         } catch (Exception e) {
-            showErrorPopup("An unexpected error occurred.");
+            showPopup("An unexpected error occurred.");
         }
     }
 
-    private void showErrorPopup(String message) {
+    private void showPopup(String message) {
+        Window owner = confirm_btm_addEvent.getScene().getWindow();
         // Create the alert
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Message");
-        alert.setContentText(message);
-        alert.setHeaderText("Error");
-
-        // Set a custom image for the alert
-        Image customImage = new Image(getClass().getResourceAsStream("/com/example/cld/Icons/CrossSign.png"));
-        ImageView imageView = new ImageView(customImage);
-        imageView.setFitWidth(40); // Set desired width
-        imageView.setFitHeight(40); // Set desired height
-        alert.setGraphic(imageView);
-
-        // Set a custom icon for the application window
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/example/cld/Icons/Message.png")));
-
-        // Show the alert and wait for user response
-        alert.showAndWait();
+        MainController.AlertHelper.showAlert(
+            Alert.AlertType.ERROR,owner,
+            "Schedule Event",
+            "Error",
+            message,
+            "/com/example/cld/Icons/CrossSign.png",
+            "/com/example/cld/Icons/addEvent.png"
+        );
     }
 
     /**
@@ -298,6 +316,7 @@ public class AddEventController {
         enter_event_name_txt_field.clear();
         enter_start_time_txt_field.clear();
         enter_end_time_txt_field.clear();
+        resetCheckBoxesAndRadioButtons();
         //events_on_enter_day_textArea.clear();
     }
 
@@ -305,14 +324,38 @@ public class AddEventController {
      * Optionally reset checkboxes and radio buttons to default state
      */
     private void resetCheckBoxesAndRadioButtons() {
-        daily_check_box.setSelected(false);
-        one_time_check_box.setSelected(false);
-        weekly_check_box.setSelected(false);
 
         one_time_radio_btn.setSelected(false);
         daily_radio_btn.setSelected(false);
         weekly_radio_btn.setSelected(false);
     }
+
+    public void checkDate() {
+    String input = enter_date_txt_field.getText().trim();
+
+    // Check if the input is empty
+    if (input.isEmpty()) {
+        Error_date.setVisible(false);
+        return;
+    }
+
+    try {
+        int day = Integer.parseInt(input);
+        if (day < dayOfMonth || day > 31) {
+            Error_date.setVisible(true);
+            Error_date.setText("Enter a date between " + dayOfMonth + " and 31.");
+        } else {
+            Error_date.setVisible(false);
+            enter_day_number_label.setText(String.valueOf(day));
+            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
+        }
+    } catch (NumberFormatException e) {
+        Error_date.setVisible(true);
+        Error_date.setText("Enter a valid number.");
+    }
+}
+
 
 
 }

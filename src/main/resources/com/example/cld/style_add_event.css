@@ -45,3 +45,24 @@
     -fx-font-size: 14px; /* Adjust the font size as needed */
     -fx-alignment: top-left;
 }
+
+#one_time_radio_btn .radio {
+    -fx-background-color: white; /* White background */
+    -fx-border-color: black; /* Black border */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-background-radius: 5px; /* Rounded corners */
+}
+
+#daily_radio_btn .radio {
+    -fx-background-color: white; /* White background */
+    -fx-border-color: black; /* Black border */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-background-radius: 5px; /* Rounded corners */
+}
+
+#weekly_radio_btn .radio {
+    -fx-background-color: white; /* White background */
+    -fx-border-color: black; /* Black border */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-background-radius: 5px; /* Rounded corners */
+}

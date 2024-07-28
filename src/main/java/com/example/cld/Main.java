@@ -18,6 +18,7 @@ public class Main extends Application {
         launch();
     }
 
+
     public static LocalDate currentDate; // Static variable for current date
     public static int dayOfMonth; // Static variable for day of month
 
@@ -25,10 +26,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         // Initialize the current date
-       currentDate = LocalDate.now();
-       dayOfMonth = currentDate.getDayOfMonth();
+        currentDate = LocalDate.now();
+        dayOfMonth = currentDate.getDayOfMonth();
 
-//        dayOfMonth = 31;
+//       dayOfMonth = 31;
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
         Scene scene = new Scene(root, 1221, 784);

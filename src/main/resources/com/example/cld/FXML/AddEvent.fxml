@@ -2,10 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -117,7 +116,7 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_on_enter_day_textArea" layoutX="66.0" layoutY="17.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../style_add_event.css" unFocusColor="#fffefe00">
+               <JFXTextArea fx:id="events_on_enter_day_textArea" editable="false" layoutX="66.0" layoutY="17.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../style_add_event.css" unFocusColor="#fffefe00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font></JFXTextArea>
@@ -134,7 +133,7 @@
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="348.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
+         <TextField fx:id="enter_date_txt_field" alignment="CENTER" layoutX="40.0" layoutY="200.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
@@ -169,42 +168,27 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <CheckBox fx:id="daily_check_box" layoutX="182.0" layoutY="590.0" mnemonicParsing="false" stylesheets="@../style.css" text="Daily" textFill="#9a9a9a">
-            <font>
-               <Font name="Century Gothic Bold" size="17.0" />
-            </font>
-         </CheckBox>
-         <CheckBox fx:id="weekly_check_box" layoutX="295.0" layoutY="590.0" mnemonicParsing="false" text="Weekly" textFill="#9a9a9a">
-            <font>
-               <Font name="Century Gothic Bold" size="17.0" />
-            </font>
-         </CheckBox>
-         <CheckBox fx:id="one_time_check_box" layoutX="44.0" layoutY="591.0" mnemonicParsing="false" stylesheets="@../style.css" text="One Time" textFill="#9a9a9a">
-            <font>
-               <Font name="Century Gothic Bold" size="17.0" />
-            </font>
-         </CheckBox>
          <JFXButton fx:id="back_to_main_btm" layoutX="597.0" layoutY="658.0" onAction="#switchToMainMenu" prefHeight="58.0" prefWidth="100.0" stylesheets="@../style_add_event.css" text="Back" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="16.0" />
             </font>
          </JFXButton>
-         <RadioButton fx:id="one_time_radio_btn" alignment="CENTER_LEFT" layoutX="44.0" layoutY="628.0" mnemonicParsing="false" text="One Time" textFill="#9a9a9a">
+         <RadioButton fx:id="one_time_radio_btn" alignment="CENTER_LEFT" layoutX="45.0" layoutY="594.0" mnemonicParsing="false" stylesheets="@../style_add_event.css" text="One Time" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </RadioButton>
-         <RadioButton fx:id="daily_radio_btn" alignment="CENTER_LEFT" layoutX="181.0" layoutY="628.0" mnemonicParsing="false" text="Daily" textFill="#9a9a9a">
+         <RadioButton fx:id="daily_radio_btn" alignment="CENTER_LEFT" layoutX="180.0" layoutY="594.0" mnemonicParsing="false" stylesheets="@../style_add_event.css" text="Daily" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </RadioButton>
-         <RadioButton fx:id="weekly_radio_btn" alignment="CENTER_LEFT" layoutX="296.0" layoutY="628.0" mnemonicParsing="false" text="Weekly" textFill="#9a9a9a">
+         <RadioButton fx:id="weekly_radio_btn" alignment="CENTER_LEFT" layoutX="276.0" layoutY="594.0" mnemonicParsing="false" stylesheets="@../style_add_event.css" text="Weekly" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </RadioButton>
-         <Label fx:id="Error_date" layoutX="49.0" layoutY="243.0" text="Label" textFill="#ff3a3a">
+         <Label fx:id="Error_date" layoutX="49.0" layoutY="243.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
             <font>
                <Font name="Century Gothic" size="14.0" />
             </font>

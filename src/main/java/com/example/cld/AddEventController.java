@@ -79,7 +79,6 @@ public class AddEventController {
     @FXML
     private Label error_name_label;
 
-    public static Scheduler scheduler;
     private MainController mainController = MainController.getInstance();
 
     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
@@ -242,7 +241,6 @@ public class AddEventController {
         daily_radio_btn.setToggleGroup(repeatTypeGroup);
         weekly_radio_btn.setToggleGroup(repeatTypeGroup);
 
-
         // Hide the Error_date label initially
         Error_date.setVisible(false);
     }
@@ -282,37 +280,47 @@ public class AddEventController {
         // Check if the input is empty
         if (input.isEmpty()) {
             Error_date.setVisible(false);
-            return;
+        } else if (!input.isEmpty() && !enter_date_txt_field.getText().isEmpty() || !input.isEmpty() && enter_date_txt_field.getText().isEmpty()) {
+            Error_date.setVisible(false);
+            checkName();
+            try {
+                int day = Integer.parseInt(input);
+                    if (day < dayOfMonth || day > 31) {
+                        Error_date.setVisible(true);
+                        Error_date.setText("Enter a date between " + dayOfMonth + " and 31.");
+                    } else {
+                        Error_date.setVisible(false);
+                        enter_day_number_label.setText(String.valueOf(day));
+                        enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
+                        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
+                    }
+                }catch(NumberFormatException e) {
+                Error_date.setVisible(true);
+                Error_date.setText("Enter a valid number.");
+            }
+
+        } else if (input.isEmpty() && enter_date_txt_field.getText().isEmpty()) {
+            Error_date.setVisible(false);
+
         }
 
-        try {
-            int day = Integer.parseInt(input);
-            if (day < dayOfMonth || day > 31) {
-                Error_date.setVisible(true);
-                Error_date.setText("Enter a date between " + dayOfMonth + " and 31.");
-            } else {
-                Error_date.setVisible(false);
-                enter_day_number_label.setText(String.valueOf(day));
-                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
-                events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
-            }
-        } catch (NumberFormatException e) {
-            Error_date.setVisible(true);
-            Error_date.setText("Enter a valid number.");
-        }
+
     }
 
     public void checkName() {
-        String input = enter_event_name_txt_field.getText().trim();
+        String input = enter_event_name_txt_field.getText().trim().toUpperCase();
+
         try{
             if (input.isEmpty()) {
-                Error_date.setText("Enter a name for the event.");
+                error_name_label.setVisible(false);
+
             }else if(!input.isEmpty()){ // check for the name already exists on the day
                 Error_date.setVisible(false);
-                mainController.getScheduler().checkEventNameExists(Integer.parseInt(enter_date_txt_field.getText()), input);
-
+                if (!enter_date_txt_field.getText().isEmpty()) {
+                    mainController.getScheduler().checkEventNameExists(Integer.parseInt(enter_date_txt_field.getText()), input);
+                }
             }else {
-                Error_date.setVisible(false);
+                error_name_label.setVisible(false);
             }
         }catch (IllegalArgumentException e) {
             error_name_label.setText("Event name already exists");

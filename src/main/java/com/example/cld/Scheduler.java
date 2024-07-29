@@ -184,7 +184,7 @@ class Scheduler {
         }
         Day day = days[date - 1];
         for (Event event : day.getEvents()) {
-            if (event.getTitle().equals(title)) {
+            if (event.getTitle().toUpperCase().equals(title)) {
                 throw new IllegalArgumentException("Event name already exists");
             }
         }

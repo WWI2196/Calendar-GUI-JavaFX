@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.util.Objects;
@@ -17,7 +16,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 
     public static LocalDate currentDate; // Static variable for current date
     public static int dayOfMonth; // Static variable for day of month

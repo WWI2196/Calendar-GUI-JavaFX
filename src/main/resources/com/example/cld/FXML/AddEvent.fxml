@@ -133,7 +133,7 @@
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="348.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" alignment="CENTER" layoutX="40.0" layoutY="200.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
+         <TextField fx:id="enter_date_txt_field" alignment="CENTER" layoutX="40.0" layoutY="210.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>

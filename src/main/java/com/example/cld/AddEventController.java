@@ -165,6 +165,7 @@ public class AddEventController {
 
                     if (result.isPresent() && result.get() == yesButton) {
                         mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
+                        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
                     } else {
                         throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
                     }

@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
 import javafx.stage.Window;
@@ -40,9 +38,6 @@ public class AddEventController {
     private JFXButton confirm_btm_addEvent;
 
     @FXML
-    private Pane date_picker;
-
-    @FXML
     private TextField enter_date_txt_field;
 
     @FXML
@@ -61,25 +56,13 @@ public class AddEventController {
     private TextField enter_start_time_txt_field;
 
     @FXML
-    private Pane enter_today_pane;
-
-    @FXML
     private JFXTextArea events_on_enter_day_textArea;
-
-    @FXML
-    private ImageView inner_pane_image1;
-
-    @FXML
-    private HBox root;
 
     @FXML
     private Label today_day_name_label;
 
     @FXML
     private Label today_day_number_label;
-
-    @FXML
-    private Pane today_pane;
 
     @FXML
     private RadioButton one_time_radio_btn;
@@ -159,25 +142,6 @@ public class AddEventController {
                     throw new IllegalArgumentException("Enter a valid date between " + dayOfMonth + " and 31.");
                 }
 
-                if (enter_event_name_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter a name for the event.");
-                }
-
-                if (enter_start_time_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter a start times for the event.");
-                }
-                if(enter_end_time_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter an end time for the event.");
-                }
-
-                if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
-                    throw new IllegalArgumentException("Select a repeat type.");
-                }
-
-                if (enter_start_time_txt_field.getText().isEmpty() || enter_end_time_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter start and end times for the event.");
-                }
-
                 if (mainController.getScheduler().days[dayToSchedule - 1].isDayOff()) {
                     Window owner = confirm_btm_addEvent.getScene().getWindow();
 
@@ -205,6 +169,25 @@ public class AddEventController {
                     } else {
                         throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
                     }
+                }
+
+                if (enter_event_name_txt_field.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Enter a name for the event.");
+                }
+
+                if (enter_start_time_txt_field.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Enter a start times for the event.");
+                }
+                if(enter_end_time_txt_field.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Enter an end time for the event.");
+                }
+
+                if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
+                    throw new IllegalArgumentException("Select a repeat type.");
+                }
+
+                if (enter_start_time_txt_field.getText().isEmpty() || enter_end_time_txt_field.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Enter start and end times for the event.");
                 }
 
                 Error_date.setVisible(false); // Hide the error label if the date is valid

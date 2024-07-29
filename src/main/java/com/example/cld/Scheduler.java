@@ -1,10 +1,9 @@
 package com.example.cld;
 
 import java.io.*;
-import java.util.Scanner;
 
 class Scheduler {
-    private final Day[] days;
+    final Day[] days;
     private final int currentDay;
 
     public Scheduler(int currentDay) {
@@ -14,7 +13,7 @@ class Scheduler {
         try {
             loadEventsFromTxt();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new IllegalArgumentException("Error: " + e.getMessage());
         }
     }
 
@@ -56,14 +55,8 @@ class Scheduler {
             }
 
             if (days[date - 1].isDayOff()) {
-                Scanner scanner = new Scanner(System.in);
-                System.out.print("The selected day is marked as a day off. Do you want to proceed? (yes/no): ");
-                String confirmation = scanner.nextLine();
-
-                if (!confirmation.equalsIgnoreCase("yes")) {
-                    return;
-                }
                 days[date - 1].setDayOff(false);
+                throw new IllegalArgumentException("The selected day is marked as a day off");
             }
 
             Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
@@ -82,7 +75,7 @@ class Scheduler {
 
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error scheduling event");
+            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");
         }
     }
 
@@ -183,6 +176,27 @@ class Scheduler {
             }
         }
         return false;
+    }
+
+    public void checkEventNameExists(int date, String title) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        Day day = days[date - 1];
+        for (Event event : day.getEvents()) {
+            if (event.getTitle().equals(title)) {
+                throw new IllegalArgumentException("Event name already exists");
+            }
+        }
+    }
+
+    public void checkDayOff(int date) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        if (days[date - 1].isDayOff()) {
+            throw new IllegalArgumentException("The selected day is marked as a day off");
+        }
     }
 }
 

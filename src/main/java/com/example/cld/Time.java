@@ -30,15 +30,32 @@ public class Time {
     }
 
     public void fromString(String timeString) {
-        String[] parts = timeString.split(":");
-        int hour = Integer.parseInt(parts[0]);
-        int minute = Integer.parseInt(parts[1]);
-
-        if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60) {
+        // Split the string using any non-numeric character as the divider
+        String[] parts = timeString.split("\\D+");
+        if (parts.length != 2) {
             throw new IllegalArgumentException("Invalid time format");
         }
 
-        this.hour = hour;
-        this.minute = minute;
+        try {
+            int hour = Integer.parseInt(parts[0]);
+            int minute = Integer.parseInt(parts[1]);
+
+            if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60) {
+                throw new IllegalArgumentException("Invalid time format");
+            }
+
+            this.hour = hour;
+            this.minute = minute;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid time format", e);
+        }
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
     }
 }

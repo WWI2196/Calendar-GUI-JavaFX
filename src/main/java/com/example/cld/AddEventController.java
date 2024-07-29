@@ -277,54 +277,54 @@ public class AddEventController {
     public void checkDate() {
         String input = enter_date_txt_field.getText().trim();
 
-        // Check if the input is empty
         if (input.isEmpty()) {
             Error_date.setVisible(false);
-        } else if (!input.isEmpty() && !enter_date_txt_field.getText().isEmpty() || !input.isEmpty() && enter_date_txt_field.getText().isEmpty()) {
-            Error_date.setVisible(false);
-            checkName();
-            try {
-                int day = Integer.parseInt(input);
-                    if (day < dayOfMonth || day > 31) {
-                        Error_date.setVisible(true);
-                        Error_date.setText("Enter a date between " + dayOfMonth + " and 31.");
-                    } else {
-                        Error_date.setVisible(false);
-                        enter_day_number_label.setText(String.valueOf(day));
-                        enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
-                        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
-                    }
-                }catch(NumberFormatException e) {
-                Error_date.setVisible(true);
-                Error_date.setText("Enter a valid number.");
-            }
-
-        } else if (input.isEmpty() && enter_date_txt_field.getText().isEmpty()) {
-            Error_date.setVisible(false);
-
+            return;
         }
 
+        try {
+            int day = Integer.parseInt(input);
+            if (day < dayOfMonth || day > 31) {
+                Error_date.setVisible(true);
+                Error_date.setText("Enter a date between " + dayOfMonth + " and 31.");
+            } else {
+                Error_date.setVisible(false);
+                enter_day_number_label.setText(String.valueOf(day));
+                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
+                events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
+            }
+        } catch (NumberFormatException e) {
+            Error_date.setVisible(true);
+            Error_date.setText("Enter a valid number.");
+        }
 
+        checkName();
     }
 
     public void checkName() {
-        String input = enter_event_name_txt_field.getText().trim().toUpperCase();
+        String input = enter_event_name_txt_field.getText().toUpperCase().trim();
 
-        try{
-            if (input.isEmpty()) {
-                error_name_label.setVisible(false);
+        if (input.isEmpty()) {
+            error_name_label.setVisible(false);
+            return;
+        }
 
-            }else if(!input.isEmpty()){ // check for the name already exists on the day
-                Error_date.setVisible(false);
-                if (!enter_date_txt_field.getText().isEmpty()) {
-                    mainController.getScheduler().checkEventNameExists(Integer.parseInt(enter_date_txt_field.getText()), input);
-                }
-            }else {
+        try {
+            if (!enter_date_txt_field.getText().isEmpty()) {
+                int day = Integer.parseInt(enter_date_txt_field.getText());
+                mainController.getScheduler().checkEventNameExists(day, input);
                 error_name_label.setVisible(false);
+            } else {
+                error_name_label.setText(null);
             }
-        }catch (IllegalArgumentException e) {
-            error_name_label.setText("Event name already exists");
+        } catch (NumberFormatException e) {
+            error_name_label.setVisible(true);
+            error_name_label.setText("Enter a valid date.");
+        } catch (IllegalArgumentException e) {
+            error_name_label.setVisible(true);
+            error_name_label.setText(e.getMessage());
         }
     }
+
 
 }

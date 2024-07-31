@@ -138,7 +138,7 @@ public class AddEventController {
                 // Validate the entered date
                 if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
                     Error_date.setVisible(true);
-                    throw new IllegalArgumentException("Enter a valid date between " + dayOfMonth + " and 31.");
+                    throw new IllegalArgumentException(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
                 }
 
                 if (mainController.getScheduler().days[dayToSchedule - 1].isDayOff()) {
@@ -287,7 +287,7 @@ public class AddEventController {
             int day = Integer.parseInt(input);
             if (day < dayOfMonth || day > 31) {
                 Error_date.setVisible(true);
-                Error_date.setText("Enter a date between " + dayOfMonth + " and 31.");
+                Error_date.setText(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
             } else {
                 Error_date.setVisible(false);
                 enter_day_number_label.setText(String.valueOf(day));

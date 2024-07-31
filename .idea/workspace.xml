@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="985c43fc-cde2-476a-8d56-2b5d31bd5b3a" name="Changes" comment="Created the fxml file for AddEvent.fxml and the controller for it">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewWeek.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -127,7 +128,10 @@
       <workItem from="1722250444726" duration="376000" />
       <workItem from="1722250833550" duration="1450000" />
       <workItem from="1722253639285" duration="1000" />
-      <workItem from="1722273793643" duration="342000" />
+      <workItem from="1722273793643" duration="825000" />
+      <workItem from="1722321620578" duration="168000" />
+      <workItem from="1722325168848" duration="831000" />
+      <workItem from="1722395597786" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="Created the basic structure">
       <option name="closed" value="true" />

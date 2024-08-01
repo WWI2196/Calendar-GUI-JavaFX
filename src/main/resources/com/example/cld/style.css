@@ -82,6 +82,15 @@
     -fx-border-color: #ED455E;
 }
 
+#btm_ViewMonth{
+    -fx-background-color: #F26A40;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #F26A40;
+}
+
 .today_pane{
     -fx-background-color: #748Cf1;
     -fx-border-width: 2px 2px 2px 2px;

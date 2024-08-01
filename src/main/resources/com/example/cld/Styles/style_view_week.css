@@ -17,3 +17,12 @@
     -fx-border-style: solid;
     -fx-border-color: #13BA6A;
 }
+
+#btm_back{
+    -fx-background-color: #F26A40;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #F26A40;
+}

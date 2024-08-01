@@ -73,6 +73,15 @@
     -fx-border-color: #6200EE;
 }
 
+#btm_ViewWeek{
+    -fx-background-color: #ED455E;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #ED455E;
+}
+
 .today_pane{
     -fx-background-color: #748Cf1;
     -fx-border-width: 2px 2px 2px 2px;

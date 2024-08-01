@@ -26,7 +26,7 @@ class Scheduler {
     }
 
     private void saveEventsToTxt() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/EventFile.txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/resources/com/example/cld/TextFiles/EventFile.txt"))) {
             for (int i = 0; i < 31; ++i) {
                 writer.print(days[i].formatDayDataToString());
             }
@@ -36,7 +36,7 @@ class Scheduler {
     }
 
     private void loadEventsFromTxt() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/EventFile.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/cld/TextFiles/EventFile.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.isEmpty()) continue;

@@ -224,6 +224,12 @@ public class MainController {
         EventAction(event, root);
     }
 
+    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewWeek.fxml")));
+
+        EventAction(event, root);
+    }
+
     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
 

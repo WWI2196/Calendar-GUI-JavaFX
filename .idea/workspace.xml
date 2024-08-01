@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="985c43fc-cde2-476a-8d56-2b5d31bd5b3a" name="Changes" comment="Created the fxml file for AddEvent.fxml and the controller for it">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewWeek.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/Icons/pattern.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/Icons/view_week.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/Styles/style_view_week.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewWeek.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewWeek.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -79,9 +86,11 @@
       <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\FXML" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld" />
+      <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\TextFiles\Styles" />
+      <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\TextFiles" />
       <recent name="C:\Users\Wansajee\Documents\CLD\src\main" />
       <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\FXML" />
-      <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld" />
     </key>
   </component>
   <component name="RunManager">
@@ -132,6 +141,11 @@
       <workItem from="1722321620578" duration="168000" />
       <workItem from="1722325168848" duration="831000" />
       <workItem from="1722395597786" duration="25000" />
+      <workItem from="1722409599863" duration="152000" />
+      <workItem from="1722409794912" duration="1000" />
+      <workItem from="1722410695668" duration="376000" />
+      <workItem from="1722441075780" duration="2448000" />
+      <workItem from="1722443725942" duration="2978000" />
     </task>
     <task id="LOCAL-00001" summary="Created the basic structure">
       <option name="closed" value="true" />

@@ -91,7 +91,7 @@ class Day {
         sb.append("\n");
 
         for (Event event : events) {
-            sb.append("  ").append(event.toString()).append("\n");
+            sb.append("  ").append(event.toString()).append("\n-------------------------------------------------\n");
         }
 
         return sb.toString();

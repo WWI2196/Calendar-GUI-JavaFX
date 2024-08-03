@@ -1,0 +1,28 @@
+.events_view_textArea{
+    -fx-background-color: transparent; /* Make the background transparent */
+    -fx-background-color: #FFFFFF; /* Set the background color */
+    -fx-background-radius: 30px; /* Set the background radius */
+    -fx-border-radius: 30px; /* Set the border radius */
+    -fx-padding: 10px;
+    -fx-font-family: "Century Gothic"; /* Set the font family */
+    -fx-font-size: 14px; /* Adjust the font size as needed */
+    -fx-alignment: top-left;
+}
+
+#btm_toMonthView{
+    -fx-background-color: #13BA6A;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #13BA6A;
+}
+
+#btm_back{
+    -fx-background-color: #F26A40;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+    -fx-border-style: solid;
+    -fx-border-color: #F26A40;
+}

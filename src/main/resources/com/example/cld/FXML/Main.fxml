@@ -17,32 +17,32 @@
       <children>
          <AnchorPane fx:id="side_ankerpane" prefHeight="784.0" prefWidth="242.0" styleClass="side_ankerpane" stylesheets="@../style.css">
             <children>
-               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="106.0" onAction="#switchToAddEventDetails" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
+               <JFXButton fx:id="btm_addEvent" layoutX="25.0" layoutY="48.0" onAction="#switchToAddEventDetails" prefHeight="51.0" prefWidth="230.0" styleClass="btm_addEvent" stylesheets="@../style.css" text="          Add Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="83.0" fitWidth="86.0" layoutX="37.0" layoutY="90.0" onMousePressed="#switchToAddEventDetails" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="83.0" fitWidth="86.0" layoutX="37.0" layoutY="32.0" onMousePressed="#switchToAddEventDetails" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="194.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="136.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="187.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="129.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="283.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="224.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_deleteEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="271.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="212.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/deleteEvent.png" />
                   </image>
@@ -52,14 +52,34 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="369.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="311.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_shiftEvent" stylesheets="@../style.css" text="            Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="44.0" layoutY="357.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="44.0" layoutY="299.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/shiftEvent.png" />
+                  </image>
+               </ImageView>
+               <JFXButton fx:id="btm_ViewWeek" layoutX="25.0" layoutY="397.0" onAction="#switchToViewWeek" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewWeek" stylesheets="@../style.css" text="             View Week" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="43.0" layoutY="388.0" onMousePressed="#switchToViewWeek" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_week.png" />
+                  </image>
+               </ImageView>
+               <JFXButton fx:id="btm_ViewMonth" layoutX="25.0" layoutY="485.0" onAction="#switchToViewMonth" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewMonth" stylesheets="@../style.css" text="              View Month" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="43.0" layoutY="476.0" onMousePressed="#switchToViewMonth" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_month.png" />
                   </image>
                </ImageView>
             </children>

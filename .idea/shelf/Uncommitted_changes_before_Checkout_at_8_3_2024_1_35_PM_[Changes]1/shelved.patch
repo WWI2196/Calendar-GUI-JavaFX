@@ -1,0 +1,17 @@
+Index: src/main/java/com/example/cld/DeleteEventController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport com.jfoenix.controls.JFXButton;\r\nimport javafx.event.Event;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class DeleteEventController {\r\n\r\n    private Stage stage;\r\n    private Scene scene;\r\n\r\n    @FXML\r\n    private JFXButton back_to_main_btm;\r\n\r\n    @FXML\r\n    private JFXButton btm_addEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_dayOff;\r\n\r\n    @FXML\r\n    private JFXButton btm_deleteEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_shiftEvent;\r\n\r\n    @FXML\r\n    private JFXButton confirm_btm_deleteEvent;\r\n\r\n    @FXML\r\n    private Pane date_picker;\r\n\r\n    @FXML\r\n    private JFXButton enter_button;\r\n\r\n    @FXML\r\n    private TextField enter_date_txt_field;\r\n\r\n    @FXML\r\n    private Label enter_day_name_label;\r\n\r\n    @FXML\r\n    private Label enter_day_number_label;\r\n\r\n    @FXML\r\n    private TextField enter_event_name_txt_field;\r\n\r\n    @FXML\r\n    private Pane enter_today_pane;\r\n\r\n    @FXML\r\n    private Label events_on_enter_day_label;\r\n\r\n    @FXML\r\n    private ImageView inner_pane_image1;\r\n\r\n    @FXML\r\n    private HBox root;\r\n\r\n    @FXML\r\n    private AnchorPane side_ankerpane;\r\n\r\n    @FXML\r\n    private Label today_day_name_label;\r\n\r\n    @FXML\r\n    private Label today_day_number_label;\r\n\r\n    @FXML\r\n    private Pane today_pane;\r\n\r\n    private MainController mainController = MainController.getInstance();\r\n\r\n    @FXML\r\n    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToMainMenu(event);\r\n    }\r\n    @FXML\r\n    public void switchToAddEventDetails(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToAddEventDetails(event);\r\n    }\r\n    @FXML\r\n    public void switchToSetDayOff(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToSetDayOff(event);\r\n    }\r\n    @FXML\r\n    public void switchToDeleteEvent(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToDeleteEvent(event);\r\n    }\r\n    @FXML\r\n    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToShiftEvent(event);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/DeleteEventController.java b/src/main/java/com/example/cld/DeleteEventController.java
+--- a/src/main/java/com/example/cld/DeleteEventController.java	
++++ b/src/main/java/com/example/cld/DeleteEventController.java	
+@@ -102,4 +102,4 @@
+         mainController.switchToShiftEvent(event);
+ 
+     }
+-}
++}
+\ No newline at end of file

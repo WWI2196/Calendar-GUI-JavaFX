@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.util.Objects;
@@ -25,10 +24,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         // Initialize the current date
-       currentDate = LocalDate.now();
-       dayOfMonth = currentDate.getDayOfMonth();
+        currentDate = LocalDate.now();
+        dayOfMonth = currentDate.getDayOfMonth();
 
-//        dayOfMonth = 31;
+//       dayOfMonth = 31;
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
         Scene scene = new Scene(root, 1221, 784);

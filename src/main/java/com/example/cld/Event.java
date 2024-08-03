@@ -9,7 +9,7 @@ public class Event {
     public Event(String title, Time startTime, Time endTime, String repeatType) {
 
         if (title == null || startTime == null || endTime == null || repeatType == null) {
-            throw new IllegalArgumentException("None of the arguments can be null");
+            throw new IllegalArgumentException("Fill all the details. Inputs can not be empty.");
         }
 
         this.title = title;

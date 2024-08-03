@@ -2,8 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -29,22 +29,22 @@
                      <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="289.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="270.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="282.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="261.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="372.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="339.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_deleteEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="360.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="326.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/deleteEvent.png" />
                   </image>
@@ -54,12 +54,12 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="463.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="409.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_shiftEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="451.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="398.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/shiftEvent.png" />
                   </image>
@@ -83,6 +83,26 @@
                      <Font name="Century Gothic Bold" size="21.0" />
                   </font>
                </Label>
+               <JFXButton fx:id="btm_view_week" layoutX="25.0" layoutY="477.0" onAction="#switchToViewWeek" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewWeek" stylesheets="@../style.css" text="            View Week" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="467.0" onMousePressed="#switchToViewWeek" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_week.png" />
+                  </image>
+               </ImageView>
+               <JFXButton fx:id="btm_view_month" layoutX="25.0" layoutY="547.0" onAction="#switchToViewMonth" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewMonth" stylesheets="@../style.css" text="             View Month" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="45.0" layoutY="538.0" onMousePressed="#switchToViewMonth" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_month.png" />
+                  </image>
+               </ImageView>
             </children>
          </AnchorPane>
       </children>
@@ -116,7 +136,10 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_on_enter_day_textArea" layoutX="66.0" layoutY="17.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../style_add_event.css" unFocusColor="#fffefe00" />
+               <JFXTextArea fx:id="events_on_enter_day_textArea" editable="false" layoutX="66.0" layoutY="17.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../style_add_event.css" unFocusColor="#fffefe00">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font></JFXTextArea>
             </children>
          </Pane>
          <Label alignment="CENTER" layoutX="199.0" layoutY="198.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
@@ -124,76 +147,77 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_add_event.css" text="Button">
-            <graphic>
-               <ImageView fx:id="inner_pane_image1" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../Icons/enter.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </JFXButton>
          <Label layoutX="42.0" layoutY="167.0" text="Enter Date To Check" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="348.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
+         <TextField fx:id="enter_date_txt_field" alignment="CENTER" layoutX="40.0" layoutY="210.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_add_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="404.0" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style.css">
+         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="404.0" onKeyTyped="#checkName" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <Label layoutX="40.0" layoutY="465.0" text="Start Time" textFill="#9a9a9a">
+         <Label layoutX="40.0" layoutY="474.0" text="Start Time" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <TextField fx:id="enter_start_time_txt_field" alignment="CENTER" layoutX="42.0" layoutY="495.0" prefHeight="40.0" prefWidth="118.0" promptText="HH : MM" stylesheets="@../style.css">
+         <TextField fx:id="enter_start_time_txt_field" alignment="CENTER" layoutX="42.0" layoutY="504.0" prefHeight="40.0" prefWidth="118.0" promptText="HH : MM" stylesheets="@../style.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <Label layoutX="229.0" layoutY="465.0" text="End Time" textFill="#9a9a9a">
+         <Label layoutX="229.0" layoutY="474.0" text="End Time" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <TextField fx:id="enter_end_time_txt_field" alignment="CENTER" layoutX="217.0" layoutY="495.0" prefHeight="40.0" prefWidth="118.0" promptText="HH : MM" stylesheets="@../style.css">
+         <TextField fx:id="enter_end_time_txt_field" alignment="CENTER" layoutX="217.0" layoutY="504.0" prefHeight="40.0" prefWidth="118.0" promptText="HH : MM" stylesheets="@../style.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <Label layoutX="40.0" layoutY="556.0" text="Event Repeat Type" textFill="#9a9a9a">
+         <Label layoutX="40.0" layoutY="575.0" text="Event Repeat Type" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <CheckBox fx:id="daily_check_box" layoutX="182.0" layoutY="590.0" mnemonicParsing="false" stylesheets="@../style.css" text="Daily" textFill="#9a9a9a">
-            <font>
-               <Font name="Century Gothic Bold" size="17.0" />
-            </font>
-         </CheckBox>
-         <CheckBox fx:id="weekly_check_box" layoutX="295.0" layoutY="590.0" mnemonicParsing="false" text="Weekly" textFill="#9a9a9a">
-            <font>
-               <Font name="Century Gothic Bold" size="17.0" />
-            </font>
-         </CheckBox>
-         <CheckBox fx:id="one_time_check_box" layoutX="44.0" layoutY="591.0" mnemonicParsing="false" stylesheets="@../style.css" text="One Time" textFill="#9a9a9a">
-            <font>
-               <Font name="Century Gothic Bold" size="17.0" />
-            </font>
-         </CheckBox>
          <JFXButton fx:id="back_to_main_btm" layoutX="597.0" layoutY="658.0" onAction="#switchToMainMenu" prefHeight="58.0" prefWidth="100.0" stylesheets="@../style_add_event.css" text="Back" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="16.0" />
             </font>
          </JFXButton>
+         <RadioButton fx:id="one_time_radio_btn" alignment="CENTER_LEFT" layoutX="45.0" layoutY="613.0" mnemonicParsing="false" stylesheets="@../style_add_event.css" text="One Time" textFill="#9a9a9a">
+            <font>
+               <Font name="Century Gothic Bold" size="17.0" />
+            </font>
+         </RadioButton>
+         <RadioButton fx:id="daily_radio_btn" alignment="CENTER_LEFT" layoutX="180.0" layoutY="613.0" mnemonicParsing="false" stylesheets="@../style_add_event.css" text="Daily" textFill="#9a9a9a">
+            <font>
+               <Font name="Century Gothic Bold" size="17.0" />
+            </font>
+         </RadioButton>
+         <RadioButton fx:id="weekly_radio_btn" alignment="CENTER_LEFT" layoutX="276.0" layoutY="613.0" mnemonicParsing="false" stylesheets="@../style_add_event.css" text="Weekly" textFill="#9a9a9a">
+            <font>
+               <Font name="Century Gothic Bold" size="17.0" />
+            </font>
+         </RadioButton>
+         <Label fx:id="Error_date" layoutX="49.0" layoutY="243.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="error_name_label" layoutX="46.0" layoutY="444.0" prefHeight="25.0" prefWidth="516.0" textFill="#ff3a3a" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
       </children>
    </Pane>
 </HBox>

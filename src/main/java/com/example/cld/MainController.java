@@ -1,5 +1,9 @@
 package com.example.cld;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Window;
+import javafx.scene.control.Alert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
@@ -10,10 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 
@@ -28,9 +28,6 @@ public class MainController {
 
     private Stage stage;
     private Scene scene;
-
-     @FXML
-    private JFXButton btm_addEvent;
 
     @FXML
     private JFXButton btm_date1;
@@ -129,16 +126,16 @@ public class MainController {
     private JFXButton btm_dayOff;
 
     @FXML
-    private JFXButton btm_deleteEvent;
+    private Label events_on_day_name_label;
 
     @FXML
-    private JFXButton btm_shiftEvent;
+    private Label events_on_day_number_label;
 
     @FXML
     private Label events_on_label;
 
     @FXML
-     private JFXTextArea events_on_selected_day_textArea;
+    private JFXTextArea events_on_selected_day_textArea;
 
     @FXML
     private JFXTextArea events_on_today_textArea;
@@ -147,13 +144,7 @@ public class MainController {
     private Label today_pane_day_name_label;
 
     @FXML
-    private Label events_on_day_number_label;
-
-    @FXML
     private Label today_pane_day_number_label;
-
-    @FXML
-    private Label events_on_day_name_label;
 
     public static Scheduler scheduler;
     private static MainController instance;
@@ -167,12 +158,12 @@ public class MainController {
         today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
         today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
 
-        events_on_day_number_label.setText(String.valueOf((dayOfMonth+1)>31? 31:dayOfMonth+1));
-        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth+1));
+        events_on_day_number_label.setText(String.valueOf((dayOfMonth + 1) > 31 ? 31 : dayOfMonth + 1));
+        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth + 1));
 
         events_on_today_textArea.setText(scheduler.displayEvents(dayOfMonth));
-        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth+1)>31? 31:dayOfMonth+1));
-        events_on_label.setText((dayOfMonth+1)>31? "Events On": "Tomorrow");
+        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth + 1) > 31 ? 31 : dayOfMonth + 1));
+        events_on_label.setText((dayOfMonth + 1) > 31 ? "Events On" : "Tomorrow");
 
         setupDateButtonActions();
 
@@ -193,12 +184,12 @@ public class MainController {
         return instance;
     }
 
-     @FXML
+    @FXML
     public void switchToAddEventDetails(Event event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/AddEvent.fxml")));
 
         EventAction(event, root);
-     }
+    }
 
     public void switchToSetDayOff(Event event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
@@ -218,6 +209,18 @@ public class MainController {
         EventAction(event, root);
     }
 
+    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewWeek.fxml")));
+
+        EventAction(event, root);
+    }
+
+    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewMonth.fxml")));
+
+        EventAction(event, root);
+    }
+
     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
 
@@ -233,11 +236,12 @@ public class MainController {
 
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 
     @FXML
-   private void handleDateButtonPressed(ActionEvent event) {
+    private void handleDateButtonPressed(ActionEvent event) {
         JFXButton button = (JFXButton) event.getSource();
         int selectedDate = Integer.parseInt(button.getText());
 
@@ -270,6 +274,38 @@ public class MainController {
         }
     }
 
+     public static class AlertHelper {
+         public static void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message, String alertImagePath, String windowIconPath) {
+             Alert alert = new Alert(alertType);
+             alert.setTitle(title);
+             alert.setHeaderText(header);
+             alert.setContentText(message);
+             alert.initOwner(owner);
 
+                 // Set a custom image for the alert
+             if (alertImagePath != null && !alertImagePath.isEmpty()) {
+                 Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
+                 ImageView imageView = new ImageView(customImage);
+                 imageView.setFitWidth(40); // Set desired width
+                 imageView.setFitHeight(40); // Set desired height
+                 alert.setGraphic(imageView);
+             }
+
+             // Set a custom icon for the application window
+             if (windowIconPath != null && !windowIconPath.isEmpty()) {
+                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                 Image windowIcon = new Image(AlertHelper.class.getResourceAsStream(windowIconPath));
+                 stage.getIcons().clear(); // Clear existing icons
+                 stage.getIcons().add(windowIcon);
+             }
+
+             alert.showAndWait();
+         }
+     }
+
+
+    public Scheduler getScheduler() {
+        return scheduler;
+    }
 
 }

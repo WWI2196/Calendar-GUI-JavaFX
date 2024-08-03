@@ -1,10 +1,9 @@
 package com.example.cld;
 
 import java.io.*;
-import java.util.Scanner;
 
 class Scheduler {
-    private final Day[] days;
+    final Day[] days;
     private final int currentDay;
 
     public Scheduler(int currentDay) {
@@ -14,7 +13,7 @@ class Scheduler {
         try {
             loadEventsFromTxt();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            throw new IllegalArgumentException("Error: " + e.getMessage());
         }
     }
 
@@ -27,7 +26,7 @@ class Scheduler {
     }
 
     private void saveEventsToTxt() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/EventFile.txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/resources/com/example/cld/TextFiles/EventFile.txt"))) {
             for (int i = 0; i < 31; ++i) {
                 writer.print(days[i].formatDayDataToString());
             }
@@ -37,7 +36,7 @@ class Scheduler {
     }
 
     private void loadEventsFromTxt() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/EventFile.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/cld/TextFiles/EventFile.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.isEmpty()) continue;
@@ -56,14 +55,8 @@ class Scheduler {
             }
 
             if (days[date - 1].isDayOff()) {
-                Scanner scanner = new Scanner(System.in);
-                System.out.print("The selected day is marked as a day off. Do you want to proceed? (yes/no): ");
-                String confirmation = scanner.nextLine();
-
-                if (!confirmation.equalsIgnoreCase("yes")) {
-                    return;
-                }
                 days[date - 1].setDayOff(false);
+                throw new IllegalArgumentException("The selected day is marked as a day off");
             }
 
             Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
@@ -82,7 +75,7 @@ class Scheduler {
 
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error scheduling event");
+            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");
         }
     }
 
@@ -133,14 +126,49 @@ class Scheduler {
         }
     }
 
+    public void removeDayOff(int date) {
+        try {
+            if (date < currentDay || date > 31) {
+                throw new IllegalArgumentException("Invalid date");
+            }
+
+            days[date - 1].setDayOff(false);
+            saveEventsToTxt();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Error removing day off");
+        }
+    }
+
     public String displayEvents(int date) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
         }
-        return days[date - 1].toString();
+        if( !days[date - 1].toString().isEmpty()) {
+            return days[date - 1].toString();
+        }else{
+            return "No events";
+        }
     }
 
-    public void viewWeekSchedule(int startDay) {
+    public int countWeekEvents(int startDay){
+        if (startDay < 1 || startDay > 31) {
+            throw new IllegalArgumentException("Invalid start day");
+        }
+
+        int startIndex = ((startDay - 1) / 7) * 7;
+        int endIndex = Math.min(startIndex + 7, 31);
+        int totalEvents = 0;
+
+        for (int i = startIndex; i < endIndex; ++i) {
+            if (!days[i].toString().isEmpty()) {
+                totalEvents+= days[i].getEventCount();
+            }
+        }
+
+        return totalEvents;
+    }
+
+    public String viewWeekSchedule(int startDay) {
         if (startDay < 1 || startDay > 31) {
             throw new IllegalArgumentException("Invalid start day");
         }
@@ -151,9 +179,12 @@ class Scheduler {
         for (int i = startIndex; i < endIndex; ++i) {
             String output = days[i].toString();
             if (!output.isEmpty()) {
-                System.out.println(output);
+                return output;
+            }else{
+                return "No events";
             }
         }
+        return null;
     }
 
     public void displayAllEvents() {
@@ -184,5 +215,25 @@ class Scheduler {
         }
         return false;
     }
-}
 
+    public void checkEventNameExists(int date, String title) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        Day day = days[date - 1];
+        for (Event event : day.getEvents()) {
+            if (event.getTitle().toUpperCase().equals(title)) {
+                throw new IllegalArgumentException("Event name already exists");
+            }
+        }
+    }
+
+    public void checkDayOff(int date) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        if (days[date - 1].isDayOff()) {
+            throw new IllegalArgumentException("The selected day is marked as a day off");
+        }
+    }
+}

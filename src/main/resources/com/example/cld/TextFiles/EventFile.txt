@@ -8,7 +8,6 @@
 4|Meeting AMP EX|17:10|17:50|weekly
 4|Meeting AMP CM|18:00|18:30|none
 5|Meeting KIKU EX|16:30|17:00|daily
-6|off|
 7|off|
 8|Meeting KIKU EX|16:30|17:00|daily
 9|Meeting AMP|09:30|12:45|weekly

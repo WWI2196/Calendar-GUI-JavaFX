@@ -78,18 +78,24 @@ class Scheduler {
             throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");
         }
     }
-    
-    public void deleteEvent(int date, String title, boolean deleteRepeats) {
+
+    public void deleteEvent(int date, String title, boolean deleteRepeats, String type) {
         try {
             if (date < currentDay || date > 31) {
                 throw new IllegalArgumentException("Invalid date");
             }
 
-            if (deleteRepeats) {
+            else if (deleteRepeats && type == "daily") {
                 for (int i = date - 1; i < 31; ++i) {
                     days[i].deleteEvent(title);
                 }
-            } else {
+            }
+            else if (deleteRepeats && type == "weekly") {
+                for (int i = date - 1; i < 31; i += 7) {
+                    days[i].deleteEvent(title);
+                }
+            }
+            else {
                 days[date - 1].deleteEvent(title);
             }
 
@@ -170,17 +176,20 @@ class Scheduler {
         System.out.println("Total number of events: " + count);
     }
 
-    public boolean isEventRepeating(int date, String title) {
+    public String isEventRepeating(int date, String title) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
         }
         Day day = days[date - 1];
         for (Event event : day.getEvents()) {
-            if (event.getTitle().equals(title) && !event.getRepeatType().equals("none")) {
-                return true;
+            if (event.getTitle().equals(title) && !event.getRepeatType().equals("daily")) {
+                return "daily";
+            }
+            else if (event.getTitle().equals(title) && !event.getRepeatType().equals("weekly")) {
+                return "weekly";
             }
         }
-        return false;
+        return "none";
     }
 
     public void checkEventNameExists(int date, String title) {

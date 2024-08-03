@@ -146,6 +146,7 @@ public class DeleteEventController {
             try {
                 int dayToDelete = Integer.parseInt(enter_date_txt_field.getText());
                 boolean  repeatItemDelete = false;
+                String type = "none";
 
                 String title = enter_event_name_txt_field.getText();
 
@@ -156,7 +157,7 @@ public class DeleteEventController {
                 }
 
 
-                if (mainController.getScheduler().isEventRepeating(dayToDelete, title)) {
+                if ("weekly" == mainController.getScheduler().isEventRepeating(dayToDelete, title) || "daily" == mainController.getScheduler().isEventRepeating(dayToDelete, title) ) {
                     Window owner = confirm_btm_deleteEvent.getScene().getWindow();
 
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -187,7 +188,6 @@ public class DeleteEventController {
 
                 }
 
-
                 if (enter_event_name_txt_field.getText().isEmpty()) {
                     throw new IllegalArgumentException("Enter a name for the event.");
                 }
@@ -202,8 +202,13 @@ public class DeleteEventController {
 
                 //com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
 
-
-                mainController.getScheduler().deleteEvent(dayToDelete, title, repeatItemDelete);
+                if ("weekly".equals(mainController.getScheduler().isEventRepeating(dayToDelete, title))){
+                    type = "weekly";
+                }
+                else if("daily".equals(mainController.getScheduler().isEventRepeating(dayToDelete, title))){
+                    type = "daily";
+                }
+                mainController.getScheduler().deleteEvent(dayToDelete, title, repeatItemDelete, type);
 
                 successPopup();
                 clearInputFields();

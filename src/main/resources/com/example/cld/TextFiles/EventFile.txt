@@ -10,10 +10,6 @@
 5|Meeting KIKU EX|16:30|17:00|daily
 7|off|
 8|Meeting KIKU EX|16:30|17:00|daily
-5|off|
-6|Meeting KIKU EX|16:30|17:00|daily
-7|Meeting KIKU EX|16:30|17:00|daily
-8|off|
 9|Meeting AMP|09:30|12:45|weekly
 9|Meeting KIKU EX|16:30|17:00|daily
 10|Meeting KIKU EX|16:30|17:00|daily

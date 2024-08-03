@@ -149,7 +149,11 @@
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="358.0" startX="-229.0" />
+
          <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="208.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../Styles/style_day_off.css">
+
+         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_day_off.css">
+
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
@@ -165,6 +169,9 @@
             </font>
          </Label>
          <Label fx:id="Error_date" layoutX="44.0" layoutY="255.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
+
+         <Label fx:id="Error_date" layoutX="53.0" layoutY="240.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
+
             <font>
                <Font name="Century Gothic Bold" size="14.0" />
             </font>

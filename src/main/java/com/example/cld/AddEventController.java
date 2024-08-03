@@ -129,23 +129,6 @@ public class AddEventController {
         Error_date.setVisible(false);
     }
 
-    private com.example.cld.Event getEvent(String title) {
-        Time startTime = new Time();
-        Time endTime = new Time();
-        startTime.fromString(enter_start_time_txt_field.getText());
-        endTime.fromString(enter_end_time_txt_field.getText());
-
-        String repeatType = "none";
-        if (daily_radio_btn.isSelected()) {
-            repeatType = "daily";
-        } else if (weekly_radio_btn.isSelected()) {
-            repeatType = "weekly";
-        }
-
-        com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
-        return event;
-    }
-
     private void showPopup(String message) {
         Window owner = confirm_btm_addEvent.getScene().getWindow();
         // Create the alert
@@ -245,7 +228,6 @@ public class AddEventController {
             if (enter_date_txt_field.getText().isEmpty()) {
                 throw new IllegalArgumentException("Enter a date to schedule the event.");
             }
-
             int dayToSchedule = Integer.parseInt(enter_date_txt_field.getText());
             // Validate the entered date
             if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
@@ -311,13 +293,26 @@ public class AddEventController {
             enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
             events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
 
-            com.example.cld.Event event = getEvent(title);
+             Time startTime = new Time();
+             Time endTime = new Time();
+             startTime.fromString(enter_start_time_txt_field.getText());
+             endTime.fromString(enter_end_time_txt_field.getText());
 
-            mainController.getScheduler().scheduleEvent(dayToSchedule, event);
-            successPopup();
-            clearInputFields();
-            resetCheckBoxesAndRadioButtons();
-            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+             String repeatType = "none";
+             if (daily_radio_btn.isSelected()) {
+                repeatType = "daily";
+
+             } else if (weekly_radio_btn.isSelected()) {
+                repeatType = "weekly";
+             }
+
+             com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
+
+             mainController.getScheduler().scheduleEvent(dayToSchedule, event);
+             successPopup();
+             clearInputFields();
+             resetCheckBoxesAndRadioButtons();
+             events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
 
         } catch (NumberFormatException e) {
             showPopup("Enter a valid number.");

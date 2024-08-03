@@ -62,17 +62,26 @@ class Scheduler {
             Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
 
             if (event.repeatType.equals("daily")) {
+                for (int i = date - 1; i < 31; ++i) {
+                    if(days[i].eventsOverlap(newEvent)==true){
+                        throw new IllegalArgumentException("Event overlaps detected. Cannot schedule.");
+                    }
+                }
                 for (int i = date - 1; i < 31; i++) {
                     days[i].addEvent(newEvent);
                 }
             } else if (event.repeatType.equals("weekly")) {
+                for (int i = date - 1; i < 31; i+=7) {
+                    if(days[i].eventsOverlap(newEvent)==true){
+                        throw new IllegalArgumentException("Event overlaps detected. Cannot schedule.");
+                    }
+                }
                 for (int i = date - 1; i < 31; i += 7) {
                     days[i].addEvent(newEvent);
                 }
             } else {
                 days[date - 1].addEvent(newEvent);
             }
-
             saveEventsToTxt();
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");

@@ -55,6 +55,15 @@ class Day {
         }
     }
 
+    public boolean eventsOverlap(Event event) {
+        for (Event e : events) {
+            if (event.overlaps(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void shiftEvent(String title, int newDate, Day[] days) {
         Event eventToShift = null;
         for (Event event : events) {

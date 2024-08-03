@@ -143,6 +143,7 @@ public class SetDayOffController {
         confirm_btm_DeleteEvent.setOnAction(event_ -> {
             try {
                 int dayToSetDayoff = Integer.parseInt(enter_date_txt_field.getText());
+                Boolean hadAdayoff = false;
 
                 // Validate the entered date
                 if (dayToSetDayoff < dayOfMonth || dayToSetDayoff> 31) {
@@ -177,7 +178,8 @@ public class SetDayOffController {
                         //events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSchedule));
                     } else {
                         mainController.getScheduler().days[dayToSetDayoff - 1].setDayOff(false);
-                        //events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
+                        events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
+                        hadAdayoff = true;
                         //throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
                     }
                 }
@@ -189,7 +191,10 @@ public class SetDayOffController {
                 enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSetDayoff));
                 events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
 
-                mainController.getScheduler().markDayOff(dayToSetDayoff);
+                if (!hadAdayoff){
+                    mainController.getScheduler().markDayOff(dayToSetDayoff);
+                }
+
 
                 successPopup();
                 clearInputFields();

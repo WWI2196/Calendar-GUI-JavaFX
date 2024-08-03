@@ -190,6 +190,18 @@ class Scheduler {
         }
     }
 
+    public void validEventCapture(int date, String title) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        Day day = days[date - 1];
+        for (Event event : day.getEvents()) {
+            if (event.getTitle().toUpperCase().equals(title)) {
+                throw new IllegalArgumentException("Event Captured");
+            }
+        }
+    }
+
     public void checkDayOff(int date) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");

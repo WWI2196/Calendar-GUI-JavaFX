@@ -122,27 +122,18 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_delete_event.css" text="Button">
-            <graphic>
-               <ImageView fx:id="inner_pane_image1" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../Icons/enter.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </JFXButton>
          <Label layoutX="42.0" layoutY="167.0" text="Enter Date To Check" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="348.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_delete_event.css">
+         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_delete_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="404.0" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style_delete_event.css">
+         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="404.0" onKeyTyped="#checkName" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style_delete_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
@@ -155,6 +146,16 @@
          <Label layoutX="193.0" layoutY="490.0" text="Confirm to Proceed with Deleting the Event." textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
+            </font>
+         </Label>
+         <Label fx:id="Error_date" layoutX="53.0" layoutY="240.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="error_name_label" layoutX="53.0" layoutY="444.0" prefHeight="25.0" prefWidth="516.0" textFill="#00ff0c" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
             </font>
          </Label>
       </children>

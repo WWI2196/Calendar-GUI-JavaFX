@@ -57,20 +57,30 @@ class Day {
 
     public void shiftEvent(String title, int newDate, Day[] days) {
         Event eventToShift = null;
+
+        // Find the event to shift
         for (Event event : events) {
             if (event.title.equals(title)) {
                 eventToShift = event;
                 break;
             }
         }
-
+        // If the event is found, check for overlapping events and shift it
         if (eventToShift != null) {
+            // Check for overlapping events on the new date
+            for (Event newDateEvent : days[newDate - 1].getEvents()) {
+                if (eventToShift.overlaps(newDateEvent)) {
+                    throw new IllegalArgumentException("Event overlap detected");
+                }
+            }
+            // If no overlap, delete the event from the current day and add it to the new date
             deleteEvent(title);
             days[newDate - 1].addEvent(eventToShift);
         } else {
             throw new IllegalArgumentException("Event not found");
         }
     }
+
 
     public void clearEvents() {
         events.clear();

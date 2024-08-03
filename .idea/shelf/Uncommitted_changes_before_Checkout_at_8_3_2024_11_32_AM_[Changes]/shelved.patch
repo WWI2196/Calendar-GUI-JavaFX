@@ -1,0 +1,112 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"985c43fc-cde2-476a-8d56-2b5d31bd5b3a\" name=\"Changes\" comment=\"Created the fxml file for AddEvent.fxml and the controller for it\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"CSS File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Branch_2\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;CheDil&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/WWI2196/Calendar-GUI-JavaFX.git&quot;,\r\n    &quot;accountId&quot;: &quot;c11f8c20-0a4b-4faa-8df9-a6771b5c4b15&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2jQZRVsd1n6IU0RNefafTEUK4tT\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Application.Application.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,\r\n    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;Branch3&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;E:/CalanderProject&quot;,\r\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Wansajee\\Documents\\CLD\\src\\main\\resources\\com\\example\\cld\\FXML\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Wansajee\\Documents\\CLD\\src\\main\\resources\\com\\example\\cld\" />\r\n      <recent name=\"C:\\Users\\Wansajee\\Documents\\CLD\\src\\main\\resources\\com\\example\\cld\\TextFiles\\Styles\" />\r\n      <recent name=\"C:\\Users\\Wansajee\\Documents\\CLD\\src\\main\\resources\\com\\example\\cld\\TextFiles\" />\r\n      <recent name=\"C:\\Users\\Wansajee\\Documents\\CLD\\src\\main\" />\r\n      <recent name=\"C:\\Users\\Wansajee\\Documents\\CLD\\src\\main\\resources\\com\\example\\cld\\FXML\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Application\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.cld.Main\" />\r\n      <module name=\"CLD\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"985c43fc-cde2-476a-8d56-2b5d31bd5b3a\" name=\"Changes\" comment=\"\" />\r\n      <created>1721321253961</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1721321253961</updated>\r\n      <workItem from=\"1721321255070\" duration=\"1870000\" />\r\n      <workItem from=\"1721323274033\" duration=\"24292000\" />\r\n      <workItem from=\"1721412859584\" duration=\"5693000\" />\r\n      <workItem from=\"1721458051805\" duration=\"1429000\" />\r\n      <workItem from=\"1721459530929\" duration=\"2123000\" />\r\n      <workItem from=\"1721891143086\" duration=\"25006000\" />\r\n      <workItem from=\"1721919405125\" duration=\"775000\" />\r\n      <workItem from=\"1721920325419\" duration=\"1245000\" />\r\n      <workItem from=\"1721921585846\" duration=\"1872000\" />\r\n      <workItem from=\"1721923501593\" duration=\"3236000\" />\r\n      <workItem from=\"1721958692192\" duration=\"3637000\" />\r\n      <workItem from=\"1722054039855\" duration=\"2873000\" />\r\n      <workItem from=\"1722176272836\" duration=\"21815000\" />\r\n      <workItem from=\"1722231474128\" duration=\"470000\" />\r\n      <workItem from=\"1722235799687\" duration=\"299000\" />\r\n      <workItem from=\"1722241130750\" duration=\"6922000\" />\r\n      <workItem from=\"1722250444726\" duration=\"376000\" />\r\n      <workItem from=\"1722250833550\" duration=\"1450000\" />\r\n      <workItem from=\"1722253639285\" duration=\"1000\" />\r\n      <workItem from=\"1722273793643\" duration=\"825000\" />\r\n      <workItem from=\"1722321620578\" duration=\"168000\" />\r\n      <workItem from=\"1722325168848\" duration=\"831000\" />\r\n      <workItem from=\"1722395597786\" duration=\"25000\" />\r\n      <workItem from=\"1722409599863\" duration=\"152000\" />\r\n      <workItem from=\"1722409794912\" duration=\"1000\" />\r\n      <workItem from=\"1722410695668\" duration=\"376000\" />\r\n      <workItem from=\"1722441075780\" duration=\"2448000\" />\r\n      <workItem from=\"1722443725942\" duration=\"2978000\" />\r\n      <workItem from=\"1722485125449\" duration=\"5358000\" />\r\n      <workItem from=\"1722545766186\" duration=\"10825000\" />\r\n      <workItem from=\"1722652976387\" duration=\"9707000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Created the basic structure\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721326375071</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721326375071</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Created the fxml file for AddEvent.fxml and the controller for it\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721382935529</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721382935529</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Created the basic structure\" />\r\n    <MESSAGE value=\"Created the fxml file for AddEvent.fxml and the controller for it\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Created the fxml file for AddEvent.fxml and the controller for it\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,16 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="985c43fc-cde2-476a-8d56-2b5d31bd5b3a" name="Changes" comment="Created the fxml file for AddEvent.fxml and the controller for it">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
+-    </list>
++    <list default="true" id="985c43fc-cde2-476a-8d56-2b5d31bd5b3a" name="Changes" comment="Created the fxml file for AddEvent.fxml and the controller for it" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -66,32 +57,32 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;Branch3&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;E:/CalanderProject&quot;,
+-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "Application.Application.executor": "Run",
++    "Application.HelloApplication.executor": "Run",
++    "Application.Main.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "extract.method.default.visibility": "private",
++    "full.screen.before.presentation.mode": "false",
++    "git-widget-placeholder": "Branch6",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "E:/CalanderProject",
++    "list.type.of.created.stylesheet": "CSS",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "settings.editor.selected.configurable": "preferences.lookFeel",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Wansajee\Documents\CLD\src\main\resources\com\example\cld\FXML" />
+@@ -159,7 +150,7 @@
+       <workItem from="1722443725942" duration="2978000" />
+       <workItem from="1722485125449" duration="5358000" />
+       <workItem from="1722545766186" duration="10825000" />
+-      <workItem from="1722652976387" duration="9707000" />
++      <workItem from="1722652976387" duration="10297000" />
+     </task>
+     <task id="LOCAL-00001" summary="Created the basic structure">
+       <option name="closed" value="true" />
+Index: src/main/resources/com/example/cld/TextFiles/EventFile.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2|Meeting AMP|09:30|12:45|weekly\r\n4|Meeting KIKU EX|16:30|17:00|daily\r\n6|Meeting KIKU EX|16:30|17:00|daily\r\n9|Meeting NINO|08:30|09:00|none\r\n10|KIKU |01:00|02:00|none\r\n10|Meeting KIKU EX|16:30|17:00|daily\r\n11|Meeting A|10:50|11:45|weekly\r\n11|Meeting IBM|12:50|15:45|weekly\r\n11|Meeting KIKU EX|16:30|17:00|daily\r\n11|Meeting AMP EX|17:10|17:50|weekly\r\n12|Meeting C|08:45|09:50|none\r\n12|Meeting KIKU EX|16:30|17:00|daily\r\n13|Meeting KIKU EX|16:30|17:00|daily\r\n14|Meeting KIKU EX|16:30|17:00|daily\r\n15|Meeting KIKU EX|16:30|17:00|daily\r\n16|Meeting AMP|09:30|12:45|weekly\r\n16|Meeting KIKU EX|16:30|17:00|daily\r\n17|Meeting KIKU EX|16:30|17:00|daily\r\n18|Meeting A|10:50|11:45|weekly\r\n18|Meeting IBM|12:50|15:45|weekly\r\n18|Meeting KIKU EX|16:30|17:00|daily\r\n18|Meeting AMP EX|17:10|17:50|weekly\r\n19|Meeting KIKU EX|16:30|17:00|daily\r\n20|Meeting KIKU EX|16:30|17:00|daily\r\n22|Meeting KIKU EX|16:30|17:00|daily\r\n23|Meeting KIKU EX|16:30|17:00|daily\r\n24|Meeting KIKU EX|16:30|17:00|daily\r\n25|Meeting A|10:50|11:45|weekly\r\n25|Meeting IBM|12:50|15:45|weekly\r\n25|Meeting KIKU EX|16:30|17:00|daily\r\n25|Meeting AMP EX|17:10|17:50|weekly\r\n26|Meeting KIKU EX|16:30|17:00|daily\r\n27|Meeting KIKU EX|16:30|17:00|daily\r\n28|Meeting KIKU EX|16:30|17:00|daily\r\n29|Meeting A|04:00|06:00|none\r\n29|Meeting AXIO|08:30|09:00|none\r\n29|Meeting NEOI|09:30|12:30|none\r\n29|Meeting KIKU EX|16:30|17:00|daily\r\n29|Meeting SMSG|17:30|18:00|none\r\n30|Meeting AMP|09:30|12:45|weekly\r\n31|off|\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/cld/TextFiles/EventFile.txt b/src/main/resources/com/example/cld/TextFiles/EventFile.txt
+--- a/src/main/resources/com/example/cld/TextFiles/EventFile.txt	
++++ b/src/main/resources/com/example/cld/TextFiles/EventFile.txt	
+@@ -1,5 +1,6 @@
+ 2|Meeting AMP|09:30|12:45|weekly
+ 4|Meeting KIKU EX|16:30|17:00|daily
++5|new even 1|02:00|02:10|none
+ 6|Meeting KIKU EX|16:30|17:00|daily
+ 9|Meeting NINO|08:30|09:00|none
+ 10|KIKU |01:00|02:00|none

@@ -107,10 +107,15 @@ class Scheduler {
 
             days[date - 1].shiftEvent(title, newDate, days);
             saveEventsToTxt();
+        } catch (IllegalArgumentException e) {
+            //Re-throw the IllegalArgumentException with its original message
+            throw e;
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error shifting event");
+            //Catch any other exceptions and throw a new IllegalArgumentException
+            throw new IllegalArgumentException("Error shifting event", e);
         }
     }
+
 
     public void markDayOff(int date) {
         try {

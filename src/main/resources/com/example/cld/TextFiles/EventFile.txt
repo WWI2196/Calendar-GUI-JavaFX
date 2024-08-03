@@ -1,6 +1,8 @@
 2|Meeting AMP|09:30|12:45|weekly
 4|Meeting KIKU EX|16:30|17:00|daily
 6|Meeting KIKU EX|16:30|17:00|daily
+8|event2|01:30|02:30|none
+8|event1|02:30|03:30|none
 9|Meeting NINO|08:30|09:00|none
 10|KIKU |01:00|02:00|none
 10|Meeting KIKU EX|16:30|17:00|daily

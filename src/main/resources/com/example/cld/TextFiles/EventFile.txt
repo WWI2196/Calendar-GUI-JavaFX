@@ -1,5 +1,5 @@
 5|event1|02:00|02:10|daily
-6|eventweekly|04:00|04:20|weekly
+7|eventweekly|04:00|04:20|none
 13|eventweekly|04:00|04:20|weekly
 20|eventweekly|04:00|04:20|weekly
 27|eventweekly|04:00|04:20|weekly

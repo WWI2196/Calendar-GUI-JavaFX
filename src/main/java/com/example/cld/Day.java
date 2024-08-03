@@ -75,6 +75,7 @@ class Day {
             }
             // If no overlap, delete the event from the current day and add it to the new date
             deleteEvent(title);
+            eventToShift.repeatType = "none";
             days[newDate - 1].addEvent(eventToShift);
         } else {
             throw new IllegalArgumentException("Event not found");

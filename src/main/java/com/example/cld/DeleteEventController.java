@@ -145,6 +145,9 @@ public class DeleteEventController {
         confirm_btm_deleteEvent.setOnAction(event_ -> {
             try {
                 int dayToDelete = Integer.parseInt(enter_date_txt_field.getText());
+                boolean  repeatItemDelete = false;
+
+                String title = enter_event_name_txt_field.getText();
 
                 // Validate the entered date
                 if (dayToDelete < dayOfMonth || dayToDelete > 31) {
@@ -152,14 +155,14 @@ public class DeleteEventController {
                     throw new IllegalArgumentException(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
                 }
 
-                /*
-                if (mainController.getScheduler().days[dayToDelete - 1].isDayOff()) {
+
+                if (mainController.getScheduler().isEventRepeating(dayToDelete, title)) {
                     Window owner = confirm_btm_deleteEvent.getScene().getWindow();
 
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Schedule Event");
+                    alert.setTitle("Delete Event");
                     alert.setHeaderText("Confirmation");
-                    alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
+                    alert.setContentText("The selected event is a repeating event, Do you want to delete all occurrence");
                     alert.initOwner(owner);
 
                     // Load and set the alert's display icon
@@ -176,13 +179,13 @@ public class DeleteEventController {
                     Optional<ButtonType> result = alert.showAndWait();
 
                     if (result.isPresent() && result.get() == yesButton) {
-                        mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
-                        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+                        repeatItemDelete = true;
+                        //events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToDelete));
                     } else {
-                        throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
+                        throw new IllegalArgumentException("Event in the selected date is deleted");
                     }
 
-                */
+                }
 
 
                 if (enter_event_name_txt_field.getText().isEmpty()) {
@@ -191,21 +194,14 @@ public class DeleteEventController {
 
                 Error_date.setVisible(false); // Hide the error label if the date is valid
 
-                String title = enter_event_name_txt_field.getText(); // done
+
 
                 enter_day_number_label.setText(String.valueOf(dayToDelete));
                 enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToDelete));
                 events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToDelete));
 
-                /*
-                Time startTime = new Time();
-                Time endTime = new Time();
-                startTime.fromString(enter_start_time_txt_field.getText());
-                endTime.fromString(enter_end_time_txt_field.getText());
-                */
-
                 //com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
-                boolean repeatItemDelete = false;
+
 
                 mainController.getScheduler().deleteEvent(dayToDelete, title, repeatItemDelete);
 
@@ -305,7 +301,4 @@ public class DeleteEventController {
             error_name_label.setText(e.getMessage());
         }
     }
-
-
-
 }

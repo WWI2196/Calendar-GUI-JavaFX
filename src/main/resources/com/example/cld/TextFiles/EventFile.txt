@@ -25,7 +25,6 @@
 19|Meeting KIKU EX|16:30|17:00|daily
 20|Meeting KIKU EX|16:30|17:00|daily
 22|Meeting KIKU EX|16:30|17:00|daily
-23|Meeting KIKU EX|16:30|17:00|daily
 24|Meeting KIKU EX|16:30|17:00|daily
 25|Meeting A|10:50|11:45|weekly
 25|Meeting IBM|12:50|15:45|weekly

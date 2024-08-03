@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="985c43fc-cde2-476a-8d56-2b5d31bd5b3a" name="Changes" comment="Created the fxml file for AddEvent.fxml and the controller for it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +155,7 @@
       <workItem from="1722485125449" duration="5358000" />
       <workItem from="1722545766186" duration="10825000" />
       <workItem from="1722652976387" duration="9707000" />
-      <workItem from="1722676025253" duration="1389000" />
+      <workItem from="1722676025253" duration="5604000" />
     </task>
     <task id="LOCAL-00001" summary="Created the basic structure">
       <option name="closed" value="true" />

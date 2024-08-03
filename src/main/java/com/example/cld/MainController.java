@@ -13,15 +13,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Window;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -34,9 +28,6 @@ public class MainController {
 
     private Stage stage;
     private Scene scene;
-
-    @FXML
-    private JFXButton btm_addEvent;
 
     @FXML
     private JFXButton btm_date1;
@@ -135,10 +126,10 @@ public class MainController {
     private JFXButton btm_dayOff;
 
     @FXML
-    private JFXButton btm_deleteEvent;
+    private Label events_on_day_name_label;
 
     @FXML
-    private JFXButton btm_shiftEvent;
+    private Label events_on_day_number_label;
 
     @FXML
     private Label events_on_label;
@@ -153,13 +144,7 @@ public class MainController {
     private Label today_pane_day_name_label;
 
     @FXML
-    private Label events_on_day_number_label;
-
-    @FXML
     private Label today_pane_day_number_label;
-
-    @FXML
-    private Label events_on_day_name_label;
 
     public static Scheduler scheduler;
     private static MainController instance;
@@ -251,6 +236,7 @@ public class MainController {
 
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -296,7 +282,7 @@ public class MainController {
             alert.setContentText(message);
             alert.initOwner(owner);
 
-            if (alertType == Alert.AlertType.WARNING || alertType == Alert.AlertType.ERROR) {
+            if (alertType == Alert.AlertType.WARNING || alertType == Alert.AlertType.ERROR || alertType == Alert.AlertType.CONFIRMATION) {
                 // Set a custom image for the alert
                 if (alertImagePath != null && !alertImagePath.isEmpty()) {
                     Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
@@ -311,23 +297,7 @@ public class MainController {
                     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                     stage.getIcons().add(new Image(AlertHelper.class.getResourceAsStream(windowIconPath)));
                 }
-            }else if (alertType == Alert.AlertType.INFORMATION) {
-                // Set a custom icon for the application window
-                if (alertImagePath != null && !alertImagePath.isEmpty()) {
-                    Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
-                    ImageView imageView = new ImageView(customImage);
-                    imageView.setFitWidth(40); // Set desired width
-                    imageView.setFitHeight(40); // Set desired height
-                    alert.setGraphic(imageView);
-                }
-
-                // Set a custom icon for the application window
-                if (windowIconPath != null && !windowIconPath.isEmpty()) {
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image(AlertHelper.class.getResourceAsStream(windowIconPath)));
-                }
             }
-
             alert.showAndWait();
         }
     }
@@ -335,6 +305,5 @@ public class MainController {
     public Scheduler getScheduler() {
         return scheduler;
     }
-
 
 }

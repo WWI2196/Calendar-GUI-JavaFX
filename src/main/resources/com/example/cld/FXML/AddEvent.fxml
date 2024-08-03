@@ -29,22 +29,22 @@
                      <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="289.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="270.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="282.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="261.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="372.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="339.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_deleteEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="360.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="326.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/deleteEvent.png" />
                   </image>
@@ -54,12 +54,12 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="463.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="409.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_shiftEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="451.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="398.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/shiftEvent.png" />
                   </image>
@@ -83,6 +83,26 @@
                      <Font name="Century Gothic Bold" size="21.0" />
                   </font>
                </Label>
+               <JFXButton fx:id="btm_view_week" layoutX="25.0" layoutY="477.0" onAction="#switchToViewWeek" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewWeek" stylesheets="@../style.css" text="            View Week" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="467.0" onMousePressed="#switchToViewWeek" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_week.png" />
+                  </image>
+               </ImageView>
+               <JFXButton fx:id="btm_view_month" layoutX="25.0" layoutY="547.0" onAction="#switchToViewMonth" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewMonth" stylesheets="@../style.css" text="             View Month" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="45.0" layoutY="538.0" onMousePressed="#switchToViewMonth" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_month.png" />
+                  </image>
+               </ImageView>
             </children>
          </AnchorPane>
       </children>

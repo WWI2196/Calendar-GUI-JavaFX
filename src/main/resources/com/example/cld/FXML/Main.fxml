@@ -37,7 +37,7 @@
                      <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="224.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="224.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_deleteEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
@@ -52,7 +52,7 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="311.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="            Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="23.0" layoutY="311.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_shiftEvent" stylesheets="@../style.css" text="            Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
@@ -62,7 +62,7 @@
                      <Image url="@../Icons/shiftEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_ViewWeek" layoutX="25.0" layoutY="397.0" onAction="#switchToViewWeek" prefHeight="51.0" prefWidth="230.0" stylesheets="@../style.css" text="             View Week" textFill="WHITE">
+               <JFXButton fx:id="btm_ViewWeek" layoutX="25.0" layoutY="397.0" onAction="#switchToViewWeek" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewWeek" stylesheets="@../style.css" text="             View Week" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
@@ -72,12 +72,12 @@
                      <Image url="@../Icons/view_week.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_ViewMonth" layoutX="25.0" layoutY="485.0" onAction="#switchToViewMonth" prefHeight="51.0" prefWidth="230.0" stylesheets="@../style.css" text="              View Month" textFill="WHITE">
+               <JFXButton fx:id="btm_ViewMonth" layoutX="25.0" layoutY="485.0" onAction="#switchToViewMonth" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewMonth" stylesheets="@../style.css" text="              View Month" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="43.0" layoutY="476.0" onMousePressed="#switchToViewWeek" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="43.0" layoutY="476.0" onMousePressed="#switchToViewMonth" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/view_month.png" />
                   </image>

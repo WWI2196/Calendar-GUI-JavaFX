@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
 import javafx.stage.Window;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -101,6 +102,14 @@ public class AddEventController {
         mainController.switchToShiftEvent(event);
 
     }
+    @FXML
+    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToViewWeek(event);
+    }
+    @FXML
+    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToViewMonth(event);
+    }
 
     @FXML
     private void Error() {
@@ -167,6 +176,9 @@ public class AddEventController {
                         mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
                         events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
                     } else {
+                        enterDayDetailsClear();
+                        clearInputFields();
+                        resetCheckBoxesAndRadioButtons();
                         throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
                     }
                 }
@@ -198,19 +210,7 @@ public class AddEventController {
                 enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
                 events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
 
-                Time startTime = new Time();
-                Time endTime = new Time();
-                startTime.fromString(enter_start_time_txt_field.getText());
-                endTime.fromString(enter_end_time_txt_field.getText());
-
-                String repeatType = "none";
-                if (daily_radio_btn.isSelected()) {
-                    repeatType = "daily";
-                } else if (weekly_radio_btn.isSelected()) {
-                    repeatType = "weekly";
-                }
-
-                com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
+                com.example.cld.Event event = getEvent(title);
 
                 mainController.getScheduler().scheduleEvent(dayToSchedule, event);
                 successPopup();
@@ -246,6 +246,23 @@ public class AddEventController {
         Error_date.setVisible(false);
     }
 
+    private com.example.cld.Event getEvent(String title) {
+        Time startTime = new Time();
+        Time endTime = new Time();
+        startTime.fromString(enter_start_time_txt_field.getText());
+        endTime.fromString(enter_end_time_txt_field.getText());
+
+        String repeatType = "none";
+        if (daily_radio_btn.isSelected()) {
+            repeatType = "daily";
+        } else if (weekly_radio_btn.isSelected()) {
+            repeatType = "weekly";
+        }
+
+        com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
+        return event;
+    }
+
     private void showPopup(String message) {
         Window owner = confirm_btm_addEvent.getScene().getWindow();
         // Create the alert
@@ -269,7 +286,6 @@ public class AddEventController {
     }
 
     private void resetCheckBoxesAndRadioButtons() {
-
         one_time_radio_btn.setSelected(false);
         daily_radio_btn.setSelected(false);
         weekly_radio_btn.setSelected(false);
@@ -325,6 +341,12 @@ public class AddEventController {
             error_name_label.setVisible(true);
             error_name_label.setText(e.getMessage());
         }
+    }
+
+    private void enterDayDetailsClear() {
+        enter_day_number_label.setText(null);
+        enter_day_name_label.setText(null);
+        events_on_enter_day_textArea.setText(null);
     }
 
 

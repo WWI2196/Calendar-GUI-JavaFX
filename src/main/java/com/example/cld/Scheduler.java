@@ -78,7 +78,7 @@ class Scheduler {
             throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");
         }
     }
-
+    
     public void deleteEvent(int date, String title, boolean deleteRepeats) {
         try {
             if (date < currentDay || date > 31) {

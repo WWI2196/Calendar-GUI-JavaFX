@@ -11,6 +11,7 @@ module com.example.cld {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires annotations;
 
     opens com.example.cld to javafx.fxml;
     exports com.example.cld;

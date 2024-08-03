@@ -130,10 +130,32 @@ class Scheduler {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
         }
-        return days[date - 1].toString();
+        if( !days[date - 1].toString().isEmpty()) {
+            return days[date - 1].toString();
+        }else{
+            return "No events";
+        }
     }
 
-    public void viewWeekSchedule(int startDay) {
+    public int countWeekEvents(int startDay){
+        if (startDay < 1 || startDay > 31) {
+            throw new IllegalArgumentException("Invalid start day");
+        }
+
+        int startIndex = ((startDay - 1) / 7) * 7;
+        int endIndex = Math.min(startIndex + 7, 31);
+        int totalEvents = 0;
+
+        for (int i = startIndex; i < endIndex; ++i) {
+            if (!days[i].toString().isEmpty()) {
+                totalEvents+= days[i].getEventCount();
+            }
+        }
+
+        return totalEvents;
+    }
+
+    public String viewWeekSchedule(int startDay) {
         if (startDay < 1 || startDay > 31) {
             throw new IllegalArgumentException("Invalid start day");
         }
@@ -144,9 +166,12 @@ class Scheduler {
         for (int i = startIndex; i < endIndex; ++i) {
             String output = days[i].toString();
             if (!output.isEmpty()) {
-                System.out.println(output);
+                return output;
+            }else{
+                return "No events";
             }
         }
+        return null;
     }
 
     public void displayAllEvents() {

@@ -29,7 +29,7 @@
     -fx-border-color: #748CF1;
 }
 
-#btm_addEvent{
+.btm_addEvent{
     -fx-background-color: #FDC437;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
@@ -46,7 +46,7 @@
     -fx-border-color: #ffe066;
 }
 
-#btm_dayOff{
+.btm_dayOff{
     -fx-background-color: #DD493D;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
@@ -55,7 +55,7 @@
     -fx-border-color: #DD493D;
 }
 
-#btm_deleteEvent{
+.btm_deleteEvent{
     -fx-background-color: #13BA6A;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
@@ -64,7 +64,7 @@
     -fx-border-color: #13BA6A;
 }
 
-#btm_shiftEvent{
+.btm_shiftEvent{
     -fx-background-color: #6200EE;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
@@ -73,13 +73,22 @@
     -fx-border-color: #6200EE;
 }
 
-#btm_ViewWeek{
+.btm_ViewWeek{
     -fx-background-color: #ED455E;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #ED455E;
+}
+
+.btm_ViewMonth{
+    -fx-background-color: #F26A40;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #F26A40;
 }
 
 .today_pane{

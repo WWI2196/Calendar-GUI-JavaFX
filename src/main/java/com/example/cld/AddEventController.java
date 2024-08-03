@@ -18,24 +18,6 @@ import static com.example.cld.Main.dayOfMonth;
 public class AddEventController {
 
     @FXML
-    private JFXButton back_to_main_btm;
-
-    @FXML
-    private JFXButton btm_addEvent;
-
-    @FXML
-    private JFXButton btm_dayOff;
-
-    @FXML
-    private JFXButton btm_deleteEvent;
-
-    @FXML
-    private JFXButton btm_shiftEvent;
-
-    @FXML
-    private JFXButton check_button;
-
-    @FXML
     private JFXButton confirm_btm_addEvent;
 
     @FXML
@@ -109,20 +91,6 @@ public class AddEventController {
     @FXML
     public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToViewMonth(event);
-    }
-
-    @FXML
-    private void Error() {
-        Window owner = confirm_btm_addEvent.getScene().getWindow();
-        // Create the alert
-        MainController.AlertHelper.showAlert(
-            Alert.AlertType.INFORMATION,owner,
-            "Schedule Event",
-            "Error",
-            "There is a problem with entered values; check whether the entered values are in correct format",
-            "/com/example/cld/Icons/CrossSign.png",
-            "/com/example/cld/Icons/addEvent.png"
-        );
     }
 
     @FXML

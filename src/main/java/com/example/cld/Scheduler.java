@@ -94,19 +94,27 @@ class Scheduler {
                 throw new IllegalArgumentException("Invalid date");
             }
 
-            if (deleteRepeats) {
-                if ("daily".equals(repeatType)) {
-                    for (int i = date - 1; i < 31; ++i) {
+           if (deleteRepeats) {
+            if ("daily".equals(repeatType)) {
+                for (int i = date - 1; i < 31; ++i) {
+                    try {
                         days[i].deleteEvent(title);
-                    }
-                } else if ("weekly".equals(repeatType)) {
-                    for (int i = date - 1; i < 31; i += 7) {
-                        days[i].deleteEvent(title);
+                    } catch (IllegalArgumentException e) {
+                        // Event not found on this day, continue to next day
                     }
                 }
-            } else {
-                days[date - 1].deleteEvent(title);
+            } else if ("weekly".equals(repeatType)) {
+                for (int i = date - 1; i < 31; i += 7) {
+                    try {
+                        days[i].deleteEvent(title);
+                    } catch (IllegalArgumentException e) {
+                        // Event not found on this day, continue to next week
+                    }
+                }
             }
+        } else {
+            days[date - 1].deleteEvent(title);
+        }
             saveEventsToTxt();
         } catch (Exception e) {
             throw new IllegalArgumentException("Error deleting event: " + e.getMessage());

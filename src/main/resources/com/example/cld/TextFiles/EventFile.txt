@@ -1,29 +1,27 @@
-4|N|08:00|09:00|weekly
-5|M|10:00|12:00|daily
-6|M|10:00|12:00|daily
-7|M|10:00|12:00|daily
-10|M|10:00|12:00|daily
-11|N|08:00|09:00|weekly
-11|M|10:00|12:00|daily
-12|M|10:00|12:00|daily
-13|M|10:00|12:00|daily
-14|M|10:00|12:00|daily
-15|M|10:00|12:00|daily
-16|M|10:00|12:00|daily
-17|M|10:00|12:00|daily
-18|N|08:00|09:00|weekly
-18|M|10:00|12:00|daily
-19|M|10:00|12:00|daily
-20|M|10:00|12:00|daily
-21|M|10:00|12:00|daily
-22|M|10:00|12:00|daily
-23|M|10:00|12:00|daily
-24|M|10:00|12:00|daily
-25|N|08:00|09:00|weekly
-25|M|10:00|12:00|daily
-26|M|10:00|12:00|daily
-27|M|10:00|12:00|daily
-28|M|10:00|12:00|daily
-29|M|10:00|12:00|daily
-30|M|10:00|12:00|daily
-31|M|10:00|12:00|daily
+2|Meeting AMP|09:30|12:45|weekly
+3|off|
+4|Meeting IBM|12:50|15:45|weekly
+4|Meeting KIKU|15:45|16:00|none
+4|Meeting KIKU EX|16:30|17:00|daily
+4|Meeting AMP EX|17:10|17:50|weekly
+4|Meeting AMP CM|18:00|18:30|none
+5|off|
+7|off|
+9|Meeting AMP|09:30|12:45|weekly
+10|m|10:30|12:30|weekly
+11|Meeting IBM|12:50|15:45|weekly
+11|Meeting AMP EX|17:10|17:50|weekly
+12|Meeting C|08:45|09:50|none
+16|Meeting AMP|09:30|12:45|weekly
+18|Meeting IBM|12:50|15:45|weekly
+18|Meeting AMP EX|17:10|17:50|weekly
+23|Meeting AMP|09:30|12:45|weekly
+25|Meeting IBM|12:50|15:45|weekly
+25|Meeting AMP EX|17:10|17:50|weekly
+29|Meeting A|04:00|06:00|none
+29|Meeting AXIO|08:30|09:00|none
+29|Meeting NEOI|09:30|12:30|none
+29|Meeting SMSG|17:30|18:00|none
+30|Meeting NINO|08:30|09:00|none
+30|Meeting AMP|09:30|12:45|weekly
+31|off|

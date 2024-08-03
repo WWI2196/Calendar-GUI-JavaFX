@@ -88,24 +88,37 @@ class Scheduler {
         }
     }
 
-    public void deleteEvent(int date, String title, boolean deleteRepeats) {
+    public void deleteEvent(int date, String title, boolean deleteRepeats, String repeatType) {
         try {
             if (date < currentDay || date > 31) {
                 throw new IllegalArgumentException("Invalid date");
             }
 
             if (deleteRepeats) {
-                for (int i = date - 1; i < 31; ++i) {
-                    days[i].deleteEvent(title);
+                if ("daily".equals(repeatType)) {
+                    for (int i = date - 1; i < 31; ++i) {
+                        days[i].deleteEvent(title);
+                    }
+                } else if ("weekly".equals(repeatType)) {
+                    for (int i = date - 1; i < 31; i += 7) {
+                        days[i].deleteEvent(title);
+                    }
                 }
             } else {
                 days[date - 1].deleteEvent(title);
             }
-
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error deleting event");
+            throw new IllegalArgumentException("Error deleting event: " + e.getMessage());
         }
+    }
+
+    public String getEventRepeatType(int date, String title) {
+        Event event = days[date - 1].getEvent(title);
+        if (event != null) {
+            return event.getRepeatType(); // Assuming Event class has a getRepeatType method
+        }
+        return null;
     }
 
     public void shiftEvent(int date, String title, int newDate) {
@@ -225,6 +238,8 @@ class Scheduler {
         return false;
     }
 
+
+
     public void checkEventNameExists(int date, String title) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
@@ -233,6 +248,17 @@ class Scheduler {
         for (Event event : day.getEvents()) {
             if (event.getTitle().toUpperCase().equals(title)) {
                 throw new IllegalArgumentException("Event name already exists");
+            }
+        }
+    }
+    public void validEventCapture(int date, String title) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        Day day = days[date - 1];
+        for (Event event : day.getEvents()) {
+            if (event.getTitle().toUpperCase().equals(title)) {
+                throw new IllegalArgumentException("Event Captured");
             }
         }
     }

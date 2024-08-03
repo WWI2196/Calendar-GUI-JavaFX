@@ -156,4 +156,14 @@ class Day {
     public List<Event> getEvents() {
         return events;
     }
+
+
+    public Event getEvent(String title) {
+        for (Event event : events) {
+            if (event.title.equals(title)) {
+                return event;
+            }
+        }
+        return null;
+    }
 }

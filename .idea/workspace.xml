@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_19_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_19_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_24_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_24_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_28_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_28_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_35_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_35_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_8_3_2024_1_35_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
     </list>
-    <list id="5b7dc533-3885-4195-b8e1-4f8d0e9e6552" name="Changes by saga" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,23 +22,23 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Branch9" />
+        <entry key="$PROJECT_DIR$" value="Branch6" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "WWI2196"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;WWI2196&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/WWI2196/Calendar-GUI-JavaFX.git",
-    "accountId": "4776bf20-9711-4271-86ca-524c0a0728c3"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/WWI2196/Calendar-GUI-JavaFX.git&quot;,
+    &quot;accountId&quot;: &quot;4776bf20-9711-4271-86ca-524c0a0728c3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -51,6 +55,7 @@
   "keyToString": {
     "Application.Application.executor": "Run",
     "Application.Main.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

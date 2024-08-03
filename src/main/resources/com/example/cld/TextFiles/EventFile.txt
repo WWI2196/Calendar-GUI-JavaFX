@@ -2,7 +2,6 @@
 3|off|
 4|Meeting IBM|12:50|15:45|weekly
 4|Meeting KIKU|15:45|16:00|none
-4|Meeting KIKU EX|16:30|17:00|daily
 4|Meeting AMP EX|17:10|17:50|weekly
 4|Meeting AMP CM|18:00|18:30|none
 5|off|

@@ -275,32 +275,34 @@ public class MainController {
     }
 
      public static class AlertHelper {
-        public static void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message, String alertImagePath, String windowIconPath) {
-            Alert alert = new Alert(alertType);
-            alert.setTitle(title);
-            alert.setHeaderText(header);
-            alert.setContentText(message);
-            alert.initOwner(owner);
+         public static void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message, String alertImagePath, String windowIconPath) {
+             Alert alert = new Alert(alertType);
+             alert.setTitle(title);
+             alert.setHeaderText(header);
+             alert.setContentText(message);
+             alert.initOwner(owner);
 
-            if (alertType == Alert.AlertType.WARNING || alertType == Alert.AlertType.ERROR || alertType == Alert.AlertType.CONFIRMATION) {
-                // Set a custom image for the alert
-                if (alertImagePath != null && !alertImagePath.isEmpty()) {
-                    Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
-                    ImageView imageView = new ImageView(customImage);
-                    imageView.setFitWidth(40); // Set desired width
-                    imageView.setFitHeight(40); // Set desired height
-                    alert.setGraphic(imageView);
-                }
+                 // Set a custom image for the alert
+             if (alertImagePath != null && !alertImagePath.isEmpty()) {
+                 Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
+                 ImageView imageView = new ImageView(customImage);
+                 imageView.setFitWidth(40); // Set desired width
+                 imageView.setFitHeight(40); // Set desired height
+                 alert.setGraphic(imageView);
+             }
 
-                // Set a custom icon for the application window
-                if (windowIconPath != null && !windowIconPath.isEmpty()) {
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image(AlertHelper.class.getResourceAsStream(windowIconPath)));
-                }
-            }
-            alert.showAndWait();
-        }
-    }
+             // Set a custom icon for the application window
+             if (windowIconPath != null && !windowIconPath.isEmpty()) {
+                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                 Image windowIcon = new Image(AlertHelper.class.getResourceAsStream(windowIconPath));
+                 stage.getIcons().clear(); // Clear existing icons
+                 stage.getIcons().add(windowIcon);
+             }
+
+             alert.showAndWait();
+         }
+     }
+
 
     public Scheduler getScheduler() {
         return scheduler;

@@ -126,6 +126,19 @@ class Scheduler {
         }
     }
 
+    public void removeDayOff(int date) {
+        try {
+            if (date < currentDay || date > 31) {
+                throw new IllegalArgumentException("Invalid date");
+            }
+
+            days[date - 1].setDayOff(false);
+            saveEventsToTxt();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Error removing day off");
+        }
+    }
+
     public String displayEvents(int date) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");

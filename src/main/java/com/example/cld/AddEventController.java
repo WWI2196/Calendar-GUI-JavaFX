@@ -1,6 +1,7 @@
 package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -8,7 +9,6 @@ import javafx.scene.image.Image;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
 import javafx.stage.Window;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -140,92 +140,7 @@ public class AddEventController {
     }
 
     public void initialize() {
-        confirm_btm_addEvent.setOnAction(event_ -> {
-            try {
-                int dayToSchedule = Integer.parseInt(enter_date_txt_field.getText());
-
-                // Validate the entered date
-                if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
-                    Error_date.setVisible(true);
-                    throw new IllegalArgumentException(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
-                }
-
-                if (mainController.getScheduler().days[dayToSchedule - 1].isDayOff()) {
-                    Window owner = confirm_btm_addEvent.getScene().getWindow();
-
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Schedule Event");
-                    alert.setHeaderText("Confirmation");
-                    alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
-                    alert.initOwner(owner);
-
-                    // Load and set the alert's display icon
-                    Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
-                    ImageView alertImageView = new ImageView(alertImage);
-                    alertImageView.setFitWidth(40); // Set desired width
-                    alertImageView.setFitHeight(40); // Set desired height
-                    alert.setGraphic(alertImageView);
-
-                    ButtonType yesButton = ButtonType.YES;
-                    ButtonType noButton = ButtonType.NO;
-                    alert.getButtonTypes().setAll(yesButton, noButton);
-
-                    Optional<ButtonType> result = alert.showAndWait();
-
-                    if (result.isPresent() && result.get() == yesButton) {
-                        mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
-                        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
-                    } else {
-                        enterDayDetailsClear();
-                        clearInputFields();
-                        resetCheckBoxesAndRadioButtons();
-                        throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
-                    }
-                }
-
-                if (enter_event_name_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter a name for the event.");
-                }
-
-                if (enter_start_time_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter a start times for the event.");
-                }
-                if(enter_end_time_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter an end time for the event.");
-                }
-
-                if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
-                    throw new IllegalArgumentException("Select a repeat type.");
-                }
-
-                if (enter_start_time_txt_field.getText().isEmpty() || enter_end_time_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter start and end times for the event.");
-                }
-
-                Error_date.setVisible(false); // Hide the error label if the date is valid
-
-                String title = enter_event_name_txt_field.getText(); // done
-
-                enter_day_number_label.setText(String.valueOf(dayToSchedule));
-                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
-                events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
-
-                com.example.cld.Event event = getEvent(title);
-
-                mainController.getScheduler().scheduleEvent(dayToSchedule, event);
-                successPopup();
-                clearInputFields();
-                resetCheckBoxesAndRadioButtons();
-                events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
-
-            } catch (NumberFormatException e) {
-                showPopup(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                showPopup(e.getMessage());
-            } catch (Exception e) {
-                showPopup(e.getMessage());
-            }
-        });
+        confirm_btm_addEvent.setOnAction(this::handle);
 
         today_day_number_label.setText(String.valueOf(dayOfMonth));
         today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
@@ -296,6 +211,7 @@ public class AddEventController {
 
         if (input.isEmpty()) {
             Error_date.setVisible(false);
+            enter_date_txt_field.setStyle("-fx-text-fill: black;");
             return;
         }
 
@@ -303,16 +219,19 @@ public class AddEventController {
             int day = Integer.parseInt(input);
             if (day < dayOfMonth || day > 31) {
                 Error_date.setVisible(true);
+                enter_date_txt_field.setStyle("-fx-text-fill: red;");
                 Error_date.setText(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
             } else {
                 Error_date.setVisible(false);
                 enter_day_number_label.setText(String.valueOf(day));
+                enter_date_txt_field.setStyle("-fx-text-fill: black;");
                 enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
                 events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
             }
         } catch (NumberFormatException e) {
             Error_date.setVisible(true);
             Error_date.setText("Enter a valid number.");
+            enter_date_txt_field.setStyle("-fx-text-fill: red;");
         }
 
         checkName();
@@ -320,9 +239,11 @@ public class AddEventController {
 
     public void checkName() {
         String input = enter_event_name_txt_field.getText().toUpperCase().trim();
+        enter_event_name_txt_field.setStyle("-fx-text-fill: black;");
 
         if (input.isEmpty()) {
             error_name_label.setVisible(false);
+            enter_event_name_txt_field.setStyle("-fx-text-fill: black;");
             return;
         }
 
@@ -340,6 +261,7 @@ public class AddEventController {
         } catch (IllegalArgumentException e) {
             error_name_label.setVisible(true);
             error_name_label.setText(e.getMessage());
+            enter_event_name_txt_field.setStyle("-fx-text-fill: red;");
         }
     }
 
@@ -350,4 +272,91 @@ public class AddEventController {
     }
 
 
+    private void handle(ActionEvent event_) {
+        try {
+            if (enter_date_txt_field.getText().isEmpty()) {
+                throw new IllegalArgumentException("Enter a date to schedule the event.");
+            }
+
+            int dayToSchedule = Integer.parseInt(enter_date_txt_field.getText());
+            // Validate the entered date
+            if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
+                Error_date.setVisible(true);
+                throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
+            }
+
+            if (mainController.getScheduler().days[dayToSchedule - 1].isDayOff()) {
+                Window owner = confirm_btm_addEvent.getScene().getWindow();
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Schedule Event");
+                alert.setHeaderText("Confirmation");
+                alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
+                alert.initOwner(owner);
+
+                // Load and set the alert's display icon
+                Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
+                ImageView alertImageView = new ImageView(alertImage);
+                alertImageView.setFitWidth(40); // Set desired width
+                alertImageView.setFitHeight(40); // Set desired height
+                alert.setGraphic(alertImageView);
+
+                ButtonType yesButton = ButtonType.YES;
+                ButtonType noButton = ButtonType.NO;
+                alert.getButtonTypes().setAll(yesButton, noButton);
+
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if (result.isPresent() && result.get() == yesButton) {
+                    mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
+                    events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+                } else {
+                    enterDayDetailsClear();
+                    throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
+                }
+            }
+
+            if (enter_event_name_txt_field.getText().isEmpty()) {
+                throw new IllegalArgumentException("Enter a name for the event.");
+            }
+
+            if (enter_start_time_txt_field.getText().isEmpty()) {
+                throw new IllegalArgumentException("Enter a start times for the event.");
+            }
+            if (enter_end_time_txt_field.getText().isEmpty()) {
+                throw new IllegalArgumentException("Enter an end time for the event.");
+            }
+
+            if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
+                throw new IllegalArgumentException("Select a repeat type.");
+            }
+
+            if (enter_start_time_txt_field.getText().isEmpty() || enter_end_time_txt_field.getText().isEmpty()) {
+                throw new IllegalArgumentException("Enter start and end times for the event.");
+            }
+
+            Error_date.setVisible(false); // Hide the error label if the date is valid
+
+            String title = enter_event_name_txt_field.getText(); // done
+
+            enter_day_number_label.setText(String.valueOf(dayToSchedule));
+            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+
+            com.example.cld.Event event = getEvent(title);
+
+            mainController.getScheduler().scheduleEvent(dayToSchedule, event);
+            successPopup();
+            clearInputFields();
+            resetCheckBoxesAndRadioButtons();
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+
+        } catch (NumberFormatException e) {
+            showPopup("Enter a valid number.");
+        } catch (IllegalArgumentException e) {
+            showPopup(e.getMessage());
+        } catch (Exception e) {
+            showPopup(e.getMessage());
+        }
+    }
 }

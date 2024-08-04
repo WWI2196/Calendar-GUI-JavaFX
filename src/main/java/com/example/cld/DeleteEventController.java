@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.example.cld.Main.dayOfMonth;
@@ -90,7 +91,7 @@ public class DeleteEventController {
     @FXML
     private Label error_name_label;
 
-    private MainController mainController = MainController.getInstance();
+    private final MainController mainController = MainController.getInstance();
 
     @FXML
     public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
@@ -154,7 +155,7 @@ public class DeleteEventController {
                     alert.setContentText("The selected event is a " + repeatType + " event. Do you want to delete all occurrences?");
                     alert.initOwner(owner);
 
-                    Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
+                    Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png")));
                     ImageView alertImageView = new ImageView(alertImage);
                     alertImageView.setFitWidth(40);
                     alertImageView.setFitHeight(40);

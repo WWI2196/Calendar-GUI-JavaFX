@@ -8,9 +8,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.example.cld.Main.dayOfMonth;
@@ -62,7 +64,7 @@ public class AddEventController {
     @FXML
     private Label error_name_label;
 
-    private MainController mainController = MainController.getInstance();
+    private final MainController mainController = MainController.getInstance();
 
     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToMainMenu(event);
@@ -245,11 +247,16 @@ public class AddEventController {
                 alert.initOwner(owner);
 
                 // Load and set the alert's display icon
-                Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
+                Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png")));
                 ImageView alertImageView = new ImageView(alertImage);
                 alertImageView.setFitWidth(40); // Set desired width
                 alertImageView.setFitHeight(40); // Set desired height
                 alert.setGraphic(alertImageView);
+
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                Image windowIcon = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/addEvent.png")));
+                stage.getIcons().clear(); // Clear existing icons
+                stage.getIcons().add(windowIcon);
 
                 ButtonType yesButton = ButtonType.YES;
                 ButtonType noButton = ButtonType.NO;
@@ -293,26 +300,13 @@ public class AddEventController {
             enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
             events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
 
-             Time startTime = new Time();
-             Time endTime = new Time();
-             startTime.fromString(enter_start_time_txt_field.getText());
-             endTime.fromString(enter_end_time_txt_field.getText());
+            com.example.cld.Event event = getEvent(title);
 
-             String repeatType = "none";
-             if (daily_radio_btn.isSelected()) {
-                repeatType = "daily";
-
-             } else if (weekly_radio_btn.isSelected()) {
-                repeatType = "weekly";
-             }
-
-             com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
-
-             mainController.getScheduler().scheduleEvent(dayToSchedule, event);
-             successPopup();
-             clearInputFields();
-             resetCheckBoxesAndRadioButtons();
-             events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+            mainController.getScheduler().scheduleEvent(dayToSchedule, event);
+            successPopup();
+            clearInputFields();
+            resetCheckBoxesAndRadioButtons();
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
 
         } catch (NumberFormatException e) {
             showPopup("Enter a valid number.");
@@ -321,5 +315,23 @@ public class AddEventController {
         } catch (Exception e) {
             showPopup(e.getMessage());
         }
+    }
+
+    private com.example.cld.Event getEvent(String title) {
+        Time startTime = new Time();
+        Time endTime = new Time();
+        startTime.fromString(enter_start_time_txt_field.getText());
+        endTime.fromString(enter_end_time_txt_field.getText());
+
+        String repeatType = "none";
+        if (daily_radio_btn.isSelected()) {
+           repeatType = "daily";
+
+        } else if (weekly_radio_btn.isSelected()) {
+           repeatType = "weekly";
+        }
+
+        com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
+        return event;
     }
 }

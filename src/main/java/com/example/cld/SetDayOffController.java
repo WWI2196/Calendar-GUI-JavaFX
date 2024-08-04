@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.example.cld.Main.dayOfMonth;
@@ -84,7 +85,7 @@ public class SetDayOffController {
                 Alert.AlertType.INFORMATION,owner,
                 "Set Day Off",
                 "Success",
-                "Day successfully set as Day Off",
+                "Day successfully set as a day off.",
                 "/com/example/cld/Icons/Done_img_1.png",
                 "/com/example/cld/Icons/dayOff.png"
         );
@@ -190,14 +191,14 @@ public class SetDayOffController {
                 alert.initOwner(owner);
 
                 // Load and set the alert's display icon
-                Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
+                Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png")));
                 ImageView alertImageView = new ImageView(alertImage);
                 alertImageView.setFitWidth(40); // Set desired width
                 alertImageView.setFitHeight(40); // Set desired height
                 alert.setGraphic(alertImageView);
 
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                Image windowIcon = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/dayOff.png"));
+                Image windowIcon = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/dayOff.png")));
                 stage.getIcons().clear(); // Clear existing icons
                 stage.getIcons().add(windowIcon);
 

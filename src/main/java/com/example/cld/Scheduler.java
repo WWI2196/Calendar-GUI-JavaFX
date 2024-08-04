@@ -63,8 +63,11 @@ class Scheduler {
 
             if (event.repeatType.equals("daily")) {
                 for (int i = date - 1; i < 31; ++i) {
-                    if(days[i].eventsOverlap(newEvent)==true){
-                        throw new IllegalArgumentException("Event overlaps detected. Cannot schedule.");
+                    if(days[i].eventsOverlap(newEvent)){
+                        throw new IllegalArgumentException("Event overlaps detected on "+(i+1)+". Cannot schedule.");
+                    }
+                    if (days[i].isDayOff()) {
+                        throw new IllegalArgumentException("Day off detected on "+(i+1)+". Cannot schedule.");
                     }
                 }
                 for (int i = date - 1; i < 31; i++) {
@@ -72,8 +75,11 @@ class Scheduler {
                 }
             } else if (event.repeatType.equals("weekly")) {
                 for (int i = date - 1; i < 31; i+=7) {
-                    if(days[i].eventsOverlap(newEvent)==true){
-                        throw new IllegalArgumentException("Event overlaps detected. Cannot schedule.");
+                    if(days[i].eventsOverlap(newEvent)){
+                        throw new IllegalArgumentException("Event overlaps detected on "+(i+1)+". Cannot schedule.");
+                    }
+                    if (days[i].isDayOff()) {
+                        throw new IllegalArgumentException("Day off detected on "+(i+1)+". Cannot schedule.");
                     }
                 }
                 for (int i = date - 1; i < 31; i += 7) {

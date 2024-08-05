@@ -48,24 +48,49 @@ class Scheduler {
         }
     }
 
-    public void scheduleEvent(int date, Event event) {
+    protected void scheduleEvent(int date, Event event) {
+        boolean wasDayOff = false;
         try {
             if (date < currentDay || date > 31) {
                 throw new IllegalArgumentException("Invalid date");
             }
+            // Save the original "day off" status
+            wasDayOff = days[date - 1].isDayOff();
 
-            if (days[date - 1].isDayOff()) {
+            // Only set day off to false if the event is successfully scheduled
+            if (wasDayOff) {
                 days[date - 1].setDayOff(false);
-                throw new IllegalArgumentException("The selected day is marked as a day off");
             }
 
             Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
 
+            try {
+                checkEventNameExists(date, event.title);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Event name already exists");
+            }
+
             if (event.repeatType.equals("daily")) {
+                for (int i = date - 1; i < 31; ++i) {
+                    if (days[i].eventsOverlap(newEvent)) {
+                        throw new IllegalArgumentException("Event overlaps detected on " + (i + 1) + ". Cannot schedule.");
+                    }
+                    if (days[i].isDayOff()) {
+                        throw new IllegalArgumentException("Day off detected on " + (i + 1) + ". Cannot schedule.");
+                    }
+                }
                 for (int i = date - 1; i < 31; i++) {
                     days[i].addEvent(newEvent);
                 }
             } else if (event.repeatType.equals("weekly")) {
+                for (int i = date - 1; i < 31; i += 7) {
+                    if (days[i].eventsOverlap(newEvent)) {
+                        throw new IllegalArgumentException("Event overlaps detected on " + (i + 1) + ". Cannot schedule.");
+                    }
+                    if (days[i].isDayOff()) {
+                        throw new IllegalArgumentException("Day off detected on " + (i + 1) + ". Cannot schedule.");
+                    }
+                }
                 for (int i = date - 1; i < 31; i += 7) {
                     days[i].addEvent(newEvent);
                 }
@@ -75,31 +100,65 @@ class Scheduler {
 
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");
+            // Roll back changes if necessary
+            if (days[date - 1].isDayOff() == false && !wasDayOff) {
+                days[date - 1].setDayOff(true);
+            }
+            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event. Check the inputs again.");
         }
     }
 
-    public void deleteEvent(int date, String title, boolean deleteRepeats) {
+
+    protected void deleteEvent(int date, String title, boolean deleteRepeats, String repeatType) {
         try {
             if (date < currentDay || date > 31) {
                 throw new IllegalArgumentException("Invalid date");
             }
 
-            if (deleteRepeats) {
+            if (days[date - 1].isDayOff()) {
+                throw new IllegalArgumentException("The selected day is marked as a day off.\nNo events to delete.");
+            }
+
+            if (!isEventNameExists(date, title)) {
+                throw new IllegalArgumentException("Event not found.");
+            }
+
+           if (deleteRepeats) {
+            if ("daily".equals(repeatType)) {
                 for (int i = date - 1; i < 31; ++i) {
-                    days[i].deleteEvent(title);
+                    try {
+                        days[i].deleteEvent(title);
+                    } catch (IllegalArgumentException e) {
+                        // Event not found on this day, continue to next day
+                    }
                 }
+            } else if ("weekly".equals(repeatType)) {
+                for (int i = date - 1; i < 31; i += 7) {
+                    try {
+                        days[i].deleteEvent(title);
+                    } catch (IllegalArgumentException e) {
+                        // Event not found on this day, continue to next week
+                    }
+                }
+            }
             } else {
                 days[date - 1].deleteEvent(title);
             }
-
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error deleting event");
+            throw new IllegalArgumentException("Error deleting event: " + e.getMessage());
         }
     }
 
-    public void shiftEvent(int date, String title, int newDate) {
+    protected String getEventRepeatType(int date, String title) {
+        Event event = days[date - 1].getEvent(title);
+        if (event != null) {
+            return event.getRepeatType(); // Assuming Event class has a getRepeatType method
+        }
+        return null;
+    }
+
+    protected void shiftEvent(int date, String title, int newDate) {
         try {
             if (date < currentDay || date > 31 || newDate < currentDay || newDate > 31) {
                 throw new IllegalArgumentException("Invalid date");
@@ -108,11 +167,11 @@ class Scheduler {
             days[date - 1].shiftEvent(title, newDate, days);
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error shifting event");
+            throw new IllegalArgumentException("Error shifting event" + e.getMessage());
         }
     }
 
-    public void markDayOff(int date) {
+    protected void markDayOff(int date) {
         try {
             if (date < currentDay || date > 31) {
                 throw new IllegalArgumentException("Invalid date");
@@ -126,7 +185,7 @@ class Scheduler {
         }
     }
 
-    public void removeDayOff(int date) {
+    protected void removeDayOff(int date) {
         try {
             if (date < currentDay || date > 31) {
                 throw new IllegalArgumentException("Invalid date");
@@ -139,7 +198,7 @@ class Scheduler {
         }
     }
 
-    public String displayEvents(int date) {
+    protected String displayEvents(int date) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
         }
@@ -216,14 +275,39 @@ class Scheduler {
         return false;
     }
 
-    public void checkEventNameExists(int date, String title) {
+    protected void checkEventNameExists(int date, String title) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        Day day = days[date - 1];
+        for (Event event : day.getEvents()) {
+            if (event.getTitle().equalsIgnoreCase(title)) {
+                throw new IllegalArgumentException("Event name already exists");
+            }
+        }
+    }
+
+    protected boolean isEventNameExists(int date, String title) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        Day day = days[date - 1];
+        for (Event event : day.getEvents()) {
+            if (event.getTitle().equalsIgnoreCase(title)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void validEventCapture(int date, String title) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
         }
         Day day = days[date - 1];
         for (Event event : day.getEvents()) {
             if (event.getTitle().toUpperCase().equals(title)) {
-                throw new IllegalArgumentException("Event name already exists");
+                throw new IllegalArgumentException("Event Captured");
             }
         }
     }

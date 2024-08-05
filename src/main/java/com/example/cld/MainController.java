@@ -167,13 +167,6 @@ public class MainController {
 
         setupDateButtonActions();
 
-//        btm_addEvent.setOnAction(event -> {
-//            try {
-//                switchToAddEventDetails(event);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        });
     }
 
     public MainController() {
@@ -284,7 +277,7 @@ public class MainController {
 
                  // Set a custom image for the alert
              if (alertImagePath != null && !alertImagePath.isEmpty()) {
-                 Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
+                 Image customImage = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(alertImagePath)));
                  ImageView imageView = new ImageView(customImage);
                  imageView.setFitWidth(40); // Set desired width
                  imageView.setFitHeight(40); // Set desired height
@@ -294,7 +287,7 @@ public class MainController {
              // Set a custom icon for the application window
              if (windowIconPath != null && !windowIconPath.isEmpty()) {
                  Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                 Image windowIcon = new Image(AlertHelper.class.getResourceAsStream(windowIconPath));
+                 Image windowIcon = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(windowIconPath)));
                  stage.getIcons().clear(); // Clear existing icons
                  stage.getIcons().add(windowIcon);
              }
@@ -302,7 +295,6 @@ public class MainController {
              alert.showAndWait();
          }
      }
-
 
     public Scheduler getScheduler() {
         return scheduler;

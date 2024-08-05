@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_28_2024_7_36_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_7_28_2024_7_36_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DateNameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DateNameMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewMonthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewMonthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/AddEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/AddEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/DeleteEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/SetDayOff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/SetDayOff.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,18 +18,96 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Branch6" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;WWI2196&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/WWI2196/Calendar-GUI-JavaFX.git&quot;,
+    &quot;accountId&quot;: &quot;4776bf20-9711-4271-86ca-524c0a0728c3&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2k8mFCW5G8vLUvmY3cWy6W2RrER" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.CLD [clean].executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.cld.Main" />
+      <module name="CLD" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="" />
+      <created>1722681661707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722681661707</updated>
+      <workItem from="1722681665206" duration="9932000" />
+      <workItem from="1722699303542" duration="66000" />
+      <workItem from="1722736908388" duration="3740000" />
+      <workItem from="1722870961141" duration="18464000" />
+      <workItem from="1722895751275" duration="4362000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

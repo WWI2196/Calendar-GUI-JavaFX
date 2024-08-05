@@ -35,5 +35,15 @@
     -fx-font-family: "Century Gothic";
     -fx-font-size: 14px;
     -fx-text-fill: #333333;
+}
 
+#events_on_enter_day_textArea{
+    -fx-background-color: transparent; /* Make the background transparent */
+    -fx-background-color: #FFFFFF; /* Set the background color */
+    -fx-background-radius: 30px; /* Set the background radius */
+    -fx-border-radius: 30px; /* Set the border radius */
+    -fx-padding: 10px;
+    -fx-font-family: "Century Gothic"; /* Set the font family */
+    -fx-font-size: 14px; /* Adjust the font size as needed */
+    -fx-alignment: top-left;
 }

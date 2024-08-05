@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -27,22 +28,22 @@
                      <Image url="@../Icons/addEvent.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="289.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
+               <JFXButton fx:id="btm_dayOff" layoutX="25.0" layoutY="270.0" onAction="#switchToSetDayOff" prefHeight="51.0" prefWidth="230.0" styleClass="btm_dayOff" stylesheets="@../style.css" text="      Day Off" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="282.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="71.0" fitWidth="65.0" layoutX="46.0" layoutY="261.0" onMousePressed="#switchToSetDayOff" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/dayOff.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="372.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
+               <JFXButton fx:id="btm_deleteEvent" layoutX="25.0" layoutY="339.0" onAction="#switchToDeleteEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_deleteEvent" stylesheets="@../style.css" text="               Delete Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="360.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="79.0" fitWidth="75.0" layoutX="46.0" layoutY="326.0" onMousePressed="#switchToDeleteEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/deleteEvent.png" />
                   </image>
@@ -52,24 +53,24 @@
                      <Image url="@../Icons/wavePattern-modified.png" />
                   </image>
                </ImageView>
-               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="463.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_editEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
+               <JFXButton fx:id="btm_shiftEvent" layoutX="25.0" layoutY="409.0" onAction="#switchToShiftEvent" prefHeight="51.0" prefWidth="230.0" styleClass="btm_shiftEvent" stylesheets="@../style.css" text="           Shift Event" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="16.0" />
                   </font>
                </JFXButton>
-               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="451.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="46.0" layoutY="398.0" onMousePressed="#switchToShiftEvent" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../Icons/shiftEvent.png" />
                   </image>
                </ImageView>
                <Pane fx:id="today_pane" layoutX="84.0" layoutY="64.0" prefHeight="102.0" prefWidth="108.0" styleClass="today_pane" stylesheets="@../style.css">
                   <children>
-                     <Label fx:id="today_day_number_label" layoutX="37.0" layoutY="2.0" text="1" textFill="WHITE">
+                     <Label fx:id="today_day_number_label" alignment="CENTER" layoutX="8.0" layoutY="9.0" prefHeight="66.0" prefWidth="92.0" text="1" textFill="WHITE">
                         <font>
-                           <Font name="Century Gothic Bold" size="60.0" />
+                           <Font name="Century Gothic Bold" size="50.0" />
                         </font>
                      </Label>
-                     <Label fx:id="today_day_name_label" layoutX="37.0" layoutY="74.0" text="Mon" textFill="WHITE">
+                     <Label fx:id="today_day_name_label" alignment="CENTER" layoutX="13.0" layoutY="68.0" prefHeight="22.0" prefWidth="83.0" text="Mon" textFill="WHITE">
                         <font>
                            <Font name="Century Gothic Bold" size="17.0" />
                         </font>
@@ -81,6 +82,26 @@
                      <Font name="Century Gothic Bold" size="21.0" />
                   </font>
                </Label>
+               <JFXButton fx:id="btm_viewWeek" layoutX="25.0" layoutY="477.0" onAction="#switchToViewWeek" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewWeek" stylesheets="@../style.css" text="            View Week" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="45.0" layoutY="467.0" onMousePressed="#switchToViewWeek" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_week.png" />
+                  </image>
+               </ImageView>
+               <JFXButton fx:id="btm_viewMonth" layoutX="25.0" layoutY="547.0" onAction="#switchToViewMonth" prefHeight="51.0" prefWidth="230.0" styleClass="btm_ViewMonth" stylesheets="@../style.css" text="             View Month" textFill="WHITE">
+                  <font>
+                     <Font name="Century Gothic Bold" size="16.0" />
+                  </font>
+               </JFXButton>
+               <ImageView fitHeight="72.0" fitWidth="83.0" layoutX="45.0" layoutY="537.0" onMousePressed="#switchToViewMonth" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../Icons/view_week.png" />
+                  </image>
+               </ImageView>
             </children>
          </AnchorPane>
       </children>
@@ -92,7 +113,7 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <JFXButton fx:id="confirm_btm_deleteEvent" layoutX="325.0" layoutY="537.0" prefHeight="58.0" prefWidth="100.0" stylesheets="@../style_delete_event.css" text="Confirm" textFill="WHITE">
+         <JFXButton fx:id="confirm_btm_deleteEvent" layoutX="311.0" layoutY="533.0" prefHeight="58.0" prefWidth="100.0" stylesheets="@../style_delete_event.css" text="Confirm" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="16.0" />
             </font>
@@ -102,47 +123,42 @@
                <Font name="Century Gothic Bold" size="41.0" />
             </font>
          </Label>
-         <Pane fx:id="enter_today_pane" layoutX="327.0" layoutY="116.0" prefHeight="200.0" prefWidth="374.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="enter_today_pane" layoutX="291.0" layoutY="89.0" prefHeight="241.0" prefWidth="430.0" styleClass="today_pane" stylesheets="@../style.css">
             <children>
-               <Label fx:id="enter_day_number_label" layoutX="19.0" layoutY="51.0" text="__" textFill="WHITE">
+               <Label fx:id="enter_day_number_label" alignment="CENTER" layoutX="5.0" layoutY="51.0" prefHeight="51.0" prefWidth="58.0" text="__" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="40.0" />
                   </font>
                </Label>
-               <Label fx:id="enter_day_name_label" layoutX="32.0" layoutY="121.0" text="__" textFill="WHITE">
+               <Label fx:id="enter_day_name_label" alignment="CENTER" layoutX="5.0" layoutY="121.0" prefHeight="22.0" prefWidth="51.0" text="__" textFill="WHITE">
                   <font>
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <Label fx:id="events_on_enter_day_label" layoutX="76.0" layoutY="13.0" prefHeight="173.0" prefWidth="285.0" styleClass="events_on_label" stylesheets="@../style.css" text="__" />
+               <TextArea fx:id="events_on_enter_day_textArea" editable="false" layoutX="68.0" layoutY="18.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../style_delete_event.css">
+                  <font>
+                     <Font name="Century Gothic Bold" size="12.0" />
+                  </font>
+               </TextArea>
             </children>
          </Pane>
-         <Label alignment="CENTER" layoutX="228.0" layoutY="198.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
+         <Label alignment="CENTER" layoutX="197.0" layoutY="200.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="201.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_delete_event.css" text="Button">
-            <graphic>
-               <ImageView fx:id="inner_pane_image1" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../Icons/enter.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </JFXButton>
          <Label layoutX="42.0" layoutY="167.0" text="Enter Date To Check" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="348.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_delete_event.css">
+         <TextField fx:id="enter_date_txt_field" alignment="CENTER" layoutX="40.0" layoutY="200.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_delete_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="404.0" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style_delete_event.css">
+         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="404.0" onKeyTyped="#checkName" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style_delete_event.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
@@ -155,6 +171,16 @@
          <Label layoutX="193.0" layoutY="490.0" text="Confirm to Proceed with Deleting the Event." textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
+            </font>
+         </Label>
+         <Label fx:id="Error_date_label" layoutX="53.0" layoutY="240.0" prefHeight="51.0" prefWidth="192.0" textFill="#ff3a3a" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="error_name_label" layoutX="53.0" layoutY="444.0" prefHeight="25.0" prefWidth="516.0" textFill="#00ff0c" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
             </font>
          </Label>
       </children>

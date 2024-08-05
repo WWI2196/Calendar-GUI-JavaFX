@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 
     public static LocalDate currentDate; // Static variable for current date

@@ -8,32 +8,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.example.cld.Main.dayOfMonth;
 
 public class AddEventController {
-
-    @FXML
-    private JFXButton back_to_main_btm;
-
-    @FXML
-    private JFXButton btm_addEvent;
-
-    @FXML
-    private JFXButton btm_dayOff;
-
-    @FXML
-    private JFXButton btm_deleteEvent;
-
-    @FXML
-    private JFXButton btm_shiftEvent;
-
-    @FXML
-    private JFXButton check_button;
 
     @FXML
     private JFXButton confirm_btm_addEvent;
@@ -80,7 +64,7 @@ public class AddEventController {
     @FXML
     private Label error_name_label;
 
-    private MainController mainController = MainController.getInstance();
+    private final MainController mainController = MainController.getInstance();
 
     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToMainMenu(event);
@@ -109,20 +93,6 @@ public class AddEventController {
     @FXML
     public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToViewMonth(event);
-    }
-
-    @FXML
-    private void Error() {
-        Window owner = confirm_btm_addEvent.getScene().getWindow();
-        // Create the alert
-        MainController.AlertHelper.showAlert(
-            Alert.AlertType.INFORMATION,owner,
-            "Schedule Event",
-            "Error",
-            "There is a problem with entered values; check whether the entered values are in correct format",
-            "/com/example/cld/Icons/CrossSign.png",
-            "/com/example/cld/Icons/addEvent.png"
-        );
     }
 
     @FXML
@@ -161,23 +131,6 @@ public class AddEventController {
         Error_date.setVisible(false);
     }
 
-    private com.example.cld.Event getEvent(String title) {
-        Time startTime = new Time();
-        Time endTime = new Time();
-        startTime.fromString(enter_start_time_txt_field.getText());
-        endTime.fromString(enter_end_time_txt_field.getText());
-
-        String repeatType = "none";
-        if (daily_radio_btn.isSelected()) {
-            repeatType = "daily";
-        } else if (weekly_radio_btn.isSelected()) {
-            repeatType = "weekly";
-        }
-
-        com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
-        return event;
-    }
-
     private void showPopup(String message) {
         Window owner = confirm_btm_addEvent.getScene().getWindow();
         // Create the alert
@@ -208,6 +161,7 @@ public class AddEventController {
 
     public void checkDate() {
         String input = enter_date_txt_field.getText().trim();
+        enter_date_txt_field.setStyle("-fx-text-fill: black;");
 
         if (input.isEmpty()) {
             Error_date.setVisible(false);
@@ -274,89 +228,121 @@ public class AddEventController {
 
     private void handle(ActionEvent event_) {
         try {
-            if (enter_date_txt_field.getText().isEmpty()) {
-                throw new IllegalArgumentException("Enter a date to schedule the event.");
-            }
+            String enterDateText = enter_date_txt_field.getText();
+            String eventName = enter_event_name_txt_field.getText();
+            String startTime = enter_start_time_txt_field.getText();
+            String endTime = enter_end_time_txt_field.getText();
 
-            int dayToSchedule = Integer.parseInt(enter_date_txt_field.getText());
-            // Validate the entered date
-            if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
-                Error_date.setVisible(true);
-                throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
-            }
+            validateInput(enterDateText, eventName, startTime, endTime);
+
+            int dayToSchedule = Integer.parseInt(enterDateText);
+
+            validateDate(dayToSchedule);
 
             if (mainController.getScheduler().days[dayToSchedule - 1].isDayOff()) {
-                Window owner = confirm_btm_addEvent.getScene().getWindow();
-
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Schedule Event");
-                alert.setHeaderText("Confirmation");
-                alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
-                alert.initOwner(owner);
-
-                // Load and set the alert's display icon
-                Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
-                ImageView alertImageView = new ImageView(alertImage);
-                alertImageView.setFitWidth(40); // Set desired width
-                alertImageView.setFitHeight(40); // Set desired height
-                alert.setGraphic(alertImageView);
-
-                ButtonType yesButton = ButtonType.YES;
-                ButtonType noButton = ButtonType.NO;
-                alert.getButtonTypes().setAll(yesButton, noButton);
-
-                Optional<ButtonType> result = alert.showAndWait();
-
-                if (result.isPresent() && result.get() == yesButton) {
-                    mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
-                    events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
-                } else {
+                if (!confirmProceedWithDayOff()) {
                     enterDayDetailsClear();
-                    throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
+                    throw new IllegalArgumentException("The selected day is marked as a day off. Cannot schedule.");
+                } else {
+                    mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
                 }
             }
 
-            if (enter_event_name_txt_field.getText().isEmpty()) {
-                throw new IllegalArgumentException("Enter a name for the event.");
-            }
-
-            if (enter_start_time_txt_field.getText().isEmpty()) {
-                throw new IllegalArgumentException("Enter a start times for the event.");
-            }
-            if (enter_end_time_txt_field.getText().isEmpty()) {
-                throw new IllegalArgumentException("Enter an end time for the event.");
-            }
-
-            if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
-                throw new IllegalArgumentException("Select a repeat type.");
-            }
-
-            if (enter_start_time_txt_field.getText().isEmpty() || enter_end_time_txt_field.getText().isEmpty()) {
-                throw new IllegalArgumentException("Enter start and end times for the event.");
-            }
+            validateRepeatType();
 
             Error_date.setVisible(false); // Hide the error label if the date is valid
 
-            String title = enter_event_name_txt_field.getText(); // done
-
-            enter_day_number_label.setText(String.valueOf(dayToSchedule));
-            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
-            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
-
-            com.example.cld.Event event = getEvent(title);
+            com.example.cld.Event event = getEvent(eventName);
 
             mainController.getScheduler().scheduleEvent(dayToSchedule, event);
+
+            updateText(dayToSchedule);
             successPopup();
             clearInputFields();
             resetCheckBoxesAndRadioButtons();
-            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
 
         } catch (NumberFormatException e) {
             showPopup("Enter a valid number.");
-        } catch (IllegalArgumentException e) {
-            showPopup(e.getMessage());
         } catch (Exception e) {
             showPopup(e.getMessage());
         }
+    }
+
+    private void validateInput(String enterDateText, String eventName, String startTime, String endTime) {
+        if (enterDateText.isEmpty()) {
+            throw new IllegalArgumentException("Enter a date to schedule the event.");
+        }
+        if (eventName.isEmpty()) {
+            throw new IllegalArgumentException("Enter a name for the event.");
+        }
+        if (startTime.isEmpty()) {
+            throw new IllegalArgumentException("Enter a start time for the event.");
+        }
+        if (endTime.isEmpty()) {
+            throw new IllegalArgumentException("Enter an end time for the event.");
+        }
+    }
+
+    private void validateDate(int dayToSchedule) {
+        if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
+            Error_date.setVisible(true);
+            throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
+        }
+    }
+
+    private boolean confirmProceedWithDayOff() {
+        Window owner = confirm_btm_addEvent.getScene().getWindow();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Schedule Event");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
+        alert.initOwner(owner);
+
+        Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png")));
+        ImageView alertImageView = new ImageView(alertImage);
+        alertImageView.setFitWidth(40);
+        alertImageView.setFitHeight(40);
+        alert.setGraphic(alertImageView);
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        Image windowIcon = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/addEvent.png")));
+        stage.getIcons().clear();
+        stage.getIcons().add(windowIcon);
+
+        alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        return result.isPresent() && result.get() == ButtonType.YES;
+    }
+
+    private void validateRepeatType() {
+        if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
+            throw new IllegalArgumentException("Select a repeat type.");
+        }
+    }
+
+    private void updateText(int dayToSchedule) {
+        enter_day_number_label.setText(String.valueOf(dayToSchedule));
+        enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
+        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+    }
+
+
+    private com.example.cld.Event getEvent(String title) {
+        Time startTime = new Time();
+        Time endTime = new Time();
+        startTime.fromString(enter_start_time_txt_field.getText());
+        endTime.fromString(enter_end_time_txt_field.getText());
+
+        String repeatType = "none";
+        if (daily_radio_btn.isSelected()) {
+           repeatType = "daily";
+
+        } else if (weekly_radio_btn.isSelected()) {
+           repeatType = "weekly";
+        }
+
+        return new com.example.cld.Event(title,startTime,endTime,repeatType);
     }
 }

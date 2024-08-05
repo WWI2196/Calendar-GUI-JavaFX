@@ -303,15 +303,14 @@ public class AddEventController {
             com.example.cld.Event event = getEvent(title);
 
             mainController.getScheduler().scheduleEvent(dayToSchedule, event);
-            successPopup();
+
             clearInputFields();
             resetCheckBoxesAndRadioButtons();
             events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
+            successPopup();
 
         } catch (NumberFormatException e) {
             showPopup("Enter a valid number.");
-        } catch (IllegalArgumentException e) {
-            showPopup(e.getMessage());
         } catch (Exception e) {
             showPopup(e.getMessage());
         }
@@ -331,7 +330,6 @@ public class AddEventController {
            repeatType = "weekly";
         }
 
-        com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
-        return event;
+        return new com.example.cld.Event(title,startTime,endTime,repeatType);
     }
 }

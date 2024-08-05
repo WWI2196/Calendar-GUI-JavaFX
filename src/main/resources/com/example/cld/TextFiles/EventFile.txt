@@ -4,27 +4,30 @@
 4|Meeting KIKU|15:45|16:00|none
 4|Meeting AMP EX|17:10|17:50|weekly
 4|Meeting AMP CM|18:00|18:30|none
-5|N|01:30|02:30|weekly
 5|Meeting I|04:30|05:30|weekly
-6|off|
-7|off|
+7|Meeting SM|08:00|09:00|weekly
+8|Meeting Warner|08:30|09:30|none
 9|Meeting AMP|09:30|12:45|weekly
-10|m|10:30|12:30|weekly
 11|Meeting IBM|12:50|15:45|weekly
 11|Meeting AMP EX|17:10|17:50|weekly
 12|N|01:30|02:30|weekly
 12|Meeting I|04:30|05:30|weekly
 12|Meeting C|08:45|09:50|none
+13|Meeting FOX|08:30|09:00|weekly
+14|Meeting SM|08:00|09:00|weekly
 16|Meeting AMP|09:30|12:45|weekly
 18|Meeting IBM|12:50|15:45|weekly
-18|Meeting AMP EX|17:10|17:50|weekly
 19|N|01:30|02:30|weekly
 19|Meeting I|04:30|05:30|weekly
+20|Meeting FOX|08:30|09:00|weekly
+21|Meeting SM|08:00|09:00|weekly
 23|Meeting AMP|09:30|12:45|weekly
 25|Meeting IBM|12:50|15:45|weekly
 25|Meeting AMP EX|17:10|17:50|weekly
 26|N|01:30|02:30|weekly
 26|Meeting I|04:30|05:30|weekly
+27|Meeting FOX|08:30|09:00|weekly
+28|Meeting SM|08:00|09:00|weekly
 29|Meeting A|04:00|06:00|none
 29|Meeting AXIO|08:30|09:00|none
 29|Meeting NEOI|09:30|12:30|none

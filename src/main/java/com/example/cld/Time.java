@@ -16,11 +16,11 @@ public class Time {
         this.minute = minute;
     }
 
-    public boolean isLessThan(Time comparisonTime) {
+    protected boolean isLessThan(Time comparisonTime) {
         return (hour < comparisonTime.hour) || (hour == comparisonTime.hour && minute < comparisonTime.minute);
     }
 
-    public boolean isGreaterThan(Time comparisonTime) {
+    protected boolean isGreaterThan(Time comparisonTime) {
         return (hour > comparisonTime.hour) || (hour == comparisonTime.hour && minute > comparisonTime.minute);
     }
 
@@ -29,7 +29,7 @@ public class Time {
         return String.format("%02d:%02d", hour, minute);
     }
 
-    public void fromString(String timeString) {
+    protected void fromString(String timeString) {
         // Split the string using any non-numeric character as the divider
         String[] parts = timeString.split("\\D+");
         if (parts.length != 2) {

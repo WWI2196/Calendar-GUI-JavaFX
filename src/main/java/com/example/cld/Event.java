@@ -22,7 +22,7 @@ public class Event {
         }
     }
 
-    public boolean overlaps(Event comparisonEvent) {
+    protected boolean overlaps(Event comparisonEvent) {
         return startTime.isLessThan(comparisonEvent.endTime) && endTime.isGreaterThan(comparisonEvent.startTime);
     }
 
@@ -31,11 +31,11 @@ public class Event {
         return title + " from " + startTime.toString() + " to " + endTime.toString() + " (" + repeatType + ")";
     }
 
-    public String formatEventDataToString() {
+    protected String formatEventDataToString() {
         return title + "|" + startTime.toString() + "|" + endTime.toString() + "|" + repeatType;
     }
 
-    public void extractEventData(String eventString) {
+    protected void extractEventData(String eventString) {
         String[] parts = eventString.split("\\|");
         this.title = parts[0];
         this.startTime = new Time();
@@ -45,7 +45,7 @@ public class Event {
         this.repeatType = parts[3];
     }
 
-    public String getTitle() {
+    protected String getTitle() {
         return title;
     }
 
@@ -57,7 +57,7 @@ public class Event {
         return endTime;
     }**/
 
-    public String getRepeatType() {
+    protected String getRepeatType() {
         return repeatType;
     }
 }

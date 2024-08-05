@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -43,10 +42,7 @@ public class SetDayOffController {
     @FXML
     private Label today_day_number_label;
 
-    @FXML
-    private Pane today_pane;
-
-     private MainController mainController = MainController.getInstance();
+     private final MainController mainController = MainController.getInstance();
 
     @FXML
     public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
@@ -120,14 +116,14 @@ public class SetDayOffController {
         );
     }
 
-    private void dayOffRemovedSuccess(String message, String title) {
+    private void dayOffRemovedSuccess() {
         Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
         // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.INFORMATION,owner,
                 "Set Day Off",
-                title,
-                message,
+                "Success",
+                "Day off removed successfully.",
                 "/com/example/cld/Icons/dayOff_removed.png",
                 "/com/example/cld/Icons/dayOff.png"
         );
@@ -173,15 +169,15 @@ public class SetDayOffController {
                 throw new IllegalArgumentException("Enter a date to set day off.");
             }
 
-            int dayToSetDayoff = Integer.parseInt(enter_date_txt_field.getText());
+            int dayToSetDayOff = Integer.parseInt(enter_date_txt_field.getText());
 
             // Validate the entered date
-            if (dayToSetDayoff < dayOfMonth || dayToSetDayoff > 31) {
+            if (dayToSetDayOff < dayOfMonth || dayToSetDayOff > 31) {
                 Error_date.setVisible(true);
                 throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
             }
 
-            if (mainController.getScheduler().days[dayToSetDayoff - 1].isDayOff()) {
+            if (mainController.getScheduler().days[dayToSetDayOff - 1].isDayOff()) {
                 Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -212,10 +208,10 @@ public class SetDayOffController {
                     successPopup();
                     return;
                 } else {
-                    mainController.getScheduler().removeDayOff(dayToSetDayoff);
-                    dayOffRemovedSuccess("Day off removed successfully.", "Success");
+                    mainController.getScheduler().removeDayOff(dayToSetDayOff);
+                    dayOffRemovedSuccess();
                     clearInputFields();
-                    events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
+                    events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayOff));
                     return;
                 }
             }
@@ -223,21 +219,19 @@ public class SetDayOffController {
             Error_date.setVisible(false); // Hide the error label if the date is valid
 
 
-            enter_day_number_label.setText(String.valueOf(dayToSetDayoff));
-            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSetDayoff));
-            events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
+            enter_day_number_label.setText(String.valueOf(dayToSetDayOff));
+            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSetDayOff));
+            events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayOff));
 
-            mainController.getScheduler().markDayOff(dayToSetDayoff);
+            mainController.getScheduler().markDayOff(dayToSetDayOff);
 
             successPopup();
             clearInputFields();
 
-            events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
+            events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayOff));
 
         } catch (NumberFormatException e) {
             showPopup("Enter a valid number.");
-        } catch (IllegalArgumentException e) {
-            showPopup(e.getMessage());
         } catch (Exception e) {
             showPopup(e.getMessage());
         }

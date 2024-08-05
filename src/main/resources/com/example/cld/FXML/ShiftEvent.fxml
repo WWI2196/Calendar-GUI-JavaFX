@@ -122,27 +122,18 @@
                <Font name="Century Gothic Bold" size="21.0" />
             </font>
          </Label>
-         <JFXButton fx:id="check_button" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="157.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_shift_evet.css" text="Button">
-            <graphic>
-               <ImageView fx:id="inner_pane_image1" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../Icons/enter.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </JFXButton>
          <Label layoutX="42.0" layoutY="123.0" text="Enter Date To Check" textFill="#9a9a9a">
             <font>
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="291.0" startX="-229.0" />
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="156.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_shift_evet.css">
+         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="156.0" onKeyTyped="#checkDate_1" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_shift_evet.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="336.0" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style_shift_evet.css">
+         <TextField fx:id="enter_event_name_txt_field" layoutX="42.0" layoutY="336.0" onKeyTyped="#checkName" prefHeight="40.0" prefWidth="523.0" stylesheets="@../style_shift_evet.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
@@ -173,20 +164,26 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <TextField fx:id="enter_new_date_txt_field" layoutX="40.0" layoutY="511.0" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_shift_evet.css">
+         <TextField fx:id="enter_new_date_txt_field" layoutX="40.0" layoutY="511.0" onKeyTyped="#checkDate_2" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_shift_evet.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
          </TextField>
-         <JFXButton fx:id="check_button_new_date" contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="512.0" prefHeight="39.0" prefWidth="29.0" stylesheets="@../style_shift_evet.css" text="Button">
-            <graphic>
-               <ImageView fx:id="inner_pane_image11" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../Icons/enter.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </JFXButton>
+         <Label fx:id="Error_date" layoutX="53.0" layoutY="196.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="Error_date1" layoutX="53.0" layoutY="551.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="error_name_label" layoutX="53.0" layoutY="372.0" prefHeight="25.0" prefWidth="516.0" textFill="#00ff0c" wrapText="true">
+            <font>
+               <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+         </Label>
       </children>
    </Pane>
 </HBox>

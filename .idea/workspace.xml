@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/SetDayOff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/SetDayOff.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ShiftEvent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +92,7 @@
       <workItem from="1722699303542" duration="66000" />
       <workItem from="1722736908388" duration="3740000" />
       <workItem from="1722870961141" duration="18464000" />
-      <workItem from="1722895751275" duration="222000" />
+      <workItem from="1722895751275" duration="4362000" />
     </task>
     <servers />
   </component>

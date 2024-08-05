@@ -130,84 +130,90 @@ public class DeleteEventController {
     }
 
     private void handle(Event event) {
-        try {
-            if (enter_date_txt_field.getText().isEmpty()) {
-                throw new IllegalArgumentException("Enter a date to select.");
-            }
+    try {
+        String enterDateText = enter_date_txt_field.getText();
+        String eventName = enter_event_name_txt_field.getText();
 
-            int dayToDelete = Integer.parseInt(enter_date_txt_field.getText());
-            boolean deleteRepeats = false;
-            String title = enter_event_name_txt_field.getText().trim();
+        validateInput(enterDateText, eventName);
 
-            // Validate the entered date
-            if (dayToDelete < dayOfMonth || dayToDelete > 31) {
-                Error_date_label.setVisible(true);
-                throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
-            }
+        int dayToDelete = Integer.parseInt(enterDateText);
 
-            if (title.isEmpty()) {
-                throw new IllegalArgumentException("Enter the name of the event.");
-            }
+        validateDate(dayToDelete);
 
+        if (!mainController.getScheduler().isEventNameExists(dayToDelete, eventName)) {
+            throw new IllegalArgumentException("Event not found.");
+        }
 
-            if (!mainController.getScheduler().isEventNameExists(dayToDelete, title)) {
-                throw new IllegalArgumentException("Event not found.");
-            }
+        boolean deleteRepeats = confirmDeleteRepeats(dayToDelete, eventName);
 
-            // Check if the event is repeating
-            String repeatType = mainController.getScheduler().getEventRepeatType(dayToDelete, title);
+        Error_date_label.setVisible(false);
 
+        mainController.getScheduler().deleteEvent(dayToDelete, eventName, deleteRepeats, mainController.getScheduler().getEventRepeatType(dayToDelete, eventName));
+        updateText(dayToDelete);
 
-            if (!repeatType.equals("none")) {
-                Window owner = confirm_btm_deleteEvent.getScene().getWindow();
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Delete Event");
-                alert.setHeaderText("Confirmation");
-                alert.setContentText("The selected event is a " + repeatType + " event. Do you want to delete all occurrences?");
-                alert.initOwner(owner);
+        successPopup();
+        clearInputFields();
+        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToDelete));
+    } catch (NumberFormatException e) {
+        showPopup("Invalid date format.");
+    } catch (Exception e) {
+        showPopup(e.getMessage());
+    }
+}
 
-                Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/event_repeat.png")));
-                ImageView alertImageView = new ImageView(alertImage);
-                alertImageView.setFitWidth(40);
-                alertImageView.setFitHeight(40);
-                alert.setGraphic(alertImageView);
-
-                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                Image windowIcon = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/deleteEvent.png")));
-                stage.getIcons().clear(); // Clear existing icons
-                stage.getIcons().add(windowIcon);
-
-                ButtonType yesButton = ButtonType.YES;
-                ButtonType noButton = ButtonType.NO;
-                alert.getButtonTypes().setAll(yesButton, noButton);
-
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.isPresent() && result.get() == yesButton) {
-                    deleteRepeats = true;
-                }
-            }
-
-            Error_date_label.setVisible(false);
-
-            enter_day_number_label.setText(String.valueOf(dayToDelete));
-            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToDelete));
-            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToDelete));
-
-            mainController.getScheduler().deleteEvent(dayToDelete, title, deleteRepeats, repeatType);
-
-            successPopup();
-            clearInputFields();
-            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToDelete));
-
-        } catch (NumberFormatException e) {
-            showPopup("Invalid date format.");
-        } catch (IllegalArgumentException e) {
-            showPopup(e.getMessage());
-        } catch (Exception e) {
-            showPopup("Unexpected error: " + e.getMessage());
+    private void validateInput(String enterDateText, String eventName) {
+        if (enterDateText.isEmpty()) {
+            throw new IllegalArgumentException("Enter a date to select.");
+        }
+        if (eventName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Enter the name of the event.");
         }
     }
 
+    private void validateDate(int dayToDelete) {
+        if (dayToDelete < dayOfMonth || dayToDelete > 31) {
+            Error_date_label.setVisible(true);
+            throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
+        }
+    }
+
+    private boolean confirmDeleteRepeats(int dayToDelete, String eventName) {
+        String repeatType = mainController.getScheduler().getEventRepeatType(dayToDelete, eventName);
+        if (repeatType.equals("none")) {
+            return false;
+        }
+
+        Alert alert = createDeleteConfirmationAlert(repeatType);
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.YES;
+    }
+
+    private Alert createDeleteConfirmationAlert(String repeatType) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Event");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("The selected event is a " + repeatType + " event. Do you want to delete all occurrences?");
+
+        Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/event_repeat.png")));
+        ImageView alertImageView = new ImageView(alertImage);
+        alertImageView.setFitWidth(40);
+        alertImageView.setFitHeight(40);
+        alert.setGraphic(alertImageView);
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        Image windowIcon = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/deleteEvent.png")));
+        stage.getIcons().clear();
+        stage.getIcons().add(windowIcon);
+
+        alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+        return alert;
+    }
+
+    private void updateText(int dayToDelete) {
+        enter_day_number_label.setText(String.valueOf(dayToDelete));
+        enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToDelete));
+        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToDelete));
+    }
 
     private void showPopup(String message) {
         Window owner = confirm_btm_deleteEvent.getScene().getWindow();

@@ -44,7 +44,7 @@ class Day {
     protected void deleteEvent(String title) {
         boolean eventFound = false;
         for (int i = 0; i < events.size(); ++i) {
-            if (events.get(i).title.equals(title)) {
+            if (events.get(i).title.equalsIgnoreCase(title)) {
                 events.remove(i);
                 eventFound = true;
                 break;
@@ -67,7 +67,7 @@ class Day {
     protected void shiftEvent(String title, int newDate, Day[] days) {
         Event eventToShift = null;
         for (Event event : events) {
-            if (event.title.equals(title)) {
+            if (event.title.equalsIgnoreCase(title)) {
                 eventToShift = event;
                 break;
             }

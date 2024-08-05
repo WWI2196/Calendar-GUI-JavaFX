@@ -158,7 +158,7 @@ class Scheduler {
             days[date - 1].shiftEvent(title, newDate, days);
             saveEventsToTxt();
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error shifting event");
+            throw new IllegalArgumentException("Error shifting event" + e.getMessage());
         }
     }
 

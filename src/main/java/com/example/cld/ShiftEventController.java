@@ -1,26 +1,24 @@
 package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.example.cld.Main.dayOfMonth;
 
 public class ShiftEventController {
 
-    @FXML
+   @FXML
     private JFXButton back_to_main_btm;
 
     @FXML
@@ -36,16 +34,13 @@ public class ShiftEventController {
     private JFXButton btm_shiftEvent;
 
     @FXML
-    private JFXButton check_button;
+    private JFXButton btm_shiftEvent1;
 
     @FXML
-    private JFXButton check_button_new_date;
+    private JFXButton btm_shiftEvent11;
 
     @FXML
     private JFXButton confirm_btm_shiftEvent;
-
-    @FXML
-    private Pane date_picker;
 
     @FXML
     private TextField enter_date_txt_field;
@@ -54,44 +49,34 @@ public class ShiftEventController {
     private Label enter_day_name_label;
 
     @FXML
-    private Label enter_day_name_label1;
-
-    @FXML
     private Label enter_day_number_label;
 
     @FXML
-    private Label enter_day_number_label1;
-
-    @FXML
     private TextField enter_event_name_txt_field;
-
 
     @FXML
     private TextField enter_new_date_txt_field;
 
     @FXML
-    private Pane enter_today_pane;
+    private Label error_enter_date_label;
 
     @FXML
-    private Pane enter_today_pane1;
+    private Label error_name_label;
 
     @FXML
-    private Label events_on_enter_day_label;
+    private Label error_shift_date_label;
 
     @FXML
-    private Label events_on_enter_day_label1;
+    private JFXTextArea events_on_enter_day_textArea;
 
     @FXML
-    private ImageView inner_pane_image1;
+    private JFXTextArea events_on_shift_day_textArea;
 
     @FXML
-    private ImageView inner_pane_image11;
+    private Label shift_day_name_label;
 
     @FXML
-    private HBox root;
-
-    @FXML
-    private AnchorPane side_ankerpane;
+    private Label shift_day_number_label;
 
     @FXML
     private Label today_day_name_label;
@@ -99,21 +84,9 @@ public class ShiftEventController {
     @FXML
     private Label today_day_number_label;
 
-    @FXML
-    private Label Error_date;
-
-    @FXML
-    private Label Error_date1;
-
-    @FXML
-    private Label error_name_label;
-
-    @FXML
-    private Pane today_pane;
 
     private MainController mainController = MainController.getInstance();
 
-    @FXML
     public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToMainMenu(event);
     }
@@ -132,21 +105,14 @@ public class ShiftEventController {
     @FXML
     public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToShiftEvent(event);
-
     }
-
     @FXML
-    private void Error() {
-        Window owner = confirm_btm_shiftEvent.getScene().getWindow();
-        // Create the alert
-        MainController.AlertHelper.showAlert(
-                Alert.AlertType.INFORMATION,owner,
-                "Shift Event",
-                "Error",
-                "There is a problem with entered values; check whether the entered values are in correct format",
-                "/com/example/cld/Icons/CrossSign.png",
-                "/com/example/cld/Icons/shiftEvent.png"
-        );
+    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToViewWeek(event);
+    }
+    @FXML
+    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+        mainController.switchToViewMonth(event);
     }
 
     @FXML
@@ -164,93 +130,7 @@ public class ShiftEventController {
     }
 
     public void initialize() {
-        confirm_btm_shiftEvent.setOnAction(event_ -> {
-            try {
-                int eventBeforeshift = Integer.parseInt(enter_date_txt_field.getText());
-                int eventAftershift = Integer.parseInt(enter_new_date_txt_field.getText());
-
-                // Validate the entered date
-                if (eventBeforeshift < dayOfMonth || eventBeforeshift > 31) {
-                    Error_date.setVisible(true);
-                    throw new IllegalArgumentException(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
-                }
-
-                if (eventAftershift < dayOfMonth || eventAftershift > 31) {
-                    Error_date1.setVisible(true);
-                    throw new IllegalArgumentException(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
-                }
-
-                if (mainController.getScheduler().days[eventAftershift - 1].isDayOff()) {
-                    Window owner = confirm_btm_shiftEvent.getScene().getWindow();
-
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Shift Event");
-                    alert.setHeaderText("Confirmation");
-                    alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
-                    alert.initOwner(owner);
-
-                    // Load and set the alert's display icon
-                    Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
-                    ImageView alertImageView = new ImageView(alertImage);
-                    alertImageView.setFitWidth(40); // Set desired width
-                    alertImageView.setFitHeight(40); // Set desired height
-                    alert.setGraphic(alertImageView);
-
-                    ButtonType yesButton = ButtonType.YES;
-                    ButtonType noButton = ButtonType.NO;
-                    alert.getButtonTypes().setAll(yesButton, noButton);
-
-                    Optional<ButtonType> result = alert.showAndWait();
-
-                    if (result.isPresent() && result.get() == yesButton) {
-                        mainController.getScheduler().days[eventAftershift - 1].setDayOff(false);
-                        events_on_enter_day_label1.setText(mainController.getScheduler().displayEvents(eventAftershift));
-                    } else {
-                        throw new IllegalArgumentException("The selected day is marked as a day off. Can not shift.");
-                    }
-                }
-
-                if (enter_date_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter data filed can not be zero");
-                }
-
-                if (enter_event_name_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter a name for the event.");
-                }
-                if(enter_new_date_txt_field.getText().isEmpty()) {
-                    throw new IllegalArgumentException("Enter date to shift");
-                }
-
-
-                Error_date.setVisible(false); // Hide the error label if the date is valid
-                Error_date1.setVisible(false);
-
-                String title = enter_event_name_txt_field.getText(); // done
-
-                enter_day_number_label.setText(String.valueOf(eventBeforeshift));
-                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(eventBeforeshift));
-                events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(eventBeforeshift));
-
-                enter_day_number_label1.setText(String.valueOf(eventAftershift));
-                enter_day_name_label1.setText(DateNameMain.getDayAbbreviationAb(eventAftershift));
-                events_on_enter_day_label1.setText(mainController.getScheduler().displayEvents(eventAftershift));
-
-
-                mainController.getScheduler().shiftEvent(eventBeforeshift,title,eventAftershift);
-
-                successPopup();
-                clearInputFields();
-                events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(eventBeforeshift));
-                events_on_enter_day_label1.setText(mainController.getScheduler().displayEvents(eventAftershift));
-
-            } catch (NumberFormatException e) {
-                showPopup(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                showPopup(e.getMessage());
-            } catch (Exception e) {
-                showPopup(e.getMessage());
-            }
-        });
+        confirm_btm_shiftEvent.setOnAction(this::handle);
 
         today_day_number_label.setText(String.valueOf(dayOfMonth));
         today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
@@ -263,11 +143,108 @@ public class ShiftEventController {
             enter_new_date_txt_field.setText(String.valueOf(dayOfMonth));
         }
 
-
         // Hide the Error_date label initially
-        Error_date.setVisible(false);
-        Error_date1.setVisible(false);
+        error_enter_date_label.setVisible(false);
+        error_shift_date_label.setVisible(false);
     }
+
+    private void handle(Event event) {
+        try {
+            String enterDateText = enter_date_txt_field.getText();
+            String enterNewDateText = enter_new_date_txt_field.getText();
+            String eventName = enter_event_name_txt_field.getText();
+
+            validateInput(enterDateText, enterNewDateText, eventName);
+
+            int eventBeforeShift = Integer.parseInt(enterDateText);
+            int eventAfterShift = Integer.parseInt(enterNewDateText);
+
+            validateDates(eventBeforeShift, eventAfterShift);
+
+            if (!mainController.getScheduler().isEventNameExists(eventBeforeShift, eventName)) {
+                throw new IllegalArgumentException("Event not found.");
+            }
+
+            if (mainController.getScheduler().days[eventAfterShift - 1].isDayOff()) {
+                if (!confirmDayOffShift()) {
+                    throw new IllegalArgumentException("The selected day is marked as a day off. Cannot shift.");
+                }
+                mainController.getScheduler().days[eventAfterShift - 1].setDayOff(false);
+            }
+
+            mainController.getScheduler().shiftEvent(eventBeforeShift, eventName, eventAfterShift);
+            updateText(eventBeforeShift, eventAfterShift);
+            successPopup();
+            clearInputFields();
+
+        } catch (NumberFormatException e) {
+            showPopup("Enter a valid number.");
+        } catch (Exception e) {
+            showPopup(e.getMessage());
+        }
+    }
+
+    private void validateInput(String enterDateText, String enterNewDateText, String eventName) {
+        if (enterDateText.isEmpty()) {
+            throw new IllegalArgumentException("Enter a date to set day off.");
+        }
+        if (enterNewDateText.isEmpty()) {
+            throw new IllegalArgumentException("Enter a date to shift the event.");
+        }
+        if (eventName.isEmpty()) {
+            throw new IllegalArgumentException("Enter a name for the event.");
+        }
+    }
+
+    private void validateDates(int eventBeforeShift, int eventAfterShift) {
+        if (eventBeforeShift < dayOfMonth || eventBeforeShift > 31) {
+            error_enter_date_label.setVisible(true);
+            throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
+        }
+        if (eventAfterShift < dayOfMonth || eventAfterShift > 31) {
+            error_shift_date_label.setVisible(true);
+            throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
+        }
+        error_enter_date_label.setVisible(false);
+        error_shift_date_label.setVisible(false);
+    }
+
+    private boolean confirmDayOffShift() {
+        Window owner = confirm_btm_shiftEvent.getScene().getWindow();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Shift Event");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
+        alert.initOwner(owner);
+
+        Image alertImage = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png")));
+        ImageView alertImageView = new ImageView(alertImage);
+        alertImageView.setFitWidth(40);
+        alertImageView.setFitHeight(40);
+        alert.setGraphic(alertImageView);
+
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        Image windowIcon = new Image(Objects.requireNonNull(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/shiftEvent.png")));
+        stage.getIcons().clear();
+        stage.getIcons().add(windowIcon);
+
+        alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        return result.isPresent() && result.get() == ButtonType.YES;
+    }
+
+    private void updateText(int eventBeforeShift, int eventAfterShift) {
+        enter_day_number_label.setText(String.valueOf(eventBeforeShift));
+        enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(eventBeforeShift));
+        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(eventBeforeShift));
+
+        shift_day_number_label.setText(String.valueOf(eventAfterShift));
+        shift_day_name_label.setText(DateNameMain.getDayAbbreviationAb(eventAfterShift));
+        events_on_shift_day_textArea.setText(mainController.getScheduler().displayEvents(eventAfterShift));
+    }
+
 
     private void showPopup(String message) {
         Window owner = confirm_btm_shiftEvent.getScene().getWindow();
@@ -283,68 +260,73 @@ public class ShiftEventController {
     }
 
     private void clearInputFields() {
-        //enter_date_txt_field.clear();
+
+        enter_date_txt_field.clear();
         enter_event_name_txt_field.clear();
         error_name_label.setVisible(false);
+        enter_new_date_txt_field.clear();
         //events_on_enter_day_textArea.clear();
     }
 
-    public void checkDate_1() {
-        String input = enter_date_txt_field.getText().trim();
-
-        if (input.isEmpty()) {
-            Error_date.setVisible(false);
-            return;
-        }
-
-        try {
-            int day = Integer.parseInt(input);
-            if (day < dayOfMonth || day > 31) {
-                Error_date.setVisible(true);
-                Error_date.setText(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
-            } else {
-                Error_date.setVisible(false);
-                enter_day_number_label.setText(String.valueOf(day));
-                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
-                events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(day));
-            }
-        } catch (NumberFormatException e) {
-            Error_date.setVisible(true);
-            Error_date.setText("Enter a valid number.");
-        }
+    public void checkDate() {
+        dateValidation(enter_date_txt_field.getText().trim(),
+                error_enter_date_label,
+                enter_day_number_label,
+                enter_day_name_label,
+                events_on_enter_day_textArea,
+                enter_date_txt_field);
     }
 
-    public void checkDate_2() {
-        String input = enter_new_date_txt_field.getText().trim();
+    public void checkDate_1() {
+        dateValidation(enter_new_date_txt_field.getText().trim(),
+                             error_shift_date_label,
+                             shift_day_number_label,
+                             shift_day_name_label,
+                             events_on_shift_day_textArea,
+                             enter_new_date_txt_field);
+    }
 
+    private void dateValidation(String input,
+                                      Label errorLabel,
+                                      Label dayNumberLabel,
+                                      Label dayNameLabel,
+                                      TextArea eventsTextArea,
+                                TextField enter_date_txt_field) {
         if (input.isEmpty()) {
-            Error_date1.setVisible(false);
+            errorLabel.setVisible(false);
+            enter_date_txt_field.setStyle("-fx-text-fill: black;");
             return;
         }
 
         try {
             int day = Integer.parseInt(input);
             if (day < dayOfMonth || day > 31) {
-                Error_date1.setVisible(true);
-                Error_date1.setText(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
+                errorLabel.setVisible(true);
+                enter_date_txt_field.setStyle("-fx-text-fill: red;");
+                errorLabel.setText(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
             } else {
-                Error_date1.setVisible(false);
-                enter_day_number_label1.setText(String.valueOf(day));
-                enter_day_name_label1.setText(DateNameMain.getDayAbbreviationAb(day));
-                events_on_enter_day_label1.setText(mainController.getScheduler().displayEvents(day));
+                errorLabel.setVisible(false);
+                dayNumberLabel.setText(String.valueOf(day));
+                enter_date_txt_field.setStyle("-fx-text-fill: black;");
+                dayNameLabel.setText(DateNameMain.getDayAbbreviationAb(day));
+                eventsTextArea.setText(mainController.getScheduler().displayEvents(day));
             }
         } catch (NumberFormatException e) {
-            Error_date1.setVisible(true);
-            Error_date1.setText("Enter a valid number.");
+            errorLabel.setVisible(true);
+            enter_date_txt_field.setStyle("-fx-text-fill: red;");
+            errorLabel.setText("Enter a valid number.");
         }
+
+        checkName();
     }
 
     public void checkName() {
         String input = enter_event_name_txt_field.getText().toUpperCase().trim();
-
+        enter_event_name_txt_field.setStyle("-fx-text-fill: red;");
 
         if (input.isEmpty()) {
             error_name_label.setVisible(false);
+            enter_event_name_txt_field.setStyle("-fx-text-fill: black;");
             return;
         }
 
@@ -362,6 +344,7 @@ public class ShiftEventController {
         } catch (IllegalArgumentException e) {
             error_name_label.setVisible(true);
             error_name_label.setText(e.getMessage());
+            enter_event_name_txt_field.setStyle("-fx-text-fill: green;");
         }
     }
 

@@ -212,17 +212,6 @@ class Scheduler {
         }
     }
 
-//    protected String displayEventsForMonths(int date) {
-//        if (date < 1 || date > 31) {
-//            throw new IllegalArgumentException("Invalid date");
-//        }
-//        if( !days[date - 1].toString().isEmpty()) {
-//            return days[date - 1].toStringCustom();
-//        }else{
-//            return "No events";
-//        }
-//    }
-
     protected int countEvents(int startDay, int endDay) {
         if (startDay < 1 || startDay > 31 || endDay < 1 || endDay > 31) {
             throw new IllegalArgumentException("Invalid day range");
@@ -241,24 +230,6 @@ class Scheduler {
 
     }
 
-//    protected String viewWeekSchedule(int startDay) {
-//        if (startDay < 1 || startDay > 31) {
-//            throw new IllegalArgumentException("Invalid start day");
-//        }
-//
-//        int startIndex = ((startDay - 1) / 7) * 7;
-//        int endIndex = Math.min(startIndex + 7, 31);
-//
-//        for (int i = startIndex; i < endIndex; ++i) {
-//            String output = days[i].toString();
-//            if (!output.isEmpty()) {
-//                return output;
-//            } else {
-//                return "No events";
-//            }
-//        }
-//        return null;
-//    }
 
     public void displayAllEvents() {
         for (int i = 0; i < 31; ++i) {

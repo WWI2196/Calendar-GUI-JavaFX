@@ -7,7 +7,7 @@ This is a Graphical User Interface (GUI) based calendar application for the mont
 1. **Clone the Repository**
 
 2. **Build the Project**
-    Use your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse) to open the project and build it. Make sure you have JavaFX set up correctly in your IDE.
+    Use your preferred Java IDE (e.g., IntelliJ IDEA) to open the project and build it. Make sure you have JavaFX set up correctly in your IDE.
 
 ## Usage
 

@@ -2,21 +2,74 @@
 
 This is a Graphical User Interface (GUI) based calendar application for the month of July in the year 2024, built using Java and JavaFX. The application allows users to view, schedule, edit, and delete events. It also features month and week views of the calendar. 
 
-## Features
+## Installation
 
-- **Welcome Screen**: Displays the calendar for July 2024.
-- **Day View**: Users can view a single day's schedule by clicking on a specific date.
-- **Event Scheduling**: Users can schedule events using a form.
-- **Calendar View Toggle**: Users can switch between month view and week view.
-- **Event Details**: Clicking on an event in the schedule opens a window displaying the event's details.
-- **Event Management**: Events can be edited or deleted using separate forms. Drag-and-drop functionality for events is not supported.
-- **Persistent Storage**: Calendar details are saved when the application is closed and loaded when it is reopened.
-- **Input Validation**: GUI input validation is implemented to ensure proper data entry.
+1. **Clone the Repository**
 
-## Getting Started
+2. **Build the Project**
+    Use your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse) to open the project and build it. Make sure you have JavaFX set up correctly in your IDE.
 
-### Prerequisites
+## Usage
 
-- Java Development Kit (JDK) 8 or higher
-- JavaFX SDK
-- An IDE or text editor (e.g., IntelliJ IDEA)
+1. **Run the Application**
+    Run the `Main` class located in `src/main/java/com/example/cld/Main.java` to start the application. The welcome screen will display the calendar for July 2024.
+
+2. **Viewing a Day's Schedule**
+    Click on any date to view the events scheduled for that day.
+
+3. **Adding an Event**
+    Click the "Add Event" button and fill out the form to schedule a new event.
+
+4. **Switching Calendar Views**
+    Use the "Month" and "Week" buttons to toggle between month and week views.
+
+5. **Viewing Event Details**
+    Click on an event in the schedule to view its details in a new window.
+
+6. **Editing, Shifting or Deleting an Event**
+    Select an event and use the "Edit" or "Delete" buttons to modify or remove the event.
+
+## Project Structure
+
+- **src**
+  - **main**
+    - **java**
+      - **com.example.cld**
+        - `AddEventController.java`
+        - `DateNameMain.java`
+        - `Day.java`
+        - `DeleteEventController.java`
+        - `Event.java`
+        - `Main.java`
+        - `MainController.java`
+        - `Scheduler.java`
+        - `SetDayOffController.java`
+        - `ShiftEventController.java`
+        - `Time.java`
+        - `ViewMonthController.java`
+        - `ViewWeekController.java`
+    - **resources**
+      - **com.example.cld**
+        - **FXML**
+          - `AddEvent.fxml`
+          - `DeleteEvent.fxml`
+          - `Main.fxml`
+          - `SetDayOff.fxml`
+          - `ShiftEvent.fxml`
+          - `ViewMonth.fxml`
+          - `ViewWeek.fxml`
+        - **Icons**: Contains icon files.
+        - **Styles**: Contains CSS stylesheets.
+        - **TextFiles**
+          - `EventFile.txt`
+      - `style.css`
+      - `style_add_event.css`
+      - `style_date_btm.css`
+      - `style_delete_event.css`
+      - `style_shift_event.css`
+
+## Requirements
+
+- Java 8 or higher
+- JavaFX 11 or higher
+- An IDE with JavaFX support

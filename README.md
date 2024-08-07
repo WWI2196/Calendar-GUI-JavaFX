@@ -1,6 +1,6 @@
 # JavaFX Calendar Application
 
-This is a Graphical User Interface (GUI) based calendar application for the month of July in the year 2024, built using Java and JavaFX. The application allows users to view, schedule, shift, and delete events. It also features month and week views of the calendar. 
+This is a Graphical User Interface (GUI) based calendar application for the month of July in the year 2024, built using Java and JavaFX. The application allows users to view, schedule, shift, set day-offs and delete events. It also features month and week views of the calendar. 
 
 ## Installation
 

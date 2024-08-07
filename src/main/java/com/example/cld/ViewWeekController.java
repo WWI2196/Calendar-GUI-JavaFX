@@ -3,7 +3,6 @@ package com.example.cld;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -17,7 +16,7 @@ import static com.example.cld.Main.dayOfMonth;
 
 public class ViewWeekController {
 
-//    int dayOfMonth = 29;
+    //int dayOfMonth = 14;
     @FXML
     private JFXButton btm_back;
 
@@ -163,7 +162,7 @@ public class ViewWeekController {
            startIndex = 28; // Starting index for the fifth week (28th to 31st)
            endIndex = 31; // End index for the fifth week
        } else {
-           startIndex = ((startIndex - 1) / 7) * 7; // Start of the current week
+           startIndex = ((startIndex) / 7) * 7; // Start of the current week
            endIndex = Math.min(startIndex + 6, 31); // Ensure endIndex does not exceed 31
        }
 
@@ -186,7 +185,7 @@ public class ViewWeekController {
            todayPanes[i].setVisible(isVisible);
        }
 
-       total_events_number_label.setText(String.valueOf(MainController.scheduler.countWeekEvents(startIndex, endIndex)));
+       total_events_number_label.setText(String.valueOf(MainController.scheduler.countEvents(startIndex, endIndex)));
 
    }
 

@@ -151,11 +151,14 @@ class Scheduler {
     }
 
     protected String getEventRepeatType(int date, String title) {
-        Event event = days[date - 1].getEvent(title);
-        if (event != null) {
-            return event.getRepeatType(); // Assuming Event class has a getRepeatType method
+        String lowercaseTitle = title.toLowerCase();
+
+        for (Event event : days[date - 1].getEvents()) { // Assuming getEvents() returns a collection of Event objects
+            if (event.getTitle().toLowerCase().equals(lowercaseTitle)) {
+                return event.getRepeatType();
+            }
         }
-        return null;
+        return "none";
     }
 
     protected void shiftEvent(int date, String title, int newDate) {
@@ -209,7 +212,18 @@ class Scheduler {
         }
     }
 
-    protected int countWeekEvents(int startDay, int endDay) {
+    protected String displayEventsForMonths(int date) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        if( !days[date - 1].toString().isEmpty()) {
+            return days[date - 1].toStringCustom();
+        }else{
+            return "No events";
+        }
+    }
+
+    protected int countEvents(int startDay, int endDay) {
         if (startDay < 1 || startDay > 31 || endDay < 1 || endDay > 31) {
             throw new IllegalArgumentException("Invalid day range");
         }

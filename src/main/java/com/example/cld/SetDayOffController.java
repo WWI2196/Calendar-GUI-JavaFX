@@ -2,6 +2,7 @@ package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -169,7 +170,7 @@ public class SetDayOffController {
         //checkName();
     }
 
-    private void handleDayOff(Event event) {
+    private void handleDayOff(ActionEvent event) {
         try {
             String enterDateText = enter_date_txt_field.getText();
 

@@ -129,37 +129,37 @@ public class DeleteEventController {
 
     }
 
-    private void handle(Event event) {
-    try {
-        String enterDateText = enter_date_txt_field.getText();
-        String eventName = enter_event_name_txt_field.getText();
+    private void handle(ActionEvent actionEvent) {
+        try {
+            String enterDateText = enter_date_txt_field.getText();
+            String eventName = enter_event_name_txt_field.getText();
 
-        validateInput(enterDateText, eventName);
+            validateInput(enterDateText, eventName);
 
-        int dayToDelete = Integer.parseInt(enterDateText);
+            int dayToDelete = Integer.parseInt(enterDateText);
 
-        validateDate(dayToDelete);
+            validateDate(dayToDelete);
 
-        if (!mainController.getScheduler().isEventNameExists(dayToDelete, eventName)) {
-            throw new IllegalArgumentException("Event not found.");
+            if (!mainController.getScheduler().isEventNameExists(dayToDelete, eventName)) {
+                throw new IllegalArgumentException("Event not found.");
+            }
+
+            boolean deleteRepeats = confirmDeleteRepeats(dayToDelete, eventName);
+
+            Error_date_label.setVisible(false);
+
+            mainController.getScheduler().deleteEvent(dayToDelete, eventName, deleteRepeats, mainController.getScheduler().getEventRepeatType(dayToDelete, eventName));
+            updateText(dayToDelete);
+
+            successPopup();
+            clearInputFields();
+            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToDelete));
+        } catch (NumberFormatException e) {
+            showPopup("Invalid date format.");
+        } catch (Exception e) {
+            showPopup(e.getMessage());
         }
-
-        boolean deleteRepeats = confirmDeleteRepeats(dayToDelete, eventName);
-
-        Error_date_label.setVisible(false);
-
-        mainController.getScheduler().deleteEvent(dayToDelete, eventName, deleteRepeats, mainController.getScheduler().getEventRepeatType(dayToDelete, eventName));
-        updateText(dayToDelete);
-
-        successPopup();
-        clearInputFields();
-        events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToDelete));
-    } catch (NumberFormatException e) {
-        showPopup("Invalid date format.");
-    } catch (Exception e) {
-        showPopup(e.getMessage());
     }
-}
 
     private void validateInput(String enterDateText, String eventName) {
         if (enterDateText.isEmpty()) {

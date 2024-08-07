@@ -44,7 +44,7 @@
     -fx-border-color: #6200EE;
 }
 
-#btm_date6{
+.btm_date6{
     -fx-background-color: #7F39FB;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -62,7 +62,7 @@
     -fx-border-color: #F26A40;
 }
 
-#btm_date8{
+.btm_date8{
     -fx-background-color: #18CBCF;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -71,7 +71,7 @@
     -fx-border-color: #18CBCF;
 }
 
-#btm_date9{
+.btm_date9{
     -fx-background-color: #A1CC00;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;

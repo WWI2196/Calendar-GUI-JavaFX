@@ -209,7 +209,7 @@
                </JFXTextArea>
             </children>
          </Pane>
-         <JFXButton fx:id="btm_toMonthView" layoutX="32.0" layoutY="632.0" onAction="#switchToViewMonth" prefHeight="58.0" prefWidth="129.0" stylesheets="@../Styles/style_view_week.css" text="View Month" textFill="WHITE">
+         <JFXButton fx:id="btm_toMonthView" layoutX="32.0" layoutY="632.0" onAction="#switchToViewMonth" prefHeight="58.0" prefWidth="129.0" styleClass="btm_toMonthView" stylesheets="@../Styles/style_view_week.css" text="View Month" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="16.0" />
             </font>

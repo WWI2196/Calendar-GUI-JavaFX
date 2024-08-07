@@ -27,7 +27,6 @@
 }
 
 #events_on_enter_day_day_off_textArea{
-    -fx-background-color: transparent; /* Make the background transparent */
     -fx-background-color: #FFFFFF; /* Set the background color */
     -fx-background-radius: 30px; /* Set the background radius */
     -fx-border-radius: 30px; /* Set the border radius */

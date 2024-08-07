@@ -86,7 +86,7 @@ public class ShiftEventController {
     private Label today_day_number_label;
 
 
-    private MainController mainController = MainController.getInstance();
+    private final MainController mainController = MainController.getInstance();
 
     public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
         mainController.switchToMainMenu(event);

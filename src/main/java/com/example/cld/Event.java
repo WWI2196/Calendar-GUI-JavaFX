@@ -33,8 +33,12 @@ public class Event {
         return title + " from " + startTime.toString() + " to " + endTime.toString() + " (" + repeatType + ")";
     }
 
-    protected String toStringCustom(){
-        return  startTime.toString() + " - " + title+"("+(Objects.equals(repeatType, "none") ? "n": Objects.equals(repeatType, "daily") ? "d":"w")+")";
+    protected String formatDataToString() {
+        return startTime.toString()+"-"+title+"("+(Objects.equals(repeatType, "none") ? "n": Objects.equals(repeatType, "daily") ? "d":"w")+")";
+    }
+
+    protected String formatEventDataToString() {
+        return title + "|" + startTime.toString() + "|" + endTime.toString() + "|" + repeatType;
     }
 
     protected void extractEventData(String eventString) {

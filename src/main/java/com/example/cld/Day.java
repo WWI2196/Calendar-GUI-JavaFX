@@ -107,33 +107,13 @@ class Day {
         return sb.toString();
     }
 
-    protected String toStringCustom() {
-        if (events.isEmpty() && !isDayOff) {
-            return "";
-        }
-
-        StringBuilder sb = new StringBuilder();
-//        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
-
-        if (isDayOff) {
-            sb.append(" (Day Off)");
-        }
-        sb.append("\n");
-
-        for (Event event : events) {
-            sb.append("  ").append(event.toStringCustom()).append("\n");
-        }
-
-        return sb.toString();
-    }
-
     protected String formatDayDataToString() {
         StringBuilder sb = new StringBuilder();
         if (isDayOff) {
             sb.append(date).append("|off|\n");
         }
         for (Event event : events) {
-            sb.append(date).append("|").append(event.toStringCustom()).append("\n");
+            sb.append(date).append("|").append(event.formatEventDataToString()).append("\n");
         }
         return sb.toString();
     }
@@ -157,6 +137,7 @@ class Day {
             }
         }
     }
+
 
     protected boolean isDayOff() {
         return isDayOff;
@@ -186,5 +167,25 @@ class Day {
             }
         }
         return null;
+    }
+
+    public String toStringCustom() {
+        if (events.isEmpty() && !isDayOff) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+//        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
+
+        if (isDayOff) {
+            sb.append(" (Day Off)");
+        }
+        sb.append("\n");
+
+        for (Event event : events) {
+            sb.append("  ").append(event.formatDataToString()).append("\n");
+        }
+
+        return sb.toString();
     }
 }

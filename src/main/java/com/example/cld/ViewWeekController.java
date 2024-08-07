@@ -18,12 +18,6 @@ public class ViewWeekController {
 
     //int dayOfMonth = 14;
     @FXML
-    private JFXButton btm_back;
-
-    @FXML
-    private JFXButton btm_toMonthView;
-
-    @FXML
     private JFXButton btm_week1;
 
     @FXML

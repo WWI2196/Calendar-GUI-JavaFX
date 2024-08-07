@@ -18,7 +18,7 @@ class Scheduler {
     }
 
     private void initializeDays() {
-        String[] daysOfWeek = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        String[] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
         for (int i = 0; i < 31; ++i) {
             days[i] = new Day(i + 1, daysOfWeek[i % 7]);
@@ -123,24 +123,24 @@ class Scheduler {
                 throw new IllegalArgumentException("Event not found.");
             }
 
-           if (deleteRepeats) {
-            if ("daily".equals(repeatType)) {
-                for (int i = date - 1; i < 31; ++i) {
-                    try {
-                        days[i].deleteEvent(title);
-                    } catch (IllegalArgumentException e) {
-                        // Event not found on this day, continue to next day
+            if (deleteRepeats) {
+                if ("daily".equals(repeatType)) {
+                    for (int i = date - 1; i < 31; ++i) {
+                        try {
+                            days[i].deleteEvent(title);
+                        } catch (IllegalArgumentException e) {
+                            // Event not found on this day, continue to next day
+                        }
+                    }
+                } else if ("weekly".equals(repeatType)) {
+                    for (int i = date - 1; i < 31; i += 7) {
+                        try {
+                            days[i].deleteEvent(title);
+                        } catch (IllegalArgumentException e) {
+                            // Event not found on this day, continue to next week
+                        }
                     }
                 }
-            } else if ("weekly".equals(repeatType)) {
-                for (int i = date - 1; i < 31; i += 7) {
-                    try {
-                        days[i].deleteEvent(title);
-                    } catch (IllegalArgumentException e) {
-                        // Event not found on this day, continue to next week
-                    }
-                }
-            }
             } else {
                 days[date - 1].deleteEvent(title);
             }
@@ -205,20 +205,9 @@ class Scheduler {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");
         }
-        if( !days[date - 1].toString().isEmpty()) {
+        if (!days[date - 1].toString().isEmpty()) {
             return days[date - 1].toString();
-        }else{
-            return "No events";
-        }
-    }
-
-    protected String displayEventsForMonths(int date) {
-        if (date < 1 || date > 31) {
-            throw new IllegalArgumentException("Invalid date");
-        }
-        if( !days[date - 1].toString().isEmpty()) {
-            return days[date - 1].toStringCustom();
-        }else{
+        } else {
             return "No events";
         }
     }
@@ -241,24 +230,6 @@ class Scheduler {
 
     }
 
-    protected String viewWeekSchedule(int startDay) {
-        if (startDay < 1 || startDay > 31) {
-            throw new IllegalArgumentException("Invalid start day");
-        }
-
-        int startIndex = ((startDay - 1) / 7) * 7;
-        int endIndex = Math.min(startIndex + 7, 31);
-
-        for (int i = startIndex; i < endIndex; ++i) {
-            String output = days[i].toString();
-            if (!output.isEmpty()) {
-                return output;
-            }else{
-                return "No events";
-            }
-        }
-        return null;
-    }
 
     public void displayAllEvents() {
         for (int i = 0; i < 31; ++i) {
@@ -335,4 +306,14 @@ class Scheduler {
         }
     }
 
+    public String displayEventsForMonths(int date) {
+        if (date < 1 || date > 31) {
+            throw new IllegalArgumentException("Invalid date");
+        }
+        if (!days[date - 1].toString().isEmpty()) {
+            return days[date - 1].toStringCustom();
+        } else {
+            return "No events";
+        }
+    }
 }

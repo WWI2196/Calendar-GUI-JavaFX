@@ -1,6 +1,5 @@
 package com.example.cld;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -145,7 +144,6 @@ public class ViewMonthController {
         try {
             for (int i = 1; i <= 31; i++) {
                 String textFieldName = "events_day" + i;
-
                 // Use reflection to get the field
                 Field field = this.getClass().getDeclaredField(textFieldName);
                 field.setAccessible(true);

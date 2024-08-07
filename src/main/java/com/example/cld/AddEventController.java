@@ -226,7 +226,7 @@ public class AddEventController {
     }
 
 
-    private void handle(ActionEvent event_) {
+    private void handle(ActionEvent actionEvent) {
         try {
             String enterDateText = enter_date_txt_field.getText();
             String eventName = enter_event_name_txt_field.getText();

@@ -1,5 +1,7 @@
 package com.example.cld;
 
+import java.util.Objects;
+
 public class Event {
     public String title;
     public Time startTime;
@@ -31,8 +33,8 @@ public class Event {
         return title + " from " + startTime.toString() + " to " + endTime.toString() + " (" + repeatType + ")";
     }
 
-    protected String formatEventDataToString() {
-        return title + "|" + startTime.toString() + "|" + endTime.toString() + "|" + repeatType;
+    protected String toStringCustom(){
+        return  startTime.toString() + " - " + title+"("+(Objects.equals(repeatType, "none") ? "n": Objects.equals(repeatType, "daily") ? "d":"w")+")";
     }
 
     protected void extractEventData(String eventString) {

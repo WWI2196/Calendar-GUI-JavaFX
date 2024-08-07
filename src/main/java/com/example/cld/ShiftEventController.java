@@ -2,6 +2,7 @@ package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -148,7 +149,7 @@ public class ShiftEventController {
         error_shift_date_label.setVisible(false);
     }
 
-    private void handle(Event event) {
+    private void handle(ActionEvent event) {
         try {
             String enterDateText = enter_date_txt_field.getText();
             String enterNewDateText = enter_new_date_txt_field.getText();

@@ -7,10 +7,23 @@
     <list default="true" id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewMonthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewMonthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewMonth.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewMonth.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewWeek.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/FXML/ViewWeek.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/Styles/style_day_off.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/Styles/style_day_off.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/Styles/style_view_week.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/Styles/style_view_week.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_add_event.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_add_event.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_date_btm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_date_btm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_delete_event.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/style_delete_event.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +73,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -92,7 +106,13 @@
       <workItem from="1722699303542" duration="66000" />
       <workItem from="1722736908388" duration="3740000" />
       <workItem from="1722870961141" duration="18464000" />
-      <workItem from="1722895751275" duration="4362000" />
+      <workItem from="1722895751275" duration="6140000" />
+      <workItem from="1722922663549" duration="13496000" />
+      <workItem from="1722958248379" duration="168000" />
+      <workItem from="1722967510093" duration="89000" />
+      <workItem from="1722980077197" duration="7156000" />
+      <workItem from="1722987843292" duration="25000" />
+      <workItem from="1722988247474" duration="943000" />
     </task>
     <servers />
   </component>

@@ -34,27 +34,27 @@
                </Label>
             </children>
          </Pane>
-         <JFXButton fx:id="btm_date1" layoutX="946.0" layoutY="32.0" prefHeight="41.0" prefWidth="50.0" styleClass="btm_date1" stylesheets="@../style_date_btm.css" text="1" textFill="WHITE">
+         <JFXButton fx:id="btm_week1" layoutX="946.0" layoutY="32.0" prefHeight="41.0" prefWidth="50.0" styleClass="btm_date1" stylesheets="@../style_date_btm.css" text="1" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date2" layoutX="1013.0" layoutY="32.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date2" stylesheets="@../style_date_btm.css" text="2" textFill="WHITE">
+         <JFXButton fx:id="btm_week2" layoutX="1013.0" layoutY="32.0" prefHeight="51.0" prefWidth="50.0" styleClass="btm_date2" stylesheets="@../style_date_btm.css" text="2" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date3" layoutX="1082.0" layoutY="32.0" prefHeight="51.0" prefWidth="58.0" styleClass="btm_date3" stylesheets="@../style_date_btm.css" text="3" textFill="WHITE">
+         <JFXButton fx:id="btm_week3" layoutX="1082.0" layoutY="32.0" prefHeight="51.0" prefWidth="58.0" styleClass="btm_date3" stylesheets="@../style_date_btm.css" text="3" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date4" layoutX="1152.0" layoutY="32.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date4" stylesheets="@../style_date_btm.css" text="4" textFill="WHITE">
+         <JFXButton fx:id="btm_week4" layoutX="1152.0" layoutY="32.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date4" stylesheets="@../style_date_btm.css" text="4" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
          </JFXButton>
-         <JFXButton fx:id="btm_date5" layoutX="1223.0" layoutY="32.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date5" stylesheets="@../style_date_btm.css" text="5" textFill="WHITE">
+         <JFXButton fx:id="btm_week5" layoutX="1223.0" layoutY="32.0" prefHeight="38.0" prefWidth="50.0" styleClass="btm_date5" stylesheets="@../style_date_btm.css" text="5" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="28.0" />
             </font>
@@ -72,7 +72,7 @@
                <Font name="Century Gothic Bold" size="41.0" />
             </font>
          </Label>
-         <Pane fx:id="today_pane11" layoutX="15.0" layoutY="132.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane1" layoutX="15.0" layoutY="132.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_1_number_label" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="40.0" prefHeight="51.0" prefWidth="58.0" text="31" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -84,7 +84,7 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_1_textArea" editable="false" layoutX="59.0" layoutY="14.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_1_textArea" editable="false" focusColor="#ffffff00" layoutX="59.0" layoutY="14.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font></JFXTextArea>
@@ -95,7 +95,7 @@
                <Font name="Century Gothic Bold" size="22.0" />
             </font>
          </Label>
-         <Pane fx:id="today_pane111" layoutX="452.0" layoutY="148.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane2" layoutX="452.0" layoutY="148.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_2_number_label" alignment="CENTER" contentDisplay="CENTER" layoutY="42.0" prefHeight="51.0" prefWidth="58.0" text="1" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -107,14 +107,14 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_2_textArea" editable="false" layoutX="58.0" layoutY="16.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_2_textArea" editable="false" focusColor="#ffffff00" layoutX="58.0" layoutY="16.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </JFXTextArea>
             </children>
          </Pane>
-         <Pane fx:id="today_pane1111" layoutX="887.0" layoutY="132.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane3" layoutX="887.0" layoutY="132.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_3_number_label" alignment="CENTER" contentDisplay="CENTER" layoutY="42.0" prefHeight="51.0" prefWidth="58.0" text="1" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -126,14 +126,14 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_3_textArea" editable="false" layoutX="60.0" layoutY="16.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_3_textArea" editable="false" focusColor="#ffffff00" layoutX="60.0" layoutY="16.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </JFXTextArea>
             </children>
          </Pane>
-         <Pane fx:id="today_pane112" layoutX="15.0" layoutY="324.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane4" layoutX="15.0" layoutY="324.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_4_number_label" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="40.0" prefHeight="51.0" prefWidth="58.0" text="31" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -145,14 +145,14 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_4_textArea" editable="false" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_4_textArea" editable="false" focusColor="#ffffff00" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </JFXTextArea>
             </children>
          </Pane>
-         <Pane fx:id="today_pane1121" layoutX="451.0" layoutY="349.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane5" layoutX="451.0" layoutY="349.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_5_number_label" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="40.0" prefHeight="51.0" prefWidth="58.0" text="31" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -164,14 +164,14 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_5_textArea" editable="false" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_5_textArea" editable="false" focusColor="#ffffff00" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </JFXTextArea>
             </children>
          </Pane>
-         <Pane fx:id="today_pane1122" layoutX="887.0" layoutY="324.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane6" layoutX="887.0" layoutY="324.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_6_number_label" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="40.0" prefHeight="51.0" prefWidth="58.0" text="31" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -183,14 +183,14 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_6_textArea" editable="false" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_6_textArea" editable="false" focusColor="#ffffff00" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </JFXTextArea>
             </children>
          </Pane>
-         <Pane fx:id="today_pane1123" layoutX="452.0" layoutY="544.0" prefHeight="160.0" prefWidth="413.0" styleClass="today_pane" stylesheets="@../style.css">
+         <Pane fx:id="today_pane7" layoutX="452.0" layoutY="544.0" prefHeight="160.0" prefWidth="413.0" stylesheets="@../Styles/style_view_week.css">
             <children>
                <Label fx:id="event_view_7_number_label" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="40.0" prefHeight="51.0" prefWidth="58.0" text="31" textAlignment="CENTER" textFill="WHITE">
                   <font>
@@ -202,14 +202,14 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_view_7_textArea" editable="false" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
+               <JFXTextArea fx:id="events_view_7_textArea" editable="false" focusColor="#ffffff00" layoutX="59.0" layoutY="15.0" prefHeight="129.0" prefWidth="339.0" styleClass="events_view_textArea" stylesheets="@../Styles/style_view_week.css" unFocusColor="#ffffff00">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
                </JFXTextArea>
             </children>
          </Pane>
-         <JFXButton fx:id="btm_toMonthView" layoutX="40.0" layoutY="619.0" onAction="#switchToViewMonth" prefHeight="58.0" prefWidth="129.0" stylesheets="@../Styles/style_view_week.css" text="View Month" textFill="WHITE">
+         <JFXButton fx:id="btm_toMonthView" layoutX="32.0" layoutY="632.0" onAction="#switchToViewMonth" prefHeight="58.0" prefWidth="129.0" styleClass="btm_toMonthView" stylesheets="@../Styles/style_view_week.css" text="View Month" textFill="WHITE">
             <font>
                <Font name="Century Gothic Bold" size="16.0" />
             </font>

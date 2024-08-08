@@ -7,7 +7,6 @@ This is a Graphical User Interface (GUI) based calendar application for the mont
 ### Method 1: Using a Java IDE
 
 1. **Clone the Repository**
-   - Clone this repository to your local machine using `git clone <repository-url>`.
 
 2. **Build the Project**
    - Use your preferred Java IDE (e.g., IntelliJ IDEA) to open the project and build it. 

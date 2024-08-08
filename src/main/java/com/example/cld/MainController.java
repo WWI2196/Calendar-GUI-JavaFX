@@ -272,8 +272,8 @@ public class MainController {
              if (alertImagePath != null && !alertImagePath.isEmpty()) {
                  Image customImage = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(alertImagePath))); // set a custom image for the alert
                  ImageView imageView = new ImageView(customImage);
-                 imageView.setFitWidth(40); // set width
-                 imageView.setFitHeight(40); // set height
+                 imageView.setFitWidth(40);
+                 imageView.setFitHeight(40);
                  alert.setGraphic(imageView);
              }
 

@@ -66,40 +66,39 @@ public class AddEventController {
 
     private final MainController mainController = MainController.getInstance();
 
-    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(Event event) throws IOException {
         mainController.switchToMainMenu(event);
     }
     @FXML
-    public void switchToAddEventDetails(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToAddEventDetails(Event event) throws IOException {
         mainController.switchToAddEventDetails(event);
     }
     @FXML
-    public void switchToSetDayOff(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToSetDayOff(Event event) throws IOException {
         mainController.switchToSetDayOff(event);
     }
     @FXML
-    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToDeleteEvent(Event event) throws IOException {
         mainController.switchToDeleteEvent(event);
     }
     @FXML
-    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToShiftEvent(Event event) throws IOException {
         mainController.switchToShiftEvent(event);
 
     }
     @FXML
-    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewWeek(Event event) throws IOException {
         mainController.switchToViewWeek(event);
     }
     @FXML
-    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewMonth(Event event) throws IOException {
         mainController.switchToViewMonth(event);
     }
 
     @FXML
     private void successPopup() {
         Window owner = confirm_btm_addEvent.getScene().getWindow();
-        // Create the alert
-        MainController.AlertHelper.showAlert(
+        MainController.AlertHelper.showAlert( // create the alert popup
             Alert.AlertType.INFORMATION,owner,
             "Schedule Event",
             "Success",

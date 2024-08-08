@@ -1,4 +1,3 @@
-
 package com.example.cld;
 
 import com.jfoenix.controls.JFXButton;
@@ -73,31 +72,31 @@ public class DeleteEventController {
     private final MainController mainController = MainController.getInstance();
 
     @FXML
-    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(javafx.event.Event event) throws IOException {
         mainController.switchToMainMenu(event);
     }
     @FXML
-    public void switchToAddEventDetails(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+    public void switchToAddEventDetails(javafx.event.Event event) throws IOException {
         mainController.switchToAddEventDetails(event);
     }
     @FXML
-    public void switchToSetDayOff(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+    public void switchToSetDayOff(javafx.event.Event event) throws IOException {
         mainController.switchToSetDayOff(event);
     }
     @FXML
-    public void switchToDeleteEvent(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+    public void switchToDeleteEvent(javafx.event.Event event) throws IOException {
         mainController.switchToDeleteEvent(event);
     }
     @FXML
-    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToShiftEvent(Event event) throws IOException {
         mainController.switchToShiftEvent(event);
     }
     @FXML
-    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewWeek(Event event) throws IOException {
         mainController.switchToViewWeek(event);
     }
     @FXML
-    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewMonth(Event event) throws IOException {
         mainController.switchToViewMonth(event);
     }
 

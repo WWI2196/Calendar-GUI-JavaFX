@@ -111,10 +111,10 @@ public class ViewMonthController {
 
     private final MainController mainController = MainController.getInstance();
 
-    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(Event event) throws IOException {
         mainController.switchToMainMenu(event);
     }
-     public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+     public void switchToViewWeek(Event event) throws IOException {
         mainController.switchToViewWeek(event);
     }
 

@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -126,11 +125,11 @@ public class ViewWeekController {
 
     private final MainController mainController = MainController.getInstance();
 
-    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the main menu scene
+    public void switchToMainMenu(javafx.event.Event event) throws IOException {
         mainController.switchToMainMenu(event);
     }
 
-    public void switchToViewMonth(javafx.event.Event event) throws IOException { // switch to add view month scene
+    public void switchToViewMonth(javafx.event.Event event) throws IOException {
         mainController.switchToViewMonth(event);
     }
 

@@ -121,20 +121,18 @@ public class AddEventController {
             enter_date_txt_field.setText(String.valueOf(dayOfMonth));
         }
 
-          // Configure the ToggleGroup for repeatType
         ToggleGroup repeatTypeGroup = new ToggleGroup();
         one_time_radio_btn.setToggleGroup(repeatTypeGroup);
         daily_radio_btn.setToggleGroup(repeatTypeGroup);
         weekly_radio_btn.setToggleGroup(repeatTypeGroup);
 
-        // Hide the Error_date label initially
         Error_date.setVisible(false);
     }
 
     private void showPopup(String message) {
         Window owner = confirm_btm_addEvent.getScene().getWindow();
-        // Create the alert
-        MainController.AlertHelper.showAlert(
+
+        MainController.AlertHelper.showAlert( // call the alert
             Alert.AlertType.ERROR,owner,
             "Schedule Event",
             "Error",
@@ -150,7 +148,6 @@ public class AddEventController {
         enter_start_time_txt_field.clear();
         enter_end_time_txt_field.clear();
         resetCheckBoxesAndRadioButtons();
-        //events_on_enter_day_textArea.clear();
     }
 
     private void resetCheckBoxesAndRadioButtons() {
@@ -250,7 +247,7 @@ public class AddEventController {
 
             validateRepeatType();
 
-            Error_date.setVisible(false); // Hide the error label if the date is valid
+            Error_date.setVisible(false);
 
             com.example.cld.Event event = getEvent(eventName);
 
@@ -327,7 +324,6 @@ public class AddEventController {
         enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
         events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
     }
-
 
     private com.example.cld.Event getEvent(String title) {
         Time startTime = new Time();

@@ -17,25 +17,23 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static LocalDate currentDate; // Static variable for current date
-    public static int dayOfMonth; // Static variable for day of month
+    public static LocalDate currentDate; // static variable for current date
+    public static int dayOfMonth; // static variable for day of month
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        // Initialize the current date
-        currentDate = LocalDate.now();
+        currentDate = LocalDate.now(); // get current date
         dayOfMonth = currentDate.getDayOfMonth();
 
 //       dayOfMonth = 31;
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/cld/FXML/Main.fxml")));
         Scene scene = new Scene(root, 1221, 784);
 
         File file = new File("src/main/resources/com/example/cld/Icons/appLogo.png");
         Image icon = new Image(file.toURI().toString());
 
-//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Scheduler");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

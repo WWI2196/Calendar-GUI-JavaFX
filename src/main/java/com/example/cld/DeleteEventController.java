@@ -104,7 +104,6 @@ public class DeleteEventController {
     @FXML
     private void successPopup() {
         Window owner = confirm_btm_deleteEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.INFORMATION,owner,
                 "Delete Event",
@@ -217,7 +216,6 @@ public class DeleteEventController {
 
     private void showPopup(String message) {
         Window owner = confirm_btm_deleteEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.ERROR,owner,
                 "Delete Event",

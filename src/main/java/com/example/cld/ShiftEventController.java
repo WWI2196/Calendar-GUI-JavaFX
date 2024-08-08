@@ -85,7 +85,6 @@ public class ShiftEventController {
     @FXML
     private Label today_day_number_label;
 
-
     private final MainController mainController = MainController.getInstance();
 
     public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
@@ -119,7 +118,6 @@ public class ShiftEventController {
     @FXML
     private void successPopup() {
         Window owner = confirm_btm_shiftEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.INFORMATION,owner,
                 "Shift Event",
@@ -144,7 +142,6 @@ public class ShiftEventController {
             enter_new_date_txt_field.setText(String.valueOf(dayOfMonth));
         }
 
-        // Hide the Error_date label initially
         error_enter_date_label.setVisible(false);
         error_shift_date_label.setVisible(false);
     }
@@ -249,7 +246,6 @@ public class ShiftEventController {
 
     private void showPopup(String message) {
         Window owner = confirm_btm_shiftEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.ERROR,owner,
                 "Shift Event",
@@ -266,7 +262,6 @@ public class ShiftEventController {
         enter_event_name_txt_field.clear();
         error_name_label.setVisible(false);
         enter_new_date_txt_field.clear();
-        //events_on_enter_day_textArea.clear();
     }
 
     public void checkDate() {
@@ -348,6 +343,5 @@ public class ShiftEventController {
             enter_event_name_txt_field.setStyle("-fx-text-fill: green;");
         }
     }
-
 
 }

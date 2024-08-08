@@ -150,11 +150,8 @@ public class MainController {
     private static MainController instance;
 
     public void initialize() {
+        scheduler = new Scheduler(dayOfMonth); // initialize scheduler with current date
 
-        // Initialize scheduler with current date
-        scheduler = new Scheduler(dayOfMonth);
-
-        // Set current date and day name
         today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
         today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
 
@@ -238,25 +235,22 @@ public class MainController {
         JFXButton button = (JFXButton) event.getSource();
         int selectedDate = Integer.parseInt(button.getText());
 
-        // Update the selected date label and day name label
-        events_on_label.setText("Events On");
+        events_on_label.setText("Events On"); // update the selected date label and day name label
         events_on_day_number_label.setText(String.valueOf(selectedDate));
         events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(selectedDate));
 
-        // Display events for the selected date
-        handleDisplayEvents(selectedDate);
+        handleDisplayEvents(selectedDate); // display events for the selected date
     }
 
     private void handleDisplayEvents(int date) {
         events_on_selected_day_textArea.setText(scheduler.displayEvents(date));
     }
 
-    private void setupDateButtonActions() {
-        // Assign handleDateButtonPressed to each date button
+    private void setupDateButtonActions() { // handle handleDateButtonPressed to each date button
         for (int i = 1; i <= 31; i++) {
             try {
                 Field field = getClass().getDeclaredField("btm_date" + i);
-                field.setAccessible(true); // Make private fields accessible
+                field.setAccessible(true); // make private fields accessible
                 JFXButton button = (JFXButton) field.get(this);
                 if (button != null) {
                     button.setOnAction(this::handleDateButtonPressed);
@@ -275,20 +269,18 @@ public class MainController {
              alert.setContentText(message);
              alert.initOwner(owner);
 
-                 // Set a custom image for the alert
              if (alertImagePath != null && !alertImagePath.isEmpty()) {
-                 Image customImage = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(alertImagePath)));
+                 Image customImage = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(alertImagePath))); // set a custom image for the alert
                  ImageView imageView = new ImageView(customImage);
-                 imageView.setFitWidth(40); // Set desired width
-                 imageView.setFitHeight(40); // Set desired height
+                 imageView.setFitWidth(40); // set width
+                 imageView.setFitHeight(40); // set height
                  alert.setGraphic(imageView);
              }
 
-             // Set a custom icon for the application window
-             if (windowIconPath != null && !windowIconPath.isEmpty()) {
+             if (windowIconPath != null && !windowIconPath.isEmpty()) { // set a custom icon for the application window
                  Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
                  Image windowIcon = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(windowIconPath)));
-                 stage.getIcons().clear(); // Clear existing icons
+                 stage.getIcons().clear(); // clear existing icons
                  stage.getIcons().add(windowIcon);
              }
 

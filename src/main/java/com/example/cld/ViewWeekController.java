@@ -16,7 +16,6 @@ import static com.example.cld.Main.dayOfMonth;
 
 public class ViewWeekController {
 
-    //int dayOfMonth = 14;
     @FXML
     private JFXButton btm_week1;
 
@@ -102,12 +101,6 @@ public class ViewWeekController {
     private JFXTextArea events_view_7_textArea;
 
     @FXML
-    private HBox root;
-
-    @FXML
-    private Pane today_pane;
-
-    @FXML
     private Pane today_pane1;
 
     @FXML
@@ -133,16 +126,16 @@ public class ViewWeekController {
 
     private final MainController mainController = MainController.getInstance();
 
-    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the main menu scene
         mainController.switchToMainMenu(event);
     }
 
-    public void switchToViewMonth(javafx.event.Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewMonth(javafx.event.Event event) throws IOException { // switch to add view month scene
         mainController.switchToViewMonth(event);
     }
 
    public void initialize() {
-       handle(dayOfMonth); // Initialize with the first week
+       handle(dayOfMonth);
        setupDateButtonActions();
    }
 
@@ -150,14 +143,14 @@ public class ViewWeekController {
        int endIndex;
 
        if (startIndex <= 6) {
-           startIndex = 1; // Starting index for the first week (1st to 6th)
-           endIndex = 6; // End index for the first week
+           startIndex = 1; // starting day for the first week
+           endIndex = 6; // End day for the first week
        } else if (startIndex >= 28) {
-           startIndex = 28; // Starting index for the fifth week (28th to 31st)
-           endIndex = 31; // End index for the fifth week
+           startIndex = 28; // starting day for the fifth week
+           endIndex = 31; // end day for the fifth week
        } else {
-           startIndex = ((startIndex) / 7) * 7; // Start of the current week
-           endIndex = Math.min(startIndex + 6, 31); // Ensure endIndex does not exceed 31
+           startIndex = ((startIndex) / 7) * 7;
+           endIndex = Math.min(startIndex + 6, 31);
        }
 
        Label[] nameLabels = {event_view_1_name_label, event_view_2_name_label, event_view_3_name_label, event_view_4_name_label, event_view_5_name_label, event_view_6_name_label, event_view_7_name_label};
@@ -180,12 +173,11 @@ public class ViewWeekController {
        }
 
        total_events_number_label.setText(String.valueOf(MainController.scheduler.countEvents(startIndex, endIndex)));
-
    }
 
     private void handleDisplayEvents(ActionEvent event) {
         JFXButton button = (JFXButton) event.getSource();
-        int weekNumber = Integer.parseInt(button.getId().replaceAll("\\D+", "")); // Extract the week number from the button ID
+        int weekNumber = Integer.parseInt(button.getId().replaceAll("\\D+", "")); // get the week number from the button ID
         int startIndex = (weekNumber - 1) * 7 + 1;
         handle(startIndex);
     }
@@ -194,7 +186,7 @@ public class ViewWeekController {
         for (int i = 1; i <= 5; i++) {
             try {
                 Field field = getClass().getDeclaredField("btm_week" + i);
-                field.setAccessible(true); // Make private fields accessible
+                field.setAccessible(true);
                 JFXButton button = (JFXButton) field.get(this);
                 if (button != null) {
                     button.setOnAction(this::handleDisplayEvents);

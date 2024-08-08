@@ -6,8 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/AddEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DateNameMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DateNameMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/DeleteEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Scheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/SetDayOffController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ShiftEventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewMonthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewMonthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/ViewWeekController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -30,8 +30,8 @@ public class Time {
     }
 
     protected void fromString(String timeString) {
-        // Split the string using any non-numeric character as the divider
-        String[] parts = timeString.split("\\D+");
+
+        String[] parts = timeString.split("\\D+"); // separate the string using any character as the divider
         if (parts.length != 2) {
             throw new IllegalArgumentException("Invalid time format");
         }
@@ -49,13 +49,5 @@ public class Time {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid time format", e);
         }
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
     }
 }

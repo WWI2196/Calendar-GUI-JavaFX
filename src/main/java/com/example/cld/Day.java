@@ -93,7 +93,6 @@ class Day {
         }
 
         StringBuilder sb = new StringBuilder();
-//        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
 
         if (isDayOff) {
             sb.append(" (Day Off)");
@@ -155,23 +154,12 @@ class Day {
         return events;
     }
 
-
-    protected Event getEvent(String title) {
-        for (Event event : events) {
-            if (event.title.equals(title)) {
-                return event;
-            }
-        }
-        return null;
-    }
-
     public String toStringCustom() {
         if (events.isEmpty() && !isDayOff) {
             return "";
         }
 
         StringBuilder sb = new StringBuilder();
-//        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
 
         if (isDayOff) {
             sb.append(" (Day Off)");

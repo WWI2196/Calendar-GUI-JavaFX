@@ -54,11 +54,10 @@ class Scheduler {
            if (date < currentDay || date > 31) {
                throw new IllegalArgumentException("Invalid date");
            }
-           // Save the original "day off" status
-           wasDayOff = days[date - 1].isDayOff();
 
-           // Only set day off to false if the event is successfully scheduled
-           if (wasDayOff) {
+           wasDayOff = days[date - 1].isDayOff();// get the original day off status
+
+           if (wasDayOff) { // set day off to false if the event is successfully scheduled
                days[date - 1].setDayOff(false);
            }
 
@@ -100,8 +99,7 @@ class Scheduler {
 
            saveEventsToTxt();
        } catch (Exception e) {
-           // Roll back changes if the "day off" status was changed
-           if (wasDayOff) {
+           if (wasDayOff) { // reset changes if the day off was changed
                days[date - 1].setDayOff(true);
            }
            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event. Check the inputs again.");
@@ -128,7 +126,7 @@ class Scheduler {
                         try {
                             days[i].deleteEvent(title);
                         } catch (IllegalArgumentException e) {
-                            // Event not found on this day, continue to next day
+                            //  if event not found on this day, continue to next day
                         }
                     }
                 } else if ("weekly".equals(repeatType)) {
@@ -136,7 +134,7 @@ class Scheduler {
                         try {
                             days[i].deleteEvent(title);
                         } catch (IllegalArgumentException e) {
-                            // Event not found on this day, continue to next week
+                            // if event not found on this day, continue to next day
                         }
                     }
                 }
@@ -152,7 +150,7 @@ class Scheduler {
     protected String getEventRepeatType(int date, String title) {
         String lowercaseTitle = title.toLowerCase();
 
-        for (Event event : days[date - 1].getEvents()) { // Assuming getEvents() returns a collection of Event objects
+        for (Event event : days[date - 1].getEvents()) {
             if (event.getTitle().toLowerCase().equals(lowercaseTitle)) {
                 return event.getRepeatType();
             }
@@ -218,7 +216,6 @@ class Scheduler {
 
         int totalEvents = 0;
 
-        // Adjust for zero-based indexing
         for (int i = startDay - 1; i < endDay; ++i) {
             if (days[i] != null && !days[i].toString().isEmpty()) {
                 totalEvents += days[i].getEventCount();
@@ -228,7 +225,7 @@ class Scheduler {
         return totalEvents;
 
     }
-    
+
     protected void checkEventNameExists(int date, String title) {
         if (date < 1 || date > 31) {
             throw new IllegalArgumentException("Invalid date");

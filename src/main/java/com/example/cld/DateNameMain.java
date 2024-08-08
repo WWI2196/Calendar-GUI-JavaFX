@@ -5,14 +5,12 @@ public class DateNameMain {
     private static final String[] DAYS_OF_WEEK_AB = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
     protected static String getDayAbbreviation(int dayNumber) {
-        // Calculate the day of the week based on the given day number
-        int dayNameIndex = (dayNumber - 1) % 7; // Adjust for zero-based index
+        int dayNameIndex = (dayNumber - 1) % 7;
         return DAYS_OF_WEEK[dayNameIndex];
     }
 
     protected static String getDayAbbreviationAb(int dayNumber) {
-        // Calculate the day of the week based on the given day number
-        int dayNameIndex = (dayNumber - 1) % 7; // Adjust for zero-based index
+        int dayNameIndex = (dayNumber - 1) % 7;
         return DAYS_OF_WEEK_AB[dayNameIndex];
     }
 }

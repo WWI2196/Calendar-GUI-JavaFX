@@ -55,14 +55,6 @@ public class Event {
         return title;
     }
 
-    /**public Time getStartTime() {
-        return startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }**/
-
     protected String getRepeatType() {
         return repeatType;
     }

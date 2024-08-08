@@ -109,7 +109,6 @@ public class ViewMonthController {
      @FXML
     private Label total_events_number_label;
 
-
     private final MainController mainController = MainController.getInstance();
 
     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
@@ -120,7 +119,6 @@ public class ViewMonthController {
     }
 
     private void showPopup(String message) {
-        // Create the alert
         MainController.AlertHelper.showAlert(
             Alert.AlertType.ERROR, null,
             "Schedule Event",
@@ -144,13 +142,10 @@ public class ViewMonthController {
         try {
             for (int i = 1; i <= 31; i++) {
                 String textFieldName = "events_day" + i;
-                // Use reflection to get the field
                 Field field = this.getClass().getDeclaredField(textFieldName);
                 field.setAccessible(true);
-
                 TextArea textArea = (TextArea) field.get(this);
 
-                // Call displayEventsForMonths() method with the textArea (assuming displayEventsForMonths accepts a TextArea)
                 textArea.setText(mainController.getScheduler().displayEventsForMonths(i));
             }
         } catch (Exception e) {

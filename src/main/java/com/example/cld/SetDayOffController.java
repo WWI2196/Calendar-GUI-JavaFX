@@ -83,7 +83,6 @@ public class SetDayOffController {
     @FXML
     private void successPopup() {
         Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.INFORMATION, owner,
                 "Set Day Off",
@@ -106,13 +105,11 @@ public class SetDayOffController {
             enter_date_txt_field.setText(String.valueOf(dayOfMonth));
         }
 
-        // Hide the Error_date label initially
         Error_date.setVisible(false);
     }
 
     private void showPopup(String message) {
         Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.ERROR, owner,
                 "Set Day Off",
@@ -125,7 +122,6 @@ public class SetDayOffController {
 
     private void dayOffRemovedSuccess() {
         Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
-        // Create the alert
         MainController.AlertHelper.showAlert(
                 Alert.AlertType.INFORMATION, owner,
                 "Set Day Off",
@@ -167,7 +163,6 @@ public class SetDayOffController {
             enter_date_txt_field.setStyle("-fx-text-fill: red;");
             Error_date.setText("Enter a valid number.");
         }
-        //checkName();
     }
 
     private void handleDayOff(ActionEvent event) {
@@ -193,7 +188,7 @@ public class SetDayOffController {
                 }
             }
 
-            Error_date.setVisible(false); // Hide the error label if the date is valid
+            Error_date.setVisible(false);
 
             updateText(dayToSetDayOff);
 

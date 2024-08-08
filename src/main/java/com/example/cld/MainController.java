@@ -175,43 +175,43 @@ public class MainController {
     }
 
     @FXML
-    public void switchToAddEventDetails(Event event) throws IOException {
+    public void switchToAddEventDetails(Event event) throws IOException { // shift to add event scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/AddEvent.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToSetDayOff(Event event) throws IOException {
+    public void switchToSetDayOff(Event event) throws IOException { // shift to set day off scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToDeleteEvent(Event event) throws IOException { // shift to delete event scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/DeleteEvent.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToShiftEvent(Event event) throws IOException { // switch shift event scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ShiftEvent.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewWeek(Event event) throws IOException {// shift to view week scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewWeek.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewMonth(Event event) throws IOException { //shift to view month scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewMonth.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(Event event) throws IOException { // switch to main scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
 
         EventAction(event, root);

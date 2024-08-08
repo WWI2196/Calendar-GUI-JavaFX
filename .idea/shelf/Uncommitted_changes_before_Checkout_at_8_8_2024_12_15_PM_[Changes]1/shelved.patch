@@ -1,0 +1,153 @@
+Index: src/main/java/com/example/cld/Scheduler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport java.io.*;\r\n\r\nclass Scheduler {\r\n    final Day[] days;\r\n    private final int currentDay;\r\n\r\n    public Scheduler(int currentDay) {\r\n        this.currentDay = currentDay;\r\n        days = new Day[31];\r\n        initializeDays();\r\n        try {\r\n            loadEventsFromTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void initializeDays() {\r\n        String[] daysOfWeek = {\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"};\r\n\r\n        for (int i = 0; i < 31; ++i) {\r\n            days[i] = new Day(i + 1, daysOfWeek[i % 7]);\r\n        }\r\n    }\r\n\r\n    private void saveEventsToTxt() {\r\n        try (PrintWriter writer = new PrintWriter(new FileWriter(\"src/main/resources/com/example/cld/TextFiles/EventFile.txt\"))) {\r\n            for (int i = 0; i < 31; ++i) {\r\n                writer.print(days[i].formatDayDataToString());\r\n            }\r\n        } catch (IOException e) {\r\n            throw new IllegalArgumentException(\"Error saving events\");\r\n        }\r\n    }\r\n\r\n    private void loadEventsFromTxt() {\r\n        try (BufferedReader reader = new BufferedReader(new FileReader(\"src/main/resources/com/example/cld/TextFiles/EventFile.txt\"))) {\r\n            String line;\r\n            while ((line = reader.readLine()) != null) {\r\n                if (line.isEmpty()) continue;\r\n                int date = Integer.parseInt(line.split(\"\\\\|\")[0]);\r\n                days[date - 1].extractDayData(line);\r\n            }\r\n        } catch (IOException e) {\r\n            throw new IllegalArgumentException(\"Error loading events\");\r\n        }\r\n    }\r\n\r\n    protected void scheduleEvent(int date, Event event) {\r\n        boolean wasDayOff = false;\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n            // Save the original \"day off\" status\r\n            wasDayOff = days[date - 1].isDayOff();\r\n\r\n            // Only set day off to false if the event is successfully scheduled\r\n            if (wasDayOff) {\r\n                days[date - 1].setDayOff(false);\r\n            }\r\n\r\n            Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);\r\n\r\n            try {\r\n                checkEventNameExists(date, event.title);\r\n            } catch (IllegalArgumentException e) {\r\n                throw new IllegalArgumentException(\"Event name already exists\");\r\n            }\r\n\r\n            if (event.repeatType.equals(\"daily\")) {\r\n                for (int i = date - 1; i < 31; ++i) {\r\n                    if (days[i].eventsOverlap(newEvent)) {\r\n                        throw new IllegalArgumentException(\"Event overlaps detected on \" + (i + 1) + \". Cannot schedule.\");\r\n                    }\r\n                    if (days[i].isDayOff()) {\r\n                        throw new IllegalArgumentException(\"Day off detected on \" + (i + 1) + \". Cannot schedule.\");\r\n                    }\r\n                }\r\n                for (int i = date - 1; i < 31; i++) {\r\n                    days[i].addEvent(newEvent);\r\n                }\r\n            } else if (event.repeatType.equals(\"weekly\")) {\r\n                for (int i = date - 1; i < 31; i += 7) {\r\n                    if (days[i].eventsOverlap(newEvent)) {\r\n                        throw new IllegalArgumentException(\"Event overlaps detected on \" + (i + 1) + \". Cannot schedule.\");\r\n                    }\r\n                    if (days[i].isDayOff()) {\r\n                        throw new IllegalArgumentException(\"Day off detected on \" + (i + 1) + \". Cannot schedule.\");\r\n                    }\r\n                }\r\n                for (int i = date - 1; i < 31; i += 7) {\r\n                    days[i].addEvent(newEvent);\r\n                }\r\n            } else {\r\n                days[date - 1].addEvent(newEvent);\r\n            }\r\n\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            // Roll back changes if necessary\r\n            if (days[date - 1].isDayOff() == false && !wasDayOff) {\r\n                days[date - 1].setDayOff(true);\r\n            }\r\n            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : \"Error scheduling event. Check the inputs again.\");\r\n        }\r\n    }\r\n\r\n\r\n    protected void deleteEvent(int date, String title, boolean deleteRepeats, String repeatType) {\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            if (days[date - 1].isDayOff()) {\r\n                throw new IllegalArgumentException(\"The selected day is marked as a day off.\\nNo events to delete.\");\r\n            }\r\n\r\n            if (!isEventNameExists(date, title)) {\r\n                throw new IllegalArgumentException(\"Event not found.\");\r\n            }\r\n\r\n            if (deleteRepeats) {\r\n                if (\"daily\".equals(repeatType)) {\r\n                    for (int i = date - 1; i < 31; ++i) {\r\n                        try {\r\n                            days[i].deleteEvent(title);\r\n                        } catch (IllegalArgumentException e) {\r\n                            // Event not found on this day, continue to next day\r\n                        }\r\n                    }\r\n                } else if (\"weekly\".equals(repeatType)) {\r\n                    for (int i = date - 1; i < 31; i += 7) {\r\n                        try {\r\n                            days[i].deleteEvent(title);\r\n                        } catch (IllegalArgumentException e) {\r\n                            // Event not found on this day, continue to next week\r\n                        }\r\n                    }\r\n                }\r\n            } else {\r\n                days[date - 1].deleteEvent(title);\r\n            }\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error deleting event: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    protected String getEventRepeatType(int date, String title) {\r\n        String lowercaseTitle = title.toLowerCase();\r\n\r\n        for (Event event : days[date - 1].getEvents()) { // Assuming getEvents() returns a collection of Event objects\r\n            if (event.getTitle().toLowerCase().equals(lowercaseTitle)) {\r\n                return event.getRepeatType();\r\n            }\r\n        }\r\n        return \"none\";\r\n    }\r\n\r\n    protected void shiftEvent(int date, String title, int newDate) {\r\n        try {\r\n            if (date < currentDay || date > 31 || newDate < currentDay || newDate > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            days[date - 1].shiftEvent(title, newDate, days);\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error shifting event\" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    protected void markDayOff(int date) {\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            days[date - 1].clearEvents();\r\n            days[date - 1].setDayOff(true);\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error marking day off\");\r\n        }\r\n    }\r\n\r\n    protected void removeDayOff(int date) {\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            days[date - 1].setDayOff(false);\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error removing day off\");\r\n        }\r\n    }\r\n\r\n    protected String displayEvents(int date) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        if (!days[date - 1].toString().isEmpty()) {\r\n            return days[date - 1].toString();\r\n        } else {\r\n            return \"No events\";\r\n        }\r\n    }\r\n\r\n    protected int countEvents(int startDay, int endDay) {\r\n        if (startDay < 1 || startDay > 31 || endDay < 1 || endDay > 31) {\r\n            throw new IllegalArgumentException(\"Invalid day range\");\r\n        }\r\n\r\n        int totalEvents = 0;\r\n\r\n        // Adjust for zero-based indexing\r\n        for (int i = startDay - 1; i < endDay; ++i) {\r\n            if (days[i] != null && !days[i].toString().isEmpty()) {\r\n                totalEvents += days[i].getEventCount();\r\n            }\r\n        }\r\n\r\n        return totalEvents;\r\n\r\n    }\r\n\r\n\r\n    public void displayAllEvents() {\r\n        for (int i = 0; i < 31; ++i) {\r\n            if (!days[i].toString().isEmpty()) {\r\n                System.out.println(days[i].toString());\r\n            }\r\n        }\r\n    }\r\n\r\n    public void countEvents() {\r\n        int count = 0;\r\n        for (int i = 0; i < 31; ++i) {\r\n            count += days[i].getEventCount();\r\n        }\r\n        System.out.println(\"Total number of events: \" + count);\r\n    }\r\n\r\n    public boolean isEventRepeating(int date, String title) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        Day day = days[date - 1];\r\n        for (Event event : day.getEvents()) {\r\n            if (event.getTitle().equals(title) && !event.getRepeatType().equals(\"none\")) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n\r\n    protected void checkEventNameExists(int date, String title) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        Day day = days[date - 1];\r\n        for (Event event : day.getEvents()) {\r\n            if (event.getTitle().equalsIgnoreCase(title)) {\r\n                throw new IllegalArgumentException(\"Event name already exists\");\r\n            }\r\n        }\r\n    }\r\n\r\n    protected boolean isEventNameExists(int date, String title) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        Day day = days[date - 1];\r\n        for (Event event : day.getEvents()) {\r\n            if (event.getTitle().equalsIgnoreCase(title)) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n\r\n    public void validEventCapture(int date, String title) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        Day day = days[date - 1];\r\n        for (Event event : day.getEvents()) {\r\n            if (event.getTitle().toUpperCase().equals(title)) {\r\n                throw new IllegalArgumentException(\"Event Captured\");\r\n            }\r\n        }\r\n    }\r\n\r\n    public void checkDayOff(int date) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        if (days[date - 1].isDayOff()) {\r\n            throw new IllegalArgumentException(\"The selected day is marked as a day off\");\r\n        }\r\n    }\r\n\r\n    public String displayEventsForMonths(int date) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        if (!days[date - 1].toString().isEmpty()) {\r\n            return days[date - 1].toStringCustom();\r\n        } else {\r\n            return \"No events\";\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/Scheduler.java b/src/main/java/com/example/cld/Scheduler.java
+--- a/src/main/java/com/example/cld/Scheduler.java	
++++ b/src/main/java/com/example/cld/Scheduler.java	
+@@ -48,67 +48,66 @@
+         }
+     }
+ 
+-    protected void scheduleEvent(int date, Event event) {
+-        boolean wasDayOff = false;
+-        try {
+-            if (date < currentDay || date > 31) {
+-                throw new IllegalArgumentException("Invalid date");
+-            }
+-            // Save the original "day off" status
+-            wasDayOff = days[date - 1].isDayOff();
++   protected void scheduleEvent(int date, Event event) {
++       boolean wasDayOff = false;
++       try {
++           if (date < currentDay || date > 31) {
++               throw new IllegalArgumentException("Invalid date");
++           }
++           // Save the original "day off" status
++           wasDayOff = days[date - 1].isDayOff();
+ 
+-            // Only set day off to false if the event is successfully scheduled
+-            if (wasDayOff) {
+-                days[date - 1].setDayOff(false);
+-            }
++           // Only set day off to false if the event is successfully scheduled
++           if (wasDayOff) {
++               days[date - 1].setDayOff(false);
++           }
+ 
+-            Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
++           Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
+ 
+-            try {
+-                checkEventNameExists(date, event.title);
+-            } catch (IllegalArgumentException e) {
+-                throw new IllegalArgumentException("Event name already exists");
+-            }
++           try {
++               checkEventNameExists(date, event.title);
++           } catch (IllegalArgumentException e) {
++               throw new IllegalArgumentException("Event name already exists");
++           }
+ 
+-            if (event.repeatType.equals("daily")) {
+-                for (int i = date - 1; i < 31; ++i) {
+-                    if (days[i].eventsOverlap(newEvent)) {
+-                        throw new IllegalArgumentException("Event overlaps detected on " + (i + 1) + ". Cannot schedule.");
+-                    }
+-                    if (days[i].isDayOff()) {
+-                        throw new IllegalArgumentException("Day off detected on " + (i + 1) + ". Cannot schedule.");
+-                    }
+-                }
+-                for (int i = date - 1; i < 31; i++) {
+-                    days[i].addEvent(newEvent);
+-                }
+-            } else if (event.repeatType.equals("weekly")) {
+-                for (int i = date - 1; i < 31; i += 7) {
+-                    if (days[i].eventsOverlap(newEvent)) {
+-                        throw new IllegalArgumentException("Event overlaps detected on " + (i + 1) + ". Cannot schedule.");
+-                    }
+-                    if (days[i].isDayOff()) {
+-                        throw new IllegalArgumentException("Day off detected on " + (i + 1) + ". Cannot schedule.");
+-                    }
+-                }
+-                for (int i = date - 1; i < 31; i += 7) {
+-                    days[i].addEvent(newEvent);
+-                }
+-            } else {
+-                days[date - 1].addEvent(newEvent);
+-            }
++           if (event.repeatType.equals("daily")) {
++               for (int i = date - 1; i < 31; ++i) {
++                   if (days[i].eventsOverlap(newEvent)) {
++                       throw new IllegalArgumentException("Event overlaps detected on " + (i + 1) + ". Cannot schedule.");
++                   }
++                   if (days[i].isDayOff()) {
++                       throw new IllegalArgumentException("Day off detected on " + (i + 1) + ". Cannot schedule.");
++                   }
++               }
++               for (int i = date - 1; i < 31; i++) {
++                   days[i].addEvent(newEvent);
++               }
++           } else if (event.repeatType.equals("weekly")) {
++               for (int i = date - 1; i < 31; i += 7) {
++                   if (days[i].eventsOverlap(newEvent)) {
++                       throw new IllegalArgumentException("Event overlaps detected on " + (i + 1) + ". Cannot schedule.");
++                   }
++                   if (days[i].isDayOff()) {
++                       throw new IllegalArgumentException("Day off detected on " + (i + 1) + ". Cannot schedule.");
++                   }
++               }
++               for (int i = date - 1; i < 31; i += 7) {
++                   days[i].addEvent(newEvent);
++               }
++           } else {
++               days[date - 1].addEvent(newEvent);
++           }
+ 
+-            saveEventsToTxt();
+-        } catch (Exception e) {
+-            // Roll back changes if necessary
+-            if (days[date - 1].isDayOff() == false && !wasDayOff) {
+-                days[date - 1].setDayOff(true);
+-            }
+-            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event. Check the inputs again.");
+-        }
+-    }
++           saveEventsToTxt();
++       } catch (Exception e) {
++           // Roll back changes if the "day off" status was changed
++           if (wasDayOff) {
++               days[date - 1].setDayOff(true);
++           }
++           throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event. Check the inputs again.");
++       }
++   }
+ 
+-
+     protected void deleteEvent(int date, String title, boolean deleteRepeats, String repeatType) {
+         try {
+             if (date < currentDay || date > 31) {
+Index: src/main/java/com/example/cld/Day.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nclass Day {\r\n    private int date;\r\n    private final String dayOfWeek;\r\n    private final List<Event> events;\r\n    private boolean isDayOff;\r\n\r\n    public Day(int date, String dayOfWeek) {\r\n        this.date = date;\r\n        this.dayOfWeek = dayOfWeek;\r\n        this.events = new ArrayList<>();\r\n        this.isDayOff = false;\r\n    }\r\n\r\n    private void sortEvents() {\r\n        for (int i = 0; i < events.size() - 1; ++i) {\r\n            for (int j = 0; j < events.size() - i - 1; ++j) {\r\n                if (events.get(j).startTime.isGreaterThan(events.get(j + 1).startTime)) {\r\n                    Event temp = events.get(j);\r\n                    events.set(j, events.get(j + 1));\r\n                    events.set(j + 1, temp);\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    protected void addEvent(Event event) {\r\n        if (isDayOff) {\r\n            throw new IllegalArgumentException(\"Cannot add events on a day off\");\r\n        }\r\n        for (Event e : events) {\r\n            if (event.overlaps(e)) {\r\n                throw new IllegalArgumentException(\"Event overlap detected\");\r\n            }\r\n        }\r\n        events.add(event);\r\n        sortEvents();\r\n    }\r\n\r\n    protected void deleteEvent(String title) {\r\n        boolean eventFound = false;\r\n        for (int i = 0; i < events.size(); ++i) {\r\n            if (events.get(i).title.equalsIgnoreCase(title)) {\r\n                events.remove(i);\r\n                eventFound = true;\r\n                break;\r\n            }\r\n        }\r\n        if (!eventFound) {\r\n            throw new IllegalArgumentException(\"Event not found.\");\r\n        }\r\n    }\r\n\r\n    protected boolean eventsOverlap(Event event) {\r\n        for (Event e : events) {\r\n            if (event.overlaps(e)) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n\r\n    protected void shiftEvent(String title, int newDate, Day[] days) {\r\n        Event eventToShift = null;\r\n        for (Event event : events) {\r\n            if (event.title.equalsIgnoreCase(title)) {\r\n                eventToShift = event;\r\n                break;\r\n            }\r\n        }\r\n\r\n        if (eventToShift != null) {\r\n            deleteEvent(title);\r\n            eventToShift.repeatType = \"none\";\r\n            days[newDate - 1].addEvent(eventToShift);\r\n        } else {\r\n            throw new IllegalArgumentException(\"Event not found\");\r\n        }\r\n    }\r\n\r\n    public void clearEvents() {\r\n        events.clear();\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        if (events.isEmpty() && !isDayOff) {\r\n            return \"\";\r\n        }\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n//        sb.append(\"\\n\").append(date).append(\" July 2024 (\").append(dayOfWeek).append(\")\");\r\n\r\n        if (isDayOff) {\r\n            sb.append(\" (Day Off)\");\r\n        }\r\n        sb.append(\"\\n\");\r\n\r\n        for (Event event : events) {\r\n            sb.append(\"  \").append(event.toString()).append(\"\\n-------------------------------------------------\\n\");\r\n        }\r\n\r\n        return sb.toString();\r\n    }\r\n\r\n    protected String formatDayDataToString() {\r\n        StringBuilder sb = new StringBuilder();\r\n        if (isDayOff) {\r\n            sb.append(date).append(\"|off|\\n\");\r\n        }\r\n        for (Event event : events) {\r\n            sb.append(date).append(\"|\").append(event.formatEventDataToString()).append(\"\\n\");\r\n        }\r\n        return sb.toString();\r\n    }\r\n\r\n    protected void extractDayData(String dayStr) {\r\n        String[] lines = dayStr.split(\"\\n\");\r\n        for (String line : lines) {\r\n            if (line.isEmpty()) {\r\n                continue;\r\n            }\r\n            String[] parts = line.split(\"\\\\|\");\r\n            this.date = Integer.parseInt(parts[0]);\r\n            if (parts[1].equals(\"off\")) {\r\n                this.isDayOff = true;\r\n                clearEvents();\r\n            } else {\r\n                Event event = new Event(parts[1], new Time(), new Time(), parts[4]);\r\n                event.extractEventData(line.substring(line.indexOf('|') + 1));\r\n                this.isDayOff = false;\r\n                addEvent(event);\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    protected boolean isDayOff() {\r\n        return isDayOff;\r\n    }\r\n\r\n    protected void setDayOff(boolean isDayOff) {\r\n        this.isDayOff = isDayOff;\r\n    }\r\n\r\n    protected int getEventCount() {\r\n        return events.size();\r\n    }\r\n\r\n    /**public boolean toStringPrint() {\r\n        return isDayOff;\r\n    }*/\r\n\r\n    protected List<Event> getEvents() {\r\n        return events;\r\n    }\r\n\r\n\r\n    protected Event getEvent(String title) {\r\n        for (Event event : events) {\r\n            if (event.title.equals(title)) {\r\n                return event;\r\n            }\r\n        }\r\n        return null;\r\n    }\r\n\r\n    public String toStringCustom() {\r\n        if (events.isEmpty() && !isDayOff) {\r\n            return \"\";\r\n        }\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n//        sb.append(\"\\n\").append(date).append(\" July 2024 (\").append(dayOfWeek).append(\")\");\r\n\r\n        if (isDayOff) {\r\n            sb.append(\" (Day Off)\");\r\n        }\r\n        sb.append(\"\\n\");\r\n\r\n        for (Event event : events) {\r\n            sb.append(\"  \").append(event.formatDataToString()).append(\"\\n\");\r\n        }\r\n\r\n        return sb.toString();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/Day.java b/src/main/java/com/example/cld/Day.java
+--- a/src/main/java/com/example/cld/Day.java	
++++ b/src/main/java/com/example/cld/Day.java	
+@@ -151,10 +151,6 @@
+         return events.size();
+     }
+ 
+-    /**public boolean toStringPrint() {
+-        return isDayOff;
+-    }*/
+-
+     protected List<Event> getEvents() {
+         return events;
+     }

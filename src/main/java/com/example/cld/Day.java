@@ -151,10 +151,6 @@ class Day {
         return events.size();
     }
 
-    /**public boolean toStringPrint() {
-        return isDayOff;
-    }*/
-
     protected List<Event> getEvents() {
         return events;
     }

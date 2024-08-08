@@ -6,7 +6,6 @@
 10|Meeting AMP|09:30|10:00|daily
 10|Meeting IOC|13:30|14:00|daily
 11|Meeting AMP|09:30|10:00|daily
-11|Meeting IOC|13:30|14:00|daily
 12|Meeting AMP|09:30|10:00|daily
 12|Meeting IOC|13:30|14:00|daily
 13|Meeting AMP|09:30|10:00|daily

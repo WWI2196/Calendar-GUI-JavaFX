@@ -28,7 +28,7 @@ class Day {
         }
     }
 
-    public void addEvent(Event event) {
+    protected void addEvent(Event event) {
         if (isDayOff) {
             throw new IllegalArgumentException("Cannot add events on a day off");
         }
@@ -41,24 +41,33 @@ class Day {
         sortEvents();
     }
 
-    public void deleteEvent(String title) {
+    protected void deleteEvent(String title) {
         boolean eventFound = false;
         for (int i = 0; i < events.size(); ++i) {
-            if (events.get(i).title.equals(title)) {
+            if (events.get(i).title.equalsIgnoreCase(title)) {
                 events.remove(i);
                 eventFound = true;
                 break;
             }
         }
         if (!eventFound) {
-            throw new IllegalArgumentException("Event not found");
+            throw new IllegalArgumentException("Event not found.");
         }
     }
 
-    public void shiftEvent(String title, int newDate, Day[] days) {
+    protected boolean eventsOverlap(Event event) {
+        for (Event e : events) {
+            if (event.overlaps(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected void shiftEvent(String title, int newDate, Day[] days) {
         Event eventToShift = null;
         for (Event event : events) {
-            if (event.title.equals(title)) {
+            if (event.title.equalsIgnoreCase(title)) {
                 eventToShift = event;
                 break;
             }
@@ -66,6 +75,7 @@ class Day {
 
         if (eventToShift != null) {
             deleteEvent(title);
+            eventToShift.repeatType = "none";
             days[newDate - 1].addEvent(eventToShift);
         } else {
             throw new IllegalArgumentException("Event not found");
@@ -83,7 +93,6 @@ class Day {
         }
 
         StringBuilder sb = new StringBuilder();
-//        sb.append("\n").append(date).append(" July 2024 (").append(dayOfWeek).append(")");
 
         if (isDayOff) {
             sb.append(" (Day Off)");
@@ -97,7 +106,7 @@ class Day {
         return sb.toString();
     }
 
-    public String formatDayDataToString() {
+    protected String formatDayDataToString() {
         StringBuilder sb = new StringBuilder();
         if (isDayOff) {
             sb.append(date).append("|off|\n");
@@ -108,7 +117,7 @@ class Day {
         return sb.toString();
     }
 
-    public void extractDayData(String dayStr) {
+    protected void extractDayData(String dayStr) {
         String[] lines = dayStr.split("\n");
         for (String line : lines) {
             if (line.isEmpty()) {
@@ -128,23 +137,39 @@ class Day {
         }
     }
 
-     public boolean isDayOff() {
+
+    protected boolean isDayOff() {
         return isDayOff;
     }
 
-    public void setDayOff(boolean isDayOff) {
+    protected void setDayOff(boolean isDayOff) {
         this.isDayOff = isDayOff;
     }
 
-    public int getEventCount() {
+    protected int getEventCount() {
         return events.size();
     }
 
-    /**public boolean toStringPrint() {
-        return isDayOff;
-    }*/
-
-    public List<Event> getEvents() {
+    protected List<Event> getEvents() {
         return events;
+    }
+
+    public String toStringCustom() {
+        if (events.isEmpty() && !isDayOff) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        if (isDayOff) {
+            sb.append(" (Day Off)");
+        }
+        sb.append("\n");
+
+        for (Event event : events) {
+            sb.append("  ").append(event.formatDataToString()).append("\n");
+        }
+
+        return sb.toString();
     }
 }

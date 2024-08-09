@@ -1,5 +1,7 @@
 package com.example.cld;
 
+import java.util.Objects;
+
 public class Event {
     public String title;
     public Time startTime;
@@ -22,7 +24,7 @@ public class Event {
         }
     }
 
-    public boolean overlaps(Event comparisonEvent) {
+    protected boolean overlaps(Event comparisonEvent) {
         return startTime.isLessThan(comparisonEvent.endTime) && endTime.isGreaterThan(comparisonEvent.startTime);
     }
 
@@ -31,11 +33,15 @@ public class Event {
         return title + " from " + startTime.toString() + " to " + endTime.toString() + " (" + repeatType + ")";
     }
 
-    public String formatEventDataToString() {
+    protected String formatDataToString() {
+        return startTime.toString()+"-"+title+"("+(Objects.equals(repeatType, "none") ? "n": Objects.equals(repeatType, "daily") ? "d":"w")+")";
+    }
+
+    protected String formatEventDataToString() {
         return title + "|" + startTime.toString() + "|" + endTime.toString() + "|" + repeatType;
     }
 
-    public void extractEventData(String eventString) {
+    protected void extractEventData(String eventString) {
         String[] parts = eventString.split("\\|");
         this.title = parts[0];
         this.startTime = new Time();
@@ -45,19 +51,11 @@ public class Event {
         this.repeatType = parts[3];
     }
 
-    public String getTitle() {
+    protected String getTitle() {
         return title;
     }
 
-    /**public Time getStartTime() {
-        return startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }**/
-
-    public String getRepeatType() {
+    protected String getRepeatType() {
         return repeatType;
     }
 }

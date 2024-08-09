@@ -1,0 +1,45 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0e1fb56c-c621-4f9a-8726-8ebdff9dd49d\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Branch8\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;WWI2196&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/WWI2196/Calendar-GUI-JavaFX.git&quot;,\r\n    &quot;accountId&quot;: &quot;4776bf20-9711-4271-86ca-524c0a0728c3&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2k8mFCW5G8vLUvmY3cWy6W2RrER\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Application.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Maven.CLD [clean].executor&quot;: &quot;Run&quot;,\r\n    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Application\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.cld.Main\" />\r\n      <module name=\"CLD\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"0e1fb56c-c621-4f9a-8726-8ebdff9dd49d\" name=\"Changes\" comment=\"\" />\r\n      <created>1722681661707</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1722681661707</updated>\r\n      <workItem from=\"1722681665206\" duration=\"9932000\" />\r\n      <workItem from=\"1722699303542\" duration=\"66000\" />\r\n      <workItem from=\"1722736908388\" duration=\"3740000\" />\r\n      <workItem from=\"1722870961141\" duration=\"18464000\" />\r\n      <workItem from=\"1722895751275\" duration=\"6140000\" />\r\n      <workItem from=\"1722922663549\" duration=\"13496000\" />\r\n      <workItem from=\"1722958248379\" duration=\"168000\" />\r\n      <workItem from=\"1722967510093\" duration=\"89000\" />\r\n      <workItem from=\"1722980077197\" duration=\"7156000\" />\r\n      <workItem from=\"1722987843292\" duration=\"25000\" />\r\n      <workItem from=\"1722988247474\" duration=\"1022000\" />\r\n      <workItem from=\"1722989906387\" duration=\"57000\" />\r\n      <workItem from=\"1723009518109\" duration=\"952000\" />\r\n      <workItem from=\"1723010484670\" duration=\"2671000\" />\r\n      <workItem from=\"1723013731922\" duration=\"214000\" />\r\n      <workItem from=\"1723014013891\" duration=\"177000\" />\r\n      <workItem from=\"1723014865871\" duration=\"114000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -6,7 +6,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="0e1fb56c-c621-4f9a-8726-8ebdff9dd49d" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/cld/TextFiles/EventFile.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cld/Day.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -16,7 +16,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="Branch8" />
++        <entry key="$PROJECT_DIR$" value="branch10" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -50,6 +50,7 @@
+     &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+     &quot;Maven.CLD [clean].executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+@@ -102,6 +103,8 @@
+       <workItem from="1723013731922" duration="214000" />
+       <workItem from="1723014013891" duration="177000" />
+       <workItem from="1723014865871" duration="114000" />
++      <workItem from="1723074631127" duration="789000" />
++      <workItem from="1723093247294" duration="4557000" />
+     </task>
+     <servers />
+   </component>

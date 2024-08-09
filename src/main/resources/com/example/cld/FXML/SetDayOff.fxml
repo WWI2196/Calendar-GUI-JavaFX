@@ -70,7 +70,7 @@
                            <Font name="Century Gothic Bold" size="50.0" />
                         </font>
                      </Label>
-                     <Label fx:id="today_day_name_label" layoutX="37.0" layoutY="70.0" text="Mon" textFill="WHITE">
+                     <Label fx:id="today_day_name_label" alignment="CENTER" layoutX="22.0" layoutY="68.0" prefHeight="22.0" prefWidth="65.0" text="Mon" textFill="WHITE">
                         <font>
                            <Font name="Century Gothic Bold" size="17.0" />
                         </font>
@@ -135,7 +135,10 @@
                      <Font name="Century Gothic Bold" size="17.0" />
                   </font>
                </Label>
-               <JFXTextArea fx:id="events_on_enter_day_day_off_textArea" layoutX="68.0" layoutY="18.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../Styles/style_day_off.css" unFocusColor="#ffffff00" />
+               <JFXTextArea fx:id="events_on_enter_day_day_off_textArea" editable="false" focusColor="#ffffff00" layoutX="68.0" layoutY="18.0" prefHeight="206.0" prefWidth="344.0" stylesheets="@../Styles/style_day_off.css" unFocusColor="#ffffff00">
+                  <font>
+                     <Font name="Century Gothic Bold" size="12.0" />
+                  </font></JFXTextArea>
             </children>
          </Pane>
          <Label alignment="CENTER" layoutX="192.0" layoutY="180.0" prefHeight="41.0" prefWidth="147.0" rotate="-90.0" text="Events on" textFill="#9a9a9a">
@@ -149,11 +152,7 @@
             </font>
          </Label>
          <Line endX="414.0" layoutX="282.0" layoutY="358.0" startX="-229.0" />
-
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="208.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../Styles/style_day_off.css">
-
-         <TextField fx:id="enter_date_txt_field" layoutX="40.0" layoutY="200.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../style_day_off.css">
-
+         <TextField fx:id="enter_date_txt_field" alignment="CENTER" layoutX="40.0" layoutY="208.0" onKeyTyped="#checkDate" prefHeight="40.0" prefWidth="118.0" stylesheets="@../Styles/style_day_off.css">
             <font>
                <Font name="Century Gothic" size="15.0" />
             </font>
@@ -168,10 +167,7 @@
                <Font name="Century Gothic Bold" size="17.0" />
             </font>
          </Label>
-         <Label fx:id="Error_date" layoutX="44.0" layoutY="255.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
-
-         <Label fx:id="Error_date" layoutX="53.0" layoutY="240.0" prefHeight="51.0" prefWidth="192.0" text="__" textFill="#ff3a3a" wrapText="true">
-
+         <Label fx:id="Error_date" layoutX="44.0" layoutY="243.0" prefHeight="51.0" prefWidth="192.0" textFill="#ff3a3a" wrapText="true">
             <font>
                <Font name="Century Gothic Bold" size="14.0" />
             </font>

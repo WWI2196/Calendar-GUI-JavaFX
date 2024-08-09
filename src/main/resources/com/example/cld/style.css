@@ -132,7 +132,6 @@
 }
 
 .events_on_label {
-    -fx-background-color: transparent; /* Make the background transparent */
     -fx-background-color: #FFFFFF; /* Set the background color */
     -fx-background-radius: 30px; /* Set the background radius */
     -fx-border-radius: 30px; /* Set the border radius */
@@ -143,7 +142,6 @@
 }
 
 .events_on_today_textArea {
-    -fx-background-color: transparent; /* Make the background transparent */
     -fx-background-color: #FFFFFF; /* Set the background color */
     -fx-background-radius: 30px; /* Set the background radius */
     -fx-border-radius: 30px; /* Set the border radius */
@@ -154,7 +152,6 @@
 }
 
 #events_on_selected_day_textArea{
-    -fx-background-color: transparent; /* Make the background transparent */
     -fx-background-color: #FFFFFF; /* Set the background color */
     -fx-background-radius: 30px; /* Set the background radius */
     -fx-border-radius: 30px; /* Set the border radius */
@@ -197,26 +194,3 @@
     -fx-font-size: 14px;
     -fx-text-fill: #333333;
 }
-
-/*#one_time_check_box .box {*/
-/*    -fx-background-color: white; !* White background *!*/
-/*    -fx-border-color: black; !* Remove border *!*/
-/*    -fx-border-radius: 5px; !* Rounded corners (optional) *!*/
-/*    -fx-background-radius: 5px; !* Rounded corners *!*/
-/*}*/
-
-/*#daily_check_box .box{*/
-/*    -fx-background-color: white; !* White background *!*/
-/*    -fx-border-color: black; !* Remove border *!*/
-/*    -fx-border-radius: 5px; !* Rounded corners (optional) *!*/
-/*    -fx-background-radius: 5px; !* Rounded corners *!*/
-/*}*/
-
-/*#weekly_check_box .box{*/
-/*    -fx-background-color: white; !* White background *!*/
-/*    -fx-border-color: black; !* Remove border *!*/
-/*    -fx-border-radius: 5px; !* Rounded corners (optional) *!*/
-/*    -fx-background-radius: 5px; !* Rounded corners *!*/
-/*}*/
-
-

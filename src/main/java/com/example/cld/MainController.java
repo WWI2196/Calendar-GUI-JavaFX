@@ -150,30 +150,20 @@ public class MainController {
     private static MainController instance;
 
     public void initialize() {
+        scheduler = new Scheduler(dayOfMonth); // initialize scheduler with current date
 
-        // Initialize scheduler with current date
-        scheduler = new Scheduler(dayOfMonth);
-
-        // Set current date and day name
         today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
         today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
 
-        events_on_day_number_label.setText(String.valueOf((dayOfMonth + 1) > 31 ? 31 : dayOfMonth + 1));
+        events_on_day_number_label.setText(String.valueOf(Math.min((dayOfMonth + 1), 31)));
         events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth + 1));
 
         events_on_today_textArea.setText(scheduler.displayEvents(dayOfMonth));
-        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth + 1) > 31 ? 31 : dayOfMonth + 1));
+        events_on_selected_day_textArea.setText(scheduler.displayEvents(Math.min((dayOfMonth + 1), 31)));
         events_on_label.setText((dayOfMonth + 1) > 31 ? "Events On" : "Tomorrow");
 
         setupDateButtonActions();
 
-//        btm_addEvent.setOnAction(event -> {
-//            try {
-//                switchToAddEventDetails(event);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        });
     }
 
     public MainController() {
@@ -185,43 +175,43 @@ public class MainController {
     }
 
     @FXML
-    public void switchToAddEventDetails(Event event) throws IOException {
+    public void switchToAddEventDetails(Event event) throws IOException { // shift to add event scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/AddEvent.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToSetDayOff(Event event) throws IOException {
+    public void switchToSetDayOff(Event event) throws IOException { // shift to set day off scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToDeleteEvent(Event event) throws IOException { // shift to delete event scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/DeleteEvent.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToShiftEvent(Event event) throws IOException { // switch shift event scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ShiftEvent.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewWeek(Event event) throws IOException {// shift to view week scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewWeek.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToViewMonth(Event event) throws IOException { //shift to view month scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewMonth.fxml")));
 
         EventAction(event, root);
     }
 
-    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
+    public void switchToMainMenu(Event event) throws IOException { // switch to main scene
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
 
         EventAction(event, root);
@@ -245,25 +235,22 @@ public class MainController {
         JFXButton button = (JFXButton) event.getSource();
         int selectedDate = Integer.parseInt(button.getText());
 
-        // Update the selected date label and day name label
-        events_on_label.setText("Events On");
+        events_on_label.setText("Events On"); // update the selected date label and day name label
         events_on_day_number_label.setText(String.valueOf(selectedDate));
         events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(selectedDate));
 
-        // Display events for the selected date
-        handleDisplayEvents(selectedDate);
+        handleDisplayEvents(selectedDate); // display events for the selected date
     }
 
     private void handleDisplayEvents(int date) {
         events_on_selected_day_textArea.setText(scheduler.displayEvents(date));
     }
 
-    public void setupDateButtonActions() {
-        // Assign handleDateButtonPressed to each date button
+    private void setupDateButtonActions() { // handle handleDateButtonPressed to each date button
         for (int i = 1; i <= 31; i++) {
             try {
                 Field field = getClass().getDeclaredField("btm_date" + i);
-                field.setAccessible(true); // Make private fields accessible
+                field.setAccessible(true); // make private fields accessible
                 JFXButton button = (JFXButton) field.get(this);
                 if (button != null) {
                     button.setOnAction(this::handleDateButtonPressed);
@@ -275,32 +262,31 @@ public class MainController {
     }
 
      public static class AlertHelper {
-        public static void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message, String alertImagePath, String windowIconPath) {
-            Alert alert = new Alert(alertType);
-            alert.setTitle(title);
-            alert.setHeaderText(header);
-            alert.setContentText(message);
-            alert.initOwner(owner);
+         public static void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message, String alertImagePath, String windowIconPath) {
+             Alert alert = new Alert(alertType);
+             alert.setTitle(title);
+             alert.setHeaderText(header);
+             alert.setContentText(message);
+             alert.initOwner(owner);
 
-            if (alertType == Alert.AlertType.WARNING || alertType == Alert.AlertType.ERROR || alertType == Alert.AlertType.CONFIRMATION) {
-                // Set a custom image for the alert
-                if (alertImagePath != null && !alertImagePath.isEmpty()) {
-                    Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
-                    ImageView imageView = new ImageView(customImage);
-                    imageView.setFitWidth(40); // Set desired width
-                    imageView.setFitHeight(40); // Set desired height
-                    alert.setGraphic(imageView);
-                }
+             if (alertImagePath != null && !alertImagePath.isEmpty()) {
+                 Image customImage = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(alertImagePath))); // set a custom image for the alert
+                 ImageView imageView = new ImageView(customImage);
+                 imageView.setFitWidth(40);
+                 imageView.setFitHeight(40);
+                 alert.setGraphic(imageView);
+             }
 
-                // Set a custom icon for the application window
-                if (windowIconPath != null && !windowIconPath.isEmpty()) {
-                    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-                    stage.getIcons().add(new Image(AlertHelper.class.getResourceAsStream(windowIconPath)));
-                }
-            }
-            alert.showAndWait();
-        }
-    }
+             if (windowIconPath != null && !windowIconPath.isEmpty()) { // set a custom icon for the application window
+                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                 Image windowIcon = new Image(Objects.requireNonNull(AlertHelper.class.getResourceAsStream(windowIconPath)));
+                 stage.getIcons().clear(); // clear existing icons
+                 stage.getIcons().add(windowIcon);
+             }
+
+             alert.showAndWait();
+         }
+     }
 
     public Scheduler getScheduler() {
         return scheduler;

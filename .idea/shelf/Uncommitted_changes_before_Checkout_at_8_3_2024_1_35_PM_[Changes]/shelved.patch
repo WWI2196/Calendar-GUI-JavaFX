@@ -1,0 +1,1217 @@
+Index: src/main/java/com/example/cld/MainController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport com.jfoenix.controls.JFXButton;\r\nimport com.jfoenix.controls.JFXTextArea;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.Event;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.stage.Stage;\r\nimport javafx.scene.input.MouseEvent;\r\n\r\nimport java.io.IOException;\r\nimport java.lang.reflect.Field;\r\nimport java.util.Objects;\r\n\r\nimport static com.example.cld.Main.dayOfMonth;\r\n\r\n\r\npublic class MainController {\r\n\r\n    private Stage stage;\r\n    private Scene scene;\r\n\r\n     @FXML\r\n    private JFXButton btm_addEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_date1;\r\n\r\n    @FXML\r\n    private JFXButton btm_date10;\r\n\r\n    @FXML\r\n    private JFXButton btm_date11;\r\n\r\n    @FXML\r\n    private JFXButton btm_date12;\r\n\r\n    @FXML\r\n    private JFXButton btm_date13;\r\n\r\n    @FXML\r\n    private JFXButton btm_date14;\r\n\r\n    @FXML\r\n    private JFXButton btm_date15;\r\n\r\n    @FXML\r\n    private JFXButton btm_date16;\r\n\r\n    @FXML\r\n    private JFXButton btm_date17;\r\n\r\n    @FXML\r\n    private JFXButton btm_date18;\r\n\r\n    @FXML\r\n    private JFXButton btm_date19;\r\n\r\n    @FXML\r\n    private JFXButton btm_date2;\r\n\r\n    @FXML\r\n    private JFXButton btm_date20;\r\n\r\n    @FXML\r\n    private JFXButton btm_date21;\r\n\r\n    @FXML\r\n    private JFXButton btm_date22;\r\n\r\n    @FXML\r\n    private JFXButton btm_date23;\r\n\r\n    @FXML\r\n    private JFXButton btm_date24;\r\n\r\n    @FXML\r\n    private JFXButton btm_date25;\r\n\r\n    @FXML\r\n    private JFXButton btm_date26;\r\n\r\n    @FXML\r\n    private JFXButton btm_date27;\r\n\r\n    @FXML\r\n    private JFXButton btm_date28;\r\n\r\n    @FXML\r\n    private JFXButton btm_date29;\r\n\r\n    @FXML\r\n    private JFXButton btm_date3;\r\n\r\n    @FXML\r\n    private JFXButton btm_date30;\r\n\r\n    @FXML\r\n    private JFXButton btm_date31;\r\n\r\n    @FXML\r\n    private JFXButton btm_date4;\r\n\r\n    @FXML\r\n    private JFXButton btm_date5;\r\n\r\n    @FXML\r\n    private JFXButton btm_date6;\r\n\r\n    @FXML\r\n    private JFXButton btm_date7;\r\n\r\n    @FXML\r\n    private JFXButton btm_date8;\r\n\r\n    @FXML\r\n    private JFXButton btm_date9;\r\n\r\n    @FXML\r\n    private JFXButton btm_dayOff;\r\n\r\n    @FXML\r\n    private JFXButton btm_deleteEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_shiftEvent;\r\n\r\n    @FXML\r\n    private Label events_on_label;\r\n\r\n    @FXML\r\n     private JFXTextArea events_on_selected_day_textArea;\r\n\r\n    @FXML\r\n    private JFXTextArea events_on_today_textArea;\r\n\r\n    @FXML\r\n    private Label today_pane_day_name_label;\r\n\r\n    @FXML\r\n    private Label events_on_day_number_label;\r\n\r\n    @FXML\r\n    private Label today_pane_day_number_label;\r\n\r\n    @FXML\r\n    private Label events_on_day_name_label;\r\n\r\n    public static Scheduler scheduler;\r\n    private static MainController instance;\r\n\r\n    public void initialize() {\r\n\r\n        // Initialize scheduler with current date\r\n        scheduler = new Scheduler(dayOfMonth);\r\n\r\n        // Set current date and day name\r\n        today_pane_day_number_label.setText(String.valueOf(dayOfMonth));\r\n        today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));\r\n\r\n        events_on_day_number_label.setText(String.valueOf((dayOfMonth+1)>31? 31:dayOfMonth+1));\r\n        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth+1));\r\n\r\n        events_on_today_textArea.setText(scheduler.displayEvents(dayOfMonth));\r\n        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth+1)>31? 31:dayOfMonth+1));\r\n        events_on_label.setText((dayOfMonth+1)>31? \"Events On\": \"Tomorrow\");\r\n\r\n        setupDateButtonActions();\r\n\r\n//        btm_addEvent.setOnAction(event -> {\r\n//            try {\r\n//                switchToAddEventDetails(event);\r\n//            } catch (IOException e) {\r\n//                e.printStackTrace();\r\n//            }\r\n//        });\r\n    }\r\n\r\n    public MainController() {\r\n        instance = this;\r\n    }\r\n\r\n    public static MainController getInstance() {\r\n        return instance;\r\n    }\r\n\r\n     @FXML\r\n    public void switchToAddEventDetails(Event event) throws IOException {\r\n        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"FXML/AddEvent.fxml\")));\r\n\r\n        EventAction(event, root);\r\n     }\r\n\r\n    public void switchToSetDayOff(Event event) throws IOException {\r\n        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"FXML/SetDayOff.fxml\")));\r\n\r\n        EventAction(event, root);\r\n    }\r\n\r\n    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene\r\n        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"FXML/DeleteEvent.fxml\")));\r\n\r\n        EventAction(event, root);\r\n    }\r\n\r\n    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene\r\n        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"FXML/ShiftEvent.fxml\")));\r\n\r\n        EventAction(event, root);\r\n    }\r\n\r\n    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene\r\n        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"FXML/Main.fxml\")));\r\n\r\n        EventAction(event, root);\r\n    }\r\n\r\n    private void EventAction(Event event, Parent root) {\r\n        if (event instanceof ActionEvent) {\r\n            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n        } else if (event instanceof MouseEvent) {\r\n            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n        }\r\n\r\n        scene = new Scene(root);\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    @FXML\r\n   private void handleDateButtonPressed(ActionEvent event) {\r\n        JFXButton button = (JFXButton) event.getSource();\r\n        int selectedDate = Integer.parseInt(button.getText());\r\n\r\n        // Update the selected date label and day name label\r\n        events_on_label.setText(\"Events On\");\r\n        events_on_day_number_label.setText(String.valueOf(selectedDate));\r\n        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(selectedDate));\r\n\r\n        // Display events for the selected date\r\n        handleDisplayEvents(selectedDate);\r\n    }\r\n\r\n    private void handleDisplayEvents(int date) {\r\n        events_on_selected_day_textArea.setText(scheduler.displayEvents(date));\r\n    }\r\n\r\n    public void setupDateButtonActions() {\r\n        // Assign handleDateButtonPressed to each date button\r\n        for (int i = 1; i <= 31; i++) {\r\n            try {\r\n                Field field = getClass().getDeclaredField(\"btm_date\" + i);\r\n                field.setAccessible(true); // Make private fields accessible\r\n                JFXButton button = (JFXButton) field.get(this);\r\n                if (button != null) {\r\n                    button.setOnAction(this::handleDateButtonPressed);\r\n                }\r\n            } catch (NoSuchFieldException | IllegalAccessException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/MainController.java b/src/main/java/com/example/cld/MainController.java
+--- a/src/main/java/com/example/cld/MainController.java	
++++ b/src/main/java/com/example/cld/MainController.java	
+@@ -1,5 +1,9 @@
+ package com.example.cld;
+ 
++import javafx.scene.image.Image;
++import javafx.scene.image.ImageView;
++import javafx.stage.Window;
++import javafx.scene.control.Alert;
+ import com.jfoenix.controls.JFXButton;
+ import com.jfoenix.controls.JFXTextArea;
+ import javafx.event.ActionEvent;
+@@ -10,10 +14,6 @@
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+ import javafx.scene.control.Label;
+-import javafx.scene.image.ImageView;
+-import javafx.scene.layout.AnchorPane;
+-import javafx.scene.layout.HBox;
+-import javafx.scene.layout.Pane;
+ import javafx.stage.Stage;
+ import javafx.scene.input.MouseEvent;
+ 
+@@ -29,9 +29,6 @@
+     private Stage stage;
+     private Scene scene;
+ 
+-     @FXML
+-    private JFXButton btm_addEvent;
+-
+     @FXML
+     private JFXButton btm_date1;
+ 
+@@ -129,16 +126,16 @@
+     private JFXButton btm_dayOff;
+ 
+     @FXML
+-    private JFXButton btm_deleteEvent;
++    private Label events_on_day_name_label;
+ 
+     @FXML
+-    private JFXButton btm_shiftEvent;
++    private Label events_on_day_number_label;
+ 
+     @FXML
+     private Label events_on_label;
+ 
+     @FXML
+-     private JFXTextArea events_on_selected_day_textArea;
++    private JFXTextArea events_on_selected_day_textArea;
+ 
+     @FXML
+     private JFXTextArea events_on_today_textArea;
+@@ -146,15 +143,9 @@
+     @FXML
+     private Label today_pane_day_name_label;
+ 
+-    @FXML
+-    private Label events_on_day_number_label;
+-
+     @FXML
+     private Label today_pane_day_number_label;
+ 
+-    @FXML
+-    private Label events_on_day_name_label;
+-
+     public static Scheduler scheduler;
+     private static MainController instance;
+ 
+@@ -167,12 +158,12 @@
+         today_pane_day_number_label.setText(String.valueOf(dayOfMonth));
+         today_pane_day_name_label.setText(DateNameMain.getDayAbbreviation(dayOfMonth));
+ 
+-        events_on_day_number_label.setText(String.valueOf((dayOfMonth+1)>31? 31:dayOfMonth+1));
+-        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth+1));
++        events_on_day_number_label.setText(String.valueOf((dayOfMonth + 1) > 31 ? 31 : dayOfMonth + 1));
++        events_on_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth + 1));
+ 
+         events_on_today_textArea.setText(scheduler.displayEvents(dayOfMonth));
+-        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth+1)>31? 31:dayOfMonth+1));
+-        events_on_label.setText((dayOfMonth+1)>31? "Events On": "Tomorrow");
++        events_on_selected_day_textArea.setText(scheduler.displayEvents((dayOfMonth + 1) > 31 ? 31 : dayOfMonth + 1));
++        events_on_label.setText((dayOfMonth + 1) > 31 ? "Events On" : "Tomorrow");
+ 
+         setupDateButtonActions();
+ 
+@@ -193,12 +184,12 @@
+         return instance;
+     }
+ 
+-     @FXML
++    @FXML
+     public void switchToAddEventDetails(Event event) throws IOException {
+         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/AddEvent.fxml")));
+ 
+         EventAction(event, root);
+-     }
++    }
+ 
+     public void switchToSetDayOff(Event event) throws IOException {
+         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/SetDayOff.fxml")));
+@@ -218,6 +209,18 @@
+         EventAction(event, root);
+     }
+ 
++    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
++        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewWeek.fxml")));
++
++        EventAction(event, root);
++    }
++
++    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
++        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/ViewMonth.fxml")));
++
++        EventAction(event, root);
++    }
++
+     public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene
+         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
+ 
+@@ -233,11 +236,12 @@
+ 
+         scene = new Scene(root);
+         stage.setScene(scene);
++        stage.centerOnScreen();
+         stage.show();
+     }
+ 
+     @FXML
+-   private void handleDateButtonPressed(ActionEvent event) {
++    private void handleDateButtonPressed(ActionEvent event) {
+         JFXButton button = (JFXButton) event.getSource();
+         int selectedDate = Integer.parseInt(button.getText());
+ 
+@@ -270,6 +274,38 @@
+         }
+     }
+ 
++     public static class AlertHelper {
++         public static void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message, String alertImagePath, String windowIconPath) {
++             Alert alert = new Alert(alertType);
++             alert.setTitle(title);
++             alert.setHeaderText(header);
++             alert.setContentText(message);
++             alert.initOwner(owner);
++
++                 // Set a custom image for the alert
++             if (alertImagePath != null && !alertImagePath.isEmpty()) {
++                 Image customImage = new Image(AlertHelper.class.getResourceAsStream(alertImagePath));
++                 ImageView imageView = new ImageView(customImage);
++                 imageView.setFitWidth(40); // Set desired width
++                 imageView.setFitHeight(40); // Set desired height
++                 alert.setGraphic(imageView);
++             }
++
++             // Set a custom icon for the application window
++             if (windowIconPath != null && !windowIconPath.isEmpty()) {
++                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
++                 Image windowIcon = new Image(AlertHelper.class.getResourceAsStream(windowIconPath));
++                 stage.getIcons().clear(); // Clear existing icons
++                 stage.getIcons().add(windowIcon);
++             }
++
++             alert.showAndWait();
++         }
++     }
+ 
+ 
+-}
++    public Scheduler getScheduler() {
++        return scheduler;
++    }
++
++}
+\ No newline at end of file
+Index: src/main/java/com/example/cld/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.image.Image;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\n\r\nimport java.io.File;\r\nimport java.util.Objects;\r\n\r\nimport java.time.LocalDate;\r\n\r\npublic class Main extends Application {\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n\r\n    public static LocalDate currentDate; // Static variable for current date\r\n    public static int dayOfMonth; // Static variable for day of month\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception {\r\n\r\n        // Initialize the current date\r\n       currentDate = LocalDate.now();\r\n       dayOfMonth = currentDate.getDayOfMonth();\r\n\r\n//        dayOfMonth = 31;\r\n\r\n        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"FXML/Main.fxml\")));\r\n        Scene scene = new Scene(root, 1221, 784);\r\n\r\n        File file = new File(\"src/main/resources/com/example/cld/Icons/appLogo.png\");\r\n        Image icon = new Image(file.toURI().toString());\r\n\r\n//        primaryStage.initStyle(StageStyle.UNDECORATED);\r\n        primaryStage.setTitle(\"Scheduler\");\r\n        primaryStage.setScene(scene);\r\n        primaryStage.setResizable(false);\r\n        primaryStage.getIcons().add(icon);\r\n        primaryStage.show();\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/Main.java b/src/main/java/com/example/cld/Main.java
+--- a/src/main/java/com/example/cld/Main.java	
++++ b/src/main/java/com/example/cld/Main.java	
+@@ -6,7 +6,6 @@
+ import javafx.scene.Scene;
+ import javafx.scene.image.Image;
+ import javafx.stage.Stage;
+-import javafx.stage.StageStyle;
+ 
+ import java.io.File;
+ import java.util.Objects;
+@@ -25,10 +24,10 @@
+     public void start(Stage primaryStage) throws Exception {
+ 
+         // Initialize the current date
+-       currentDate = LocalDate.now();
+-       dayOfMonth = currentDate.getDayOfMonth();
++        currentDate = LocalDate.now();
++        dayOfMonth = currentDate.getDayOfMonth();
+ 
+-//        dayOfMonth = 31;
++//       dayOfMonth = 31;
+ 
+         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
+         Scene scene = new Scene(root, 1221, 784);
+Index: src/main/java/com/example/cld/Scheduler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport java.io.*;\r\nimport java.util.Scanner;\r\n\r\nclass Scheduler {\r\n    private final Day[] days;\r\n    private final int currentDay;\r\n\r\n    public Scheduler(int currentDay) {\r\n        this.currentDay = currentDay;\r\n        days = new Day[31];\r\n        initializeDays();\r\n        try {\r\n            loadEventsFromTxt();\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void initializeDays() {\r\n        String[] daysOfWeek = { \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\" };\r\n\r\n        for (int i = 0; i < 31; ++i) {\r\n            days[i] = new Day(i + 1, daysOfWeek[i % 7]);\r\n        }\r\n    }\r\n\r\n    private void saveEventsToTxt() {\r\n        try (PrintWriter writer = new PrintWriter(new FileWriter(\"src/main/EventFile.txt\"))) {\r\n            for (int i = 0; i < 31; ++i) {\r\n                writer.print(days[i].formatDayDataToString());\r\n            }\r\n        } catch (IOException e) {\r\n            throw new IllegalArgumentException(\"Error saving events\");\r\n        }\r\n    }\r\n\r\n    private void loadEventsFromTxt() {\r\n        try (BufferedReader reader = new BufferedReader(new FileReader(\"src/main/EventFile.txt\"))) {\r\n            String line;\r\n            while ((line = reader.readLine()) != null) {\r\n                if (line.isEmpty()) continue;\r\n                int date = Integer.parseInt(line.split(\"\\\\|\")[0]);\r\n                days[date - 1].extractDayData(line);\r\n            }\r\n        } catch (IOException e) {\r\n            throw new IllegalArgumentException(\"Error loading events\");\r\n        }\r\n    }\r\n\r\n    public void scheduleEvent(int date, Event event) {\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            if (days[date - 1].isDayOff()) {\r\n                Scanner scanner = new Scanner(System.in);\r\n                System.out.print(\"The selected day is marked as a day off. Do you want to proceed? (yes/no): \");\r\n                String confirmation = scanner.nextLine();\r\n\r\n                if (!confirmation.equalsIgnoreCase(\"yes\")) {\r\n                    return;\r\n                }\r\n                days[date - 1].setDayOff(false);\r\n            }\r\n\r\n            Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);\r\n\r\n            if (event.repeatType.equals(\"daily\")) {\r\n                for (int i = date - 1; i < 31; i++) {\r\n                    days[i].addEvent(newEvent);\r\n                }\r\n            } else if (event.repeatType.equals(\"weekly\")) {\r\n                for (int i = date - 1; i < 31; i += 7) {\r\n                    days[i].addEvent(newEvent);\r\n                }\r\n            } else {\r\n                days[date - 1].addEvent(newEvent);\r\n            }\r\n\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error scheduling event\");\r\n        }\r\n    }\r\n\r\n    public void deleteEvent(int date, String title, boolean deleteRepeats) {\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            if (deleteRepeats) {\r\n                for (int i = date - 1; i < 31; ++i) {\r\n                    days[i].deleteEvent(title);\r\n                }\r\n            } else {\r\n                days[date - 1].deleteEvent(title);\r\n            }\r\n\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error deleting event\");\r\n        }\r\n    }\r\n\r\n    public void shiftEvent(int date, String title, int newDate) {\r\n        try {\r\n            if (date < currentDay || date > 31 || newDate < currentDay || newDate > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            days[date - 1].shiftEvent(title, newDate, days);\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error shifting event\");\r\n        }\r\n    }\r\n\r\n    public void markDayOff(int date) {\r\n        try {\r\n            if (date < currentDay || date > 31) {\r\n                throw new IllegalArgumentException(\"Invalid date\");\r\n            }\r\n\r\n            days[date - 1].clearEvents();\r\n            days[date - 1].setDayOff(true);\r\n            saveEventsToTxt();\r\n        } catch (Exception e) {\r\n            throw new IllegalArgumentException(\"Error marking day off\");\r\n        }\r\n    }\r\n\r\n    public String displayEvents(int date) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        return days[date - 1].toString();\r\n    }\r\n\r\n    public void viewWeekSchedule(int startDay) {\r\n        if (startDay < 1 || startDay > 31) {\r\n            throw new IllegalArgumentException(\"Invalid start day\");\r\n        }\r\n\r\n        int startIndex = ((startDay - 1) / 7) * 7;\r\n        int endIndex = Math.min(startIndex + 7, 31);\r\n\r\n        for (int i = startIndex; i < endIndex; ++i) {\r\n            String output = days[i].toString();\r\n            if (!output.isEmpty()) {\r\n                System.out.println(output);\r\n            }\r\n        }\r\n    }\r\n\r\n    public void displayAllEvents() {\r\n        for (int i = 0; i < 31; ++i) {\r\n            if (!days[i].toString().isEmpty()) {\r\n                System.out.println(days[i].toString());\r\n            }\r\n        }\r\n    }\r\n\r\n    public void countEvents() {\r\n        int count = 0;\r\n        for (int i = 0; i < 31; ++i) {\r\n            count += days[i].getEventCount();\r\n        }\r\n        System.out.println(\"Total number of events: \" + count);\r\n    }\r\n\r\n    public boolean isEventRepeating(int date, String title) {\r\n        if (date < 1 || date > 31) {\r\n            throw new IllegalArgumentException(\"Invalid date\");\r\n        }\r\n        Day day = days[date - 1];\r\n        for (Event event : day.getEvents()) {\r\n            if (event.getTitle().equals(title) && !event.getRepeatType().equals(\"none\")) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/Scheduler.java b/src/main/java/com/example/cld/Scheduler.java
+--- a/src/main/java/com/example/cld/Scheduler.java	
++++ b/src/main/java/com/example/cld/Scheduler.java	
+@@ -1,10 +1,9 @@
+ package com.example.cld;
+ 
+ import java.io.*;
+-import java.util.Scanner;
+ 
+ class Scheduler {
+-    private final Day[] days;
++    final Day[] days;
+     private final int currentDay;
+ 
+     public Scheduler(int currentDay) {
+@@ -14,7 +13,7 @@
+         try {
+             loadEventsFromTxt();
+         } catch (Exception e) {
+-            System.out.println("Error: " + e.getMessage());
++            throw new IllegalArgumentException("Error: " + e.getMessage());
+         }
+     }
+ 
+@@ -27,7 +26,7 @@
+     }
+ 
+     private void saveEventsToTxt() {
+-        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/EventFile.txt"))) {
++        try (PrintWriter writer = new PrintWriter(new FileWriter("src/main/resources/com/example/cld/TextFiles/EventFile.txt"))) {
+             for (int i = 0; i < 31; ++i) {
+                 writer.print(days[i].formatDayDataToString());
+             }
+@@ -37,7 +36,7 @@
+     }
+ 
+     private void loadEventsFromTxt() {
+-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/EventFile.txt"))) {
++        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/cld/TextFiles/EventFile.txt"))) {
+             String line;
+             while ((line = reader.readLine()) != null) {
+                 if (line.isEmpty()) continue;
+@@ -56,14 +55,8 @@
+             }
+ 
+             if (days[date - 1].isDayOff()) {
+-                Scanner scanner = new Scanner(System.in);
+-                System.out.print("The selected day is marked as a day off. Do you want to proceed? (yes/no): ");
+-                String confirmation = scanner.nextLine();
+-
+-                if (!confirmation.equalsIgnoreCase("yes")) {
+-                    return;
+-                }
+                 days[date - 1].setDayOff(false);
++                throw new IllegalArgumentException("The selected day is marked as a day off");
+             }
+ 
+             Event newEvent = new Event(event.title, event.startTime, event.endTime, event.repeatType);
+@@ -82,7 +75,7 @@
+ 
+             saveEventsToTxt();
+         } catch (Exception e) {
+-            throw new IllegalArgumentException("Error scheduling event");
++            throw new IllegalArgumentException(e.getMessage() != null ? e.getMessage() : "Error scheduling event.Check the inputs again.");
+         }
+     }
+ 
+@@ -133,14 +126,49 @@
+         }
+     }
+ 
++    public void removeDayOff(int date) {
++        try {
++            if (date < currentDay || date > 31) {
++                throw new IllegalArgumentException("Invalid date");
++            }
++
++            days[date - 1].setDayOff(false);
++            saveEventsToTxt();
++        } catch (Exception e) {
++            throw new IllegalArgumentException("Error removing day off");
++        }
++    }
++
+     public String displayEvents(int date) {
+         if (date < 1 || date > 31) {
+             throw new IllegalArgumentException("Invalid date");
+         }
+-        return days[date - 1].toString();
++        if( !days[date - 1].toString().isEmpty()) {
++            return days[date - 1].toString();
++        }else{
++            return "No events";
++        }
+     }
+ 
+-    public void viewWeekSchedule(int startDay) {
++    public int countWeekEvents(int startDay){
++        if (startDay < 1 || startDay > 31) {
++            throw new IllegalArgumentException("Invalid start day");
++        }
++
++        int startIndex = ((startDay - 1) / 7) * 7;
++        int endIndex = Math.min(startIndex + 7, 31);
++        int totalEvents = 0;
++
++        for (int i = startIndex; i < endIndex; ++i) {
++            if (!days[i].toString().isEmpty()) {
++                totalEvents+= days[i].getEventCount();
++            }
++        }
++
++        return totalEvents;
++    }
++
++    public String viewWeekSchedule(int startDay) {
+         if (startDay < 1 || startDay > 31) {
+             throw new IllegalArgumentException("Invalid start day");
+         }
+@@ -151,9 +179,12 @@
+         for (int i = startIndex; i < endIndex; ++i) {
+             String output = days[i].toString();
+             if (!output.isEmpty()) {
+-                System.out.println(output);
++                return output;
++            }else{
++                return "No events";
+             }
+         }
++        return null;
+     }
+ 
+     public void displayAllEvents() {
+@@ -184,5 +215,25 @@
+         }
+         return false;
+     }
+-}
++
++    public void checkEventNameExists(int date, String title) {
++        if (date < 1 || date > 31) {
++            throw new IllegalArgumentException("Invalid date");
++        }
++        Day day = days[date - 1];
++        for (Event event : day.getEvents()) {
++            if (event.getTitle().toUpperCase().equals(title)) {
++                throw new IllegalArgumentException("Event name already exists");
++            }
++        }
++    }
+ 
++    public void checkDayOff(int date) {
++        if (date < 1 || date > 31) {
++            throw new IllegalArgumentException("Invalid date");
++        }
++        if (days[date - 1].isDayOff()) {
++            throw new IllegalArgumentException("The selected day is marked as a day off");
++        }
++    }
++}
+\ No newline at end of file
+Index: src/main/java/com/example/cld/SetDayOffController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport com.jfoenix.controls.JFXButton;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.Event;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.util.Objects;\r\n\r\npublic class SetDayOffController {\r\n\r\n    private Stage stage;\r\n    private Scene scene;\r\n\r\n    @FXML\r\n    private JFXButton back_to_main_btm;\r\n\r\n    @FXML\r\n    private JFXButton btm_addEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_dayOff;\r\n\r\n    @FXML\r\n    private JFXButton btm_deleteEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_shiftEvent;\r\n\r\n    @FXML\r\n    private JFXButton confirm_btm_addEvent;\r\n\r\n    @FXML\r\n    private Pane date_picker;\r\n\r\n    @FXML\r\n    private JFXButton check_button;\r\n\r\n    @FXML\r\n    private TextField enter_date_txt_field;\r\n\r\n    @FXML\r\n    private Label enter_day_name_label;\r\n\r\n    @FXML\r\n    private Label enter_day_number_label;\r\n\r\n    @FXML\r\n    private Pane enter_today_pane;\r\n\r\n    @FXML\r\n    private Label events_on_enter_day_label;\r\n\r\n    @FXML\r\n    private ImageView inner_pane_image1;\r\n\r\n    @FXML\r\n    private HBox root;\r\n\r\n    @FXML\r\n    private AnchorPane side_ankerpane;\r\n\r\n    @FXML\r\n    private Label today_day_name_label;\r\n\r\n    @FXML\r\n    private Label today_day_number_label;\r\n\r\n     private MainController mainController = MainController.getInstance();\r\n\r\n    @FXML\r\n    public void switchToMainMenu(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToMainMenu(event);\r\n    }\r\n    @FXML\r\n    public void switchToAddEventDetails(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToAddEventDetails(event);\r\n    }\r\n    @FXML\r\n    public void switchToSetDayOff(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToSetDayOff(event);\r\n    }\r\n    @FXML\r\n    public void switchToDeleteEvent(javafx.event.Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToDeleteEvent(event);\r\n    }\r\n    @FXML\r\n    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToShiftEvent(event);\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/SetDayOffController.java b/src/main/java/com/example/cld/SetDayOffController.java
+--- a/src/main/java/com/example/cld/SetDayOffController.java	
++++ b/src/main/java/com/example/cld/SetDayOffController.java	
+@@ -1,30 +1,28 @@
+ package com.example.cld;
+ 
+ import com.jfoenix.controls.JFXButton;
+-import javafx.event.ActionEvent;
++import com.jfoenix.controls.JFXTextArea;
+ import javafx.event.Event;
+ import javafx.fxml.FXML;
+-import javafx.fxml.FXMLLoader;
+-import javafx.scene.Node;
+-import javafx.scene.Parent;
+-import javafx.scene.Scene;
+-import javafx.scene.control.Label;
+-import javafx.scene.control.TextField;
++import javafx.scene.control.*;
++import javafx.scene.image.Image;
+ import javafx.scene.image.ImageView;
+-import javafx.scene.layout.AnchorPane;
+-import javafx.scene.layout.HBox;
+ import javafx.scene.layout.Pane;
+ import javafx.stage.Stage;
++import javafx.stage.Window;
+ 
+ import java.io.IOException;
+-import java.util.Objects;
++import java.util.Optional;
++
++import static com.example.cld.Main.dayOfMonth;
+ 
+ public class SetDayOffController {
+ 
+-    private Stage stage;
+-    private Scene scene;
++    @FXML
++    private Label Error_date;
+ 
+     @FXML
++
+     private JFXButton back_to_main_btm;
+ 
+     @FXML
+@@ -39,14 +37,18 @@
+     @FXML
+     private JFXButton btm_shiftEvent;
+ 
++
+     @FXML
+-    private JFXButton confirm_btm_addEvent;
++
++    private JFXButton btm_viewMonth;
++
++    private JFXButton confirm_btm_DeleteEvent;
+ 
+     @FXML
+-    private Pane date_picker;
++    private JFXButton btm_viewWeek;
+ 
+     @FXML
+-    private JFXButton check_button;
++    private JFXButton confirm_btm_DeleteEvent;
+ 
+     @FXML
+     private TextField enter_date_txt_field;
+@@ -58,19 +60,21 @@
+     private Label enter_day_number_label;
+ 
+     @FXML
++
+     private Pane enter_today_pane;
+ 
+     @FXML
++
++    private JFXTextArea events_on_enter_day_day_off_textArea;
++
+     private Label events_on_enter_day_label;
+ 
++    @FXML
++    private Label Error_date;
++
+     @FXML
+     private ImageView inner_pane_image1;
+ 
+-    @FXML
+-    private HBox root;
+-
+-    @FXML
+-    private AnchorPane side_ankerpane;
+ 
+     @FXML
+     private Label today_day_name_label;
+@@ -78,6 +82,9 @@
+     @FXML
+     private Label today_day_number_label;
+ 
++    @FXML
++    private Pane today_pane;
++
+      private MainController mainController = MainController.getInstance();
+ 
+     @FXML
+@@ -99,7 +106,287 @@
+     @FXML
+     public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene
+         mainController.switchToShiftEvent(event);
++    }
++    @FXML
++    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
++        mainController.switchToViewWeek(event);
++    }
++    @FXML
++    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
++        mainController.switchToViewMonth(event);
++    }
++
++    @FXML
++
++    private void Error() {
++        Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++                Alert.AlertType.INFORMATION,owner,
++                "Set Dayoff",
++                "Error",
++                "There is a problem with entered values; check whether the entered values are in correct format",
++                "/com/example/cld/Icons/CrossSign.png",
++                "/com/example/cld/Icons/addEvent.png"
++        );
++    }
++
++    @FXML
++
++    private void Error() {
++        Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++                Alert.AlertType.INFORMATION,owner,
++                "Set Dayoff",
++                "Error",
++                "There is a problem with entered values; check whether the entered values are in correct format",
++                "/com/example/cld/Icons/CrossSign.png",
++                "/com/example/cld/Icons/addEvent.png"
++        );
++    }
++
++    @FXML
++
++    private void successPopup() {
++        Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++                Alert.AlertType.INFORMATION,owner,
++
++                "Set Day Off",
++
++                "Set Dayoff",
++
++                "Success",
++                "Day successfully set as Day Off",
++                "/com/example/cld/Icons/Done_img_1.png",
++                "/com/example/cld/Icons/dayOff.png"
++        );
++    }
++
++    public void initialize() {
+ 
+-    }
++        confirm_btm_DeleteEvent.setOnAction(this::handleDayOff);
++
++        confirm_btm_DeleteEvent.setOnAction(event_ -> {
++            try {
++                int dayToSetDayoff = Integer.parseInt(enter_date_txt_field.getText());
++
++                // Validate the entered date
++                if (dayToSetDayoff < dayOfMonth || dayToSetDayoff> 31) {
++                    Error_date.setVisible(true);
++                    throw new IllegalArgumentException(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
++                }
+ 
+-}
++                if (mainController.getScheduler().days[dayToSetDayoff - 1].isDayOff()) {
++                    Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++
++                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
++
++                    alert.setTitle("Set Day Off");
++                    alert.setHeaderText("Confirmation");
++                    alert.setContentText("The selected day is already marked as a day off. Do you want to keep it as a day off?");
++
++                    alert.setTitle("Set Dayoff");
++                    alert.setHeaderText("Confirmation");
++                    alert.setContentText("The selected day is already marked as a dayoff. Do you want to Keep as it is or remove Dayoff");
++
++                    alert.initOwner(owner);
++
++                    // Load and set the alert's display icon
++                    Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
++                    ImageView alertImageView = new ImageView(alertImage);
++                    alertImageView.setFitWidth(40); // Set desired width
++                    alertImageView.setFitHeight(40); // Set desired height
++                    alert.setGraphic(alertImageView);
++
++
++                    ButtonType keepButton =new ButtonType("KEEP");
++                    ButtonType removeButton =new ButtonType("REMOVE");
++                    alert.getButtonTypes().setAll(keepButton, removeButton);
++
++                    Optional<ButtonType> result = alert.showAndWait();
++
++                    if (result.isPresent() && result.get() == keepButton) {
++                        mainController.getScheduler().days[dayToSetDayoff - 1].setDayOff(true);
++                        //events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSchedule));
++                    } else {
++                        mainController.getScheduler().days[dayToSetDayoff - 1].setDayOff(false);
++                        //events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
++                        //throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
++                    }
++                }
++
++                Error_date.setVisible(false); // Hide the error label if the date is valid
++
++
++                enter_day_number_label.setText(String.valueOf(dayToSetDayoff));
++                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSetDayoff));
++                events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
++
++                mainController.getScheduler().markDayOff(dayToSetDayoff);
++
++                successPopup();
++                clearInputFields();
++
++                events_on_enter_day_label.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
++
++            } catch (NumberFormatException e) {
++                showPopup(e.getMessage());
++            } catch (IllegalArgumentException e) {
++                showPopup(e.getMessage());
++            } catch (Exception e) {
++                showPopup(e.getMessage());
++            }
++        });
++
++        today_day_number_label.setText(String.valueOf(dayOfMonth));
++        today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
++
++        if(dayOfMonth != 31) {
++            enter_date_txt_field.setPromptText(dayOfMonth + " - 31");
++        }else {
++            enter_date_txt_field.setText(String.valueOf(dayOfMonth));
++        }
++
++        // Hide the Error_date label initially
++        Error_date.setVisible(false);
++    }
++
++    private void showPopup(String message) {
++        Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++                Alert.AlertType.ERROR,owner,
++                "Set Dayoff",
++                "Error",
++                message,
++                "/com/example/cld/Icons/CrossSign.png",
++                "/com/example/cld/Icons/dayOff.png"
++        );
++    }
++    
++    private void dayOffRemovedSuccess(String message, String title) {
++        Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++                Alert.AlertType.INFORMATION,owner,
++                "Set Day Off",
++                title,
++                message,
++                "/com/example/cld/Icons/dayOff_removed.png",
++                "/com/example/cld/Icons/dayOff.png"
++        );
++    }
++
++    private void clearInputFields() {
++        enter_date_txt_field.clear();
++    }
++
++    public void checkDate() {
++        String input = enter_date_txt_field.getText().trim();
++
++        if (input.isEmpty()) {
++            Error_date.setVisible(false);
++            enter_date_txt_field.setStyle("-fx-text-fill: black;");
++            return;
++        }
++
++        try {
++            int day = Integer.parseInt(input);
++            if (day < dayOfMonth || day > 31) {
++                Error_date.setVisible(true);
++                enter_date_txt_field.setStyle("-fx-text-fill: red;");
++                Error_date.setText(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
++            } else {
++                Error_date.setVisible(false);
++                enter_day_number_label.setText(String.valueOf(day));
++                enter_date_txt_field.setStyle("-fx-text-fill: black;");
++                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
++                events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(day));
++            }
++        } catch (NumberFormatException e) {
++            Error_date.setVisible(true);
++            enter_date_txt_field.setStyle("-fx-text-fill: red;");
++            Error_date.setText("Enter a valid number.");
++        }
++        //checkName();
++    }
++
++    private void handleDayOff(Event event) {
++        try {
++            if (enter_date_txt_field.getText().isEmpty()) {
++                throw new IllegalArgumentException("Enter a date to set day off.");
++            }
++
++            int dayToSetDayoff = Integer.parseInt(enter_date_txt_field.getText());
++
++            // Validate the entered date
++            if (dayToSetDayoff < dayOfMonth || dayToSetDayoff > 31) {
++                Error_date.setVisible(true);
++                throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
++            }
++
++            if (mainController.getScheduler().days[dayToSetDayoff - 1].isDayOff()) {
++                Window owner = confirm_btm_DeleteEvent.getScene().getWindow();
++
++                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
++                alert.setTitle("Set Day Off");
++                alert.setHeaderText("Confirmation");
++                alert.setContentText("The selected day is already marked as a day off. Do you want to keep it as a day off?");
++                alert.initOwner(owner);
++
++                // Load and set the alert's display icon
++                Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
++                ImageView alertImageView = new ImageView(alertImage);
++                alertImageView.setFitWidth(40); // Set desired width
++                alertImageView.setFitHeight(40); // Set desired height
++                alert.setGraphic(alertImageView);
++
++                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
++                Image windowIcon = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/dayOff.png"));
++                stage.getIcons().clear(); // Clear existing icons
++                stage.getIcons().add(windowIcon);
++
++                ButtonType keepButton = new ButtonType("Keep");
++                ButtonType removeButton = new ButtonType("Remove");
++                alert.getButtonTypes().setAll(keepButton, removeButton);
++
++                Optional<ButtonType> result = alert.showAndWait();
++
++                if (result.isPresent() && result.get() == keepButton) {
++                    successPopup();
++                    return;
++                } else {
++                    mainController.getScheduler().removeDayOff(dayToSetDayoff);
++                    dayOffRemovedSuccess("Day off removed successfully.", "Success");
++                    clearInputFields();
++                    events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
++                    return;
++                }
++            }
++
++            Error_date.setVisible(false); // Hide the error label if the date is valid
++
++
++            enter_day_number_label.setText(String.valueOf(dayToSetDayoff));
++            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSetDayoff));
++            events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
++
++            mainController.getScheduler().markDayOff(dayToSetDayoff);
++
++            successPopup();
++            clearInputFields();
++
++            events_on_enter_day_day_off_textArea.setText(mainController.getScheduler().displayEvents(dayToSetDayoff));
++
++        } catch (NumberFormatException e) {
++            showPopup("Enter a valid number.");
++        } catch (IllegalArgumentException e) {
++            showPopup(e.getMessage());
++        } catch (Exception e) {
++            showPopup(e.getMessage());
++        }
++    }
++}
+\ No newline at end of file
+Index: src/main/java/com/example/cld/Event.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\npublic class Event {\r\n    public String title;\r\n    public Time startTime;\r\n    public Time endTime;\r\n    public String repeatType;\r\n\r\n    public Event(String title, Time startTime, Time endTime, String repeatType) {\r\n\r\n        if (title == null || startTime == null || endTime == null || repeatType == null) {\r\n            throw new IllegalArgumentException(\"None of the arguments can be null\");\r\n        }\r\n\r\n        this.title = title;\r\n        this.startTime = startTime;\r\n        this.endTime = endTime;\r\n        this.repeatType = repeatType;\r\n\r\n        if (endTime.isLessThan(startTime)) {\r\n            throw new IllegalArgumentException(\"End time is less than start time\");\r\n        }\r\n    }\r\n\r\n    public boolean overlaps(Event comparisonEvent) {\r\n        return startTime.isLessThan(comparisonEvent.endTime) && endTime.isGreaterThan(comparisonEvent.startTime);\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return title + \" from \" + startTime.toString() + \" to \" + endTime.toString() + \" (\" + repeatType + \")\";\r\n    }\r\n\r\n    public String formatEventDataToString() {\r\n        return title + \"|\" + startTime.toString() + \"|\" + endTime.toString() + \"|\" + repeatType;\r\n    }\r\n\r\n    public void extractEventData(String eventString) {\r\n        String[] parts = eventString.split(\"\\\\|\");\r\n        this.title = parts[0];\r\n        this.startTime = new Time();\r\n        this.startTime.fromString(parts[1]);\r\n        this.endTime = new Time();\r\n        this.endTime.fromString(parts[2]);\r\n        this.repeatType = parts[3];\r\n    }\r\n\r\n    public String getTitle() {\r\n        return title;\r\n    }\r\n\r\n    /**public Time getStartTime() {\r\n        return startTime;\r\n    }\r\n\r\n    public Time getEndTime() {\r\n        return endTime;\r\n    }**/\r\n\r\n    public String getRepeatType() {\r\n        return repeatType;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/Event.java b/src/main/java/com/example/cld/Event.java
+--- a/src/main/java/com/example/cld/Event.java	
++++ b/src/main/java/com/example/cld/Event.java	
+@@ -9,7 +9,7 @@
+     public Event(String title, Time startTime, Time endTime, String repeatType) {
+ 
+         if (title == null || startTime == null || endTime == null || repeatType == null) {
+-            throw new IllegalArgumentException("None of the arguments can be null");
++            throw new IllegalArgumentException("Fill all the details. Inputs can not be empty.");
+         }
+ 
+         this.title = title;
+@@ -60,4 +60,4 @@
+     public String getRepeatType() {
+         return repeatType;
+     }
+-}
++}
+\ No newline at end of file
+Index: src/main/java/com/example/cld/Day.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nclass Day {\r\n    private int date;\r\n    private final String dayOfWeek;\r\n    private final List<Event> events;\r\n    private boolean isDayOff;\r\n\r\n    public Day(int date, String dayOfWeek) {\r\n        this.date = date;\r\n        this.dayOfWeek = dayOfWeek;\r\n        this.events = new ArrayList<>();\r\n        this.isDayOff = false;\r\n    }\r\n\r\n    private void sortEvents() {\r\n        for (int i = 0; i < events.size() - 1; ++i) {\r\n            for (int j = 0; j < events.size() - i - 1; ++j) {\r\n                if (events.get(j).startTime.isGreaterThan(events.get(j + 1).startTime)) {\r\n                    Event temp = events.get(j);\r\n                    events.set(j, events.get(j + 1));\r\n                    events.set(j + 1, temp);\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public void addEvent(Event event) {\r\n        if (isDayOff) {\r\n            throw new IllegalArgumentException(\"Cannot add events on a day off\");\r\n        }\r\n        for (Event e : events) {\r\n            if (event.overlaps(e)) {\r\n                throw new IllegalArgumentException(\"Event overlap detected\");\r\n            }\r\n        }\r\n        events.add(event);\r\n        sortEvents();\r\n    }\r\n\r\n    public void deleteEvent(String title) {\r\n        boolean eventFound = false;\r\n        for (int i = 0; i < events.size(); ++i) {\r\n            if (events.get(i).title.equals(title)) {\r\n                events.remove(i);\r\n                eventFound = true;\r\n                break;\r\n            }\r\n        }\r\n        if (!eventFound) {\r\n            throw new IllegalArgumentException(\"Event not found\");\r\n        }\r\n    }\r\n\r\n    public void shiftEvent(String title, int newDate, Day[] days) {\r\n        Event eventToShift = null;\r\n        for (Event event : events) {\r\n            if (event.title.equals(title)) {\r\n                eventToShift = event;\r\n                break;\r\n            }\r\n        }\r\n\r\n        if (eventToShift != null) {\r\n            deleteEvent(title);\r\n            days[newDate - 1].addEvent(eventToShift);\r\n        } else {\r\n            throw new IllegalArgumentException(\"Event not found\");\r\n        }\r\n    }\r\n\r\n    public void clearEvents() {\r\n        events.clear();\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        if (events.isEmpty() && !isDayOff) {\r\n            return \"\";\r\n        }\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n//        sb.append(\"\\n\").append(date).append(\" July 2024 (\").append(dayOfWeek).append(\")\");\r\n\r\n        if (isDayOff) {\r\n            sb.append(\" (Day Off)\");\r\n        }\r\n        sb.append(\"\\n\");\r\n\r\n        for (Event event : events) {\r\n            sb.append(\"  \").append(event.toString()).append(\"\\n\");\r\n        }\r\n\r\n        return sb.toString();\r\n    }\r\n\r\n    public String formatDayDataToString() {\r\n        StringBuilder sb = new StringBuilder();\r\n        if (isDayOff) {\r\n            sb.append(date).append(\"|off|\\n\");\r\n        }\r\n        for (Event event : events) {\r\n            sb.append(date).append(\"|\").append(event.formatEventDataToString()).append(\"\\n\");\r\n        }\r\n        return sb.toString();\r\n    }\r\n\r\n    public void extractDayData(String dayStr) {\r\n        String[] lines = dayStr.split(\"\\n\");\r\n        for (String line : lines) {\r\n            if (line.isEmpty()) {\r\n                continue;\r\n            }\r\n            String[] parts = line.split(\"\\\\|\");\r\n            this.date = Integer.parseInt(parts[0]);\r\n            if (parts[1].equals(\"off\")) {\r\n                this.isDayOff = true;\r\n                clearEvents();\r\n            } else {\r\n                Event event = new Event(parts[1], new Time(), new Time(), parts[4]);\r\n                event.extractEventData(line.substring(line.indexOf('|') + 1));\r\n                this.isDayOff = false;\r\n                addEvent(event);\r\n            }\r\n        }\r\n    }\r\n\r\n     public boolean isDayOff() {\r\n        return isDayOff;\r\n    }\r\n\r\n    public void setDayOff(boolean isDayOff) {\r\n        this.isDayOff = isDayOff;\r\n    }\r\n\r\n    public int getEventCount() {\r\n        return events.size();\r\n    }\r\n\r\n    /**public boolean toStringPrint() {\r\n        return isDayOff;\r\n    }*/\r\n\r\n    public List<Event> getEvents() {\r\n        return events;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/Day.java b/src/main/java/com/example/cld/Day.java
+--- a/src/main/java/com/example/cld/Day.java	
++++ b/src/main/java/com/example/cld/Day.java	
+@@ -91,7 +91,7 @@
+         sb.append("\n");
+ 
+         for (Event event : events) {
+-            sb.append("  ").append(event.toString()).append("\n");
++            sb.append("  ").append(event.toString()).append("\n-------------------------------------------------\n");
+         }
+ 
+         return sb.toString();
+Index: src/main/java/com/example/cld/AddEventController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\nimport com.jfoenix.controls.JFXButton;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.CheckBox;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.AnchorPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.scene.layout.Pane;\r\nimport javafx.stage.Stage;\r\nimport com.jfoenix.controls.JFXButton;\r\nimport com.jfoenix.controls.JFXTextArea;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.Event;\r\n\r\nimport java.io.IOException;\r\nimport java.lang.reflect.Field;\r\nimport java.util.Objects;\r\n\r\nimport java.io.IOException;\r\nimport java.util.Objects;\r\n\r\nimport static com.example.cld.Main.dayOfMonth;\r\n\r\npublic class AddEventController {\r\n\r\n    private Stage stage;\r\n    private Scene scene;\r\n\r\n    @FXML\r\n    private JFXButton back_to_main_btm;\r\n\r\n    @FXML\r\n    private JFXButton btm_addEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_dayOff;\r\n\r\n    @FXML\r\n    private JFXButton btm_deleteEvent;\r\n\r\n    @FXML\r\n    private JFXButton btm_shiftEvent;\r\n\r\n    @FXML\r\n    private JFXButton check_button;\r\n\r\n    @FXML\r\n    private JFXButton confirm_btm_addEvent;\r\n\r\n    @FXML\r\n    private CheckBox daily_check_box;\r\n\r\n    @FXML\r\n    private Pane date_picker;\r\n\r\n    @FXML\r\n    private TextField enter_date_txt_field;\r\n\r\n    @FXML\r\n    private Label enter_day_name_label;\r\n\r\n    @FXML\r\n    private Label enter_day_number_label;\r\n\r\n    @FXML\r\n    private TextField enter_end_time_txt_field;\r\n\r\n    @FXML\r\n    private TextField enter_event_name_txt_field;\r\n\r\n    @FXML\r\n    private TextField enter_start_time_txt_field;\r\n\r\n    @FXML\r\n    private Pane enter_today_pane;\r\n\r\n    @FXML\r\n    private JFXTextArea events_on_enter_day_textArea;\r\n\r\n    @FXML\r\n    private ImageView inner_pane_image1;\r\n\r\n    @FXML\r\n    private CheckBox one_time_check_box;\r\n\r\n    @FXML\r\n    private HBox root;\r\n\r\n    @FXML\r\n    private Label today_day_name_label;\r\n\r\n    @FXML\r\n    private Label today_day_number_label;\r\n\r\n    @FXML\r\n    private Pane today_pane;\r\n\r\n    @FXML\r\n    private CheckBox weekly_check_box;\r\n\r\n\r\n    private MainController mainController = MainController.getInstance();\r\n\r\n    public void switchToMainMenu(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToMainMenu(event);\r\n    }\r\n    @FXML\r\n    public void switchToAddEventDetails(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToAddEventDetails(event);\r\n    }\r\n    @FXML\r\n    public void switchToSetDayOff(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToSetDayOff(event);\r\n    }\r\n    @FXML\r\n    public void switchToDeleteEvent(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToDeleteEvent(event);\r\n    }\r\n    @FXML\r\n    public void switchToShiftEvent(Event event) throws IOException { // switch to add the driver details scene\r\n        mainController.switchToShiftEvent(event);\r\n\r\n    }\r\n\r\n    public void initialize() {\r\n        today_day_number_label.setText(String.valueOf(dayOfMonth));\r\n        today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));\r\n\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/AddEventController.java b/src/main/java/com/example/cld/AddEventController.java
+--- a/src/main/java/com/example/cld/AddEventController.java	
++++ b/src/main/java/com/example/cld/AddEventController.java	
+@@ -1,39 +1,23 @@
++
+ package com.example.cld;
+ 
+ import com.jfoenix.controls.JFXButton;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
+-import javafx.fxml.FXMLLoader;
+-import javafx.scene.Node;
+-import javafx.scene.Parent;
+-import javafx.scene.Scene;
+-import javafx.scene.control.CheckBox;
+-import javafx.scene.control.Label;
+-import javafx.scene.control.TextField;
++import javafx.scene.control.*;
+ import javafx.scene.image.ImageView;
+-import javafx.scene.layout.AnchorPane;
+-import javafx.scene.layout.HBox;
+-import javafx.scene.layout.Pane;
+-import javafx.stage.Stage;
+-import com.jfoenix.controls.JFXButton;
++import javafx.scene.image.Image;
+ import com.jfoenix.controls.JFXTextArea;
+-import javafx.event.ActionEvent;
+ import javafx.event.Event;
+-
+-import java.io.IOException;
+-import java.lang.reflect.Field;
+-import java.util.Objects;
++import javafx.stage.Window;
+ 
+ import java.io.IOException;
+-import java.util.Objects;
++import java.util.Optional;
+ 
+ import static com.example.cld.Main.dayOfMonth;
+ 
+ public class AddEventController {
+ 
+-    private Stage stage;
+-    private Scene scene;
+-
+     @FXML
+     private JFXButton back_to_main_btm;
+ 
+@@ -55,12 +39,6 @@
+     @FXML
+     private JFXButton confirm_btm_addEvent;
+ 
+-    @FXML
+-    private CheckBox daily_check_box;
+-
+-    @FXML
+-    private Pane date_picker;
+-
+     @FXML
+     private TextField enter_date_txt_field;
+ 
+@@ -79,33 +57,29 @@
+     @FXML
+     private TextField enter_start_time_txt_field;
+ 
+-    @FXML
+-    private Pane enter_today_pane;
+-
+     @FXML
+     private JFXTextArea events_on_enter_day_textArea;
+ 
+     @FXML
+-    private ImageView inner_pane_image1;
++    private Label today_day_name_label;
+ 
+     @FXML
+-    private CheckBox one_time_check_box;
++    private Label today_day_number_label;
+ 
+     @FXML
+-    private HBox root;
++    private RadioButton one_time_radio_btn;
+ 
+     @FXML
+-    private Label today_day_name_label;
++    private RadioButton daily_radio_btn;
+ 
+     @FXML
+-    private Label today_day_number_label;
++    private RadioButton weekly_radio_btn;
+ 
+     @FXML
+-    private Pane today_pane;
++    private Label Error_date;
+ 
+     @FXML
+-    private CheckBox weekly_check_box;
+-
++    private Label error_name_label;
+ 
+     private MainController mainController = MainController.getInstance();
+ 
+@@ -129,12 +103,261 @@
+         mainController.switchToShiftEvent(event);
+ 
+     }
++    @FXML
++    public void switchToViewWeek(Event event) throws IOException { // switch to add the driver details scene
++        mainController.switchToViewWeek(event);
++    }
++    @FXML
++    public void switchToViewMonth(Event event) throws IOException { // switch to add the driver details scene
++        mainController.switchToViewMonth(event);
++    }
++
++    @FXML
++    private void Error() {
++        Window owner = confirm_btm_addEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++            Alert.AlertType.INFORMATION,owner,
++            "Schedule Event",
++            "Error",
++            "There is a problem with entered values; check whether the entered values are in correct format",
++            "/com/example/cld/Icons/CrossSign.png",
++            "/com/example/cld/Icons/addEvent.png"
++        );
++    }
++
++    @FXML
++    private void successPopup() {
++        Window owner = confirm_btm_addEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++            Alert.AlertType.INFORMATION,owner,
++            "Schedule Event",
++            "Success",
++            "Event Successfully added",
++            "/com/example/cld/Icons/Done_img_1.png",
++            "/com/example/cld/Icons/addEvent.png"
++        );
++    }
+ 
+     public void initialize() {
++        confirm_btm_addEvent.setOnAction(this::handle);
++
+         today_day_number_label.setText(String.valueOf(dayOfMonth));
+         today_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayOfMonth));
+ 
++        if(dayOfMonth != 31) {
++            enter_date_txt_field.setPromptText(dayOfMonth + " - 31");
++        }else {
++            enter_date_txt_field.setText(String.valueOf(dayOfMonth));
++        }
++
++          // Configure the ToggleGroup for repeatType
++        ToggleGroup repeatTypeGroup = new ToggleGroup();
++        one_time_radio_btn.setToggleGroup(repeatTypeGroup);
++        daily_radio_btn.setToggleGroup(repeatTypeGroup);
++        weekly_radio_btn.setToggleGroup(repeatTypeGroup);
++
++        // Hide the Error_date label initially
++        Error_date.setVisible(false);
++    }
++
++    private com.example.cld.Event getEvent(String title) {
++        Time startTime = new Time();
++        Time endTime = new Time();
++        startTime.fromString(enter_start_time_txt_field.getText());
++        endTime.fromString(enter_end_time_txt_field.getText());
++
++        String repeatType = "none";
++        if (daily_radio_btn.isSelected()) {
++            repeatType = "daily";
++        } else if (weekly_radio_btn.isSelected()) {
++            repeatType = "weekly";
++        }
++
++        com.example.cld.Event event = new com.example.cld.Event(title,startTime,endTime,repeatType);
++        return event;
++    }
++
++    private void showPopup(String message) {
++        Window owner = confirm_btm_addEvent.getScene().getWindow();
++        // Create the alert
++        MainController.AlertHelper.showAlert(
++            Alert.AlertType.ERROR,owner,
++            "Schedule Event",
++            "Error",
++            message,
++            "/com/example/cld/Icons/CrossSign.png",
++            "/com/example/cld/Icons/addEvent.png"
++        );
++    }
++
++    private void clearInputFields() {
++        enter_date_txt_field.clear();
++        enter_event_name_txt_field.clear();
++        enter_start_time_txt_field.clear();
++        enter_end_time_txt_field.clear();
++        resetCheckBoxesAndRadioButtons();
++        //events_on_enter_day_textArea.clear();
++    }
++
++    private void resetCheckBoxesAndRadioButtons() {
++        one_time_radio_btn.setSelected(false);
++        daily_radio_btn.setSelected(false);
++        weekly_radio_btn.setSelected(false);
++    }
++
++    public void checkDate() {
++        String input = enter_date_txt_field.getText().trim();
++
++        if (input.isEmpty()) {
++            Error_date.setVisible(false);
++            enter_date_txt_field.setStyle("-fx-text-fill: black;");
++            return;
++        }
++
++        try {
++            int day = Integer.parseInt(input);
++            if (day < dayOfMonth || day > 31) {
++                Error_date.setVisible(true);
++                enter_date_txt_field.setStyle("-fx-text-fill: red;");
++                Error_date.setText(dayOfMonth == 31? "31st is the last day of the month.":"Enter a valid date between " + dayOfMonth + " and 31.");
++            } else {
++                Error_date.setVisible(false);
++                enter_day_number_label.setText(String.valueOf(day));
++                enter_date_txt_field.setStyle("-fx-text-fill: black;");
++                enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(day));
++                events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(day));
++            }
++        } catch (NumberFormatException e) {
++            Error_date.setVisible(true);
++            Error_date.setText("Enter a valid number.");
++            enter_date_txt_field.setStyle("-fx-text-fill: red;");
++        }
+ 
++        checkName();
+     }
+ 
++    public void checkName() {
++        String input = enter_event_name_txt_field.getText().toUpperCase().trim();
++        enter_event_name_txt_field.setStyle("-fx-text-fill: black;");
++
++        if (input.isEmpty()) {
++            error_name_label.setVisible(false);
++            enter_event_name_txt_field.setStyle("-fx-text-fill: black;");
++            return;
++        }
++
++        try {
++            if (!enter_date_txt_field.getText().isEmpty()) {
++                int day = Integer.parseInt(enter_date_txt_field.getText());
++                mainController.getScheduler().checkEventNameExists(day, input);
++                error_name_label.setVisible(false);
++            } else {
++                error_name_label.setText(null);
++            }
++        } catch (NumberFormatException e) {
++            error_name_label.setVisible(true);
++            error_name_label.setText("Enter a valid date.");
++        } catch (IllegalArgumentException e) {
++            error_name_label.setVisible(true);
++            error_name_label.setText(e.getMessage());
++            enter_event_name_txt_field.setStyle("-fx-text-fill: red;");
++        }
++    }
++
++    private void enterDayDetailsClear() {
++        enter_day_number_label.setText(null);
++        enter_day_name_label.setText(null);
++        events_on_enter_day_textArea.setText(null);
++    }
++
++
++    private void handle(ActionEvent event_) {
++        try {
++            if (enter_date_txt_field.getText().isEmpty()) {
++                throw new IllegalArgumentException("Enter a date to schedule the event.");
++            }
++
++            int dayToSchedule = Integer.parseInt(enter_date_txt_field.getText());
++            // Validate the entered date
++            if (dayToSchedule < dayOfMonth || dayToSchedule > 31) {
++                Error_date.setVisible(true);
++                throw new IllegalArgumentException(dayOfMonth == 31 ? "31st is the last day of the month." : "Enter a valid date between " + dayOfMonth + " and 31.");
++            }
++
++            if (mainController.getScheduler().days[dayToSchedule - 1].isDayOff()) {
++                Window owner = confirm_btm_addEvent.getScene().getWindow();
++
++                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
++                alert.setTitle("Schedule Event");
++                alert.setHeaderText("Confirmation");
++                alert.setContentText("The selected day is marked as a day off. Do you want to proceed?");
++                alert.initOwner(owner);
++
++                // Load and set the alert's display icon
++                Image alertImage = new Image(MainController.AlertHelper.class.getResourceAsStream("/com/example/cld/Icons/DayOff_1_1.png"));
++                ImageView alertImageView = new ImageView(alertImage);
++                alertImageView.setFitWidth(40); // Set desired width
++                alertImageView.setFitHeight(40); // Set desired height
++                alert.setGraphic(alertImageView);
++
++                ButtonType yesButton = ButtonType.YES;
++                ButtonType noButton = ButtonType.NO;
++                alert.getButtonTypes().setAll(yesButton, noButton);
++
++                Optional<ButtonType> result = alert.showAndWait();
++
++                if (result.isPresent() && result.get() == yesButton) {
++                    mainController.getScheduler().days[dayToSchedule - 1].setDayOff(false);
++                    events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
++                } else {
++                    enterDayDetailsClear();
++                    throw new IllegalArgumentException("The selected day is marked as a day off. Can not schedule.");
++                }
++            }
++
++            if (enter_event_name_txt_field.getText().isEmpty()) {
++                throw new IllegalArgumentException("Enter a name for the event.");
++            }
++
++            if (enter_start_time_txt_field.getText().isEmpty()) {
++                throw new IllegalArgumentException("Enter a start times for the event.");
++            }
++            if (enter_end_time_txt_field.getText().isEmpty()) {
++                throw new IllegalArgumentException("Enter an end time for the event.");
++            }
++
++            if (!(daily_radio_btn.isSelected() || weekly_radio_btn.isSelected() || one_time_radio_btn.isSelected())) {
++                throw new IllegalArgumentException("Select a repeat type.");
++            }
++
++            if (enter_start_time_txt_field.getText().isEmpty() || enter_end_time_txt_field.getText().isEmpty()) {
++                throw new IllegalArgumentException("Enter start and end times for the event.");
++            }
++
++            Error_date.setVisible(false); // Hide the error label if the date is valid
++
++            String title = enter_event_name_txt_field.getText(); // done
++
++            enter_day_number_label.setText(String.valueOf(dayToSchedule));
++            enter_day_name_label.setText(DateNameMain.getDayAbbreviationAb(dayToSchedule));
++            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
++
++            com.example.cld.Event event = getEvent(title);
++
++            mainController.getScheduler().scheduleEvent(dayToSchedule, event);
++            successPopup();
++            clearInputFields();
++            resetCheckBoxesAndRadioButtons();
++            events_on_enter_day_textArea.setText(mainController.getScheduler().displayEvents(dayToSchedule));
++
++        } catch (NumberFormatException e) {
++            showPopup("Enter a valid number.");
++        } catch (IllegalArgumentException e) {
++            showPopup(e.getMessage());
++        } catch (Exception e) {
++            showPopup(e.getMessage());
++        }
++    }
+ }
+Index: src/main/java/com/example/cld/DateNameMain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.cld;\r\n\r\npublic class DateNameMain {\r\n    private static final String[] DAYS_OF_WEEK = { \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\" };\r\n    private static final String[] DAYS_OF_WEEK_AB = { \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\" };\r\n\r\n    public static String getDayAbbreviation(int dayNumber) {\r\n        // Calculate the day of the week based on the given day number\r\n        int dayNameIndex = (dayNumber - 1) % 7; // Adjust for zero-based index\r\n        return DAYS_OF_WEEK[dayNameIndex];\r\n    }\r\n\r\n    public static String getDayAbbreviationAb(int dayNumber) {\r\n        // Calculate the day of the week based on the given day number\r\n        int dayNameIndex = (dayNumber - 1) % 7; // Adjust for zero-based index\r\n        return DAYS_OF_WEEK_AB[dayNameIndex];\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/cld/DateNameMain.java b/src/main/java/com/example/cld/DateNameMain.java
+--- a/src/main/java/com/example/cld/DateNameMain.java	
++++ b/src/main/java/com/example/cld/DateNameMain.java	
+@@ -15,4 +15,4 @@
+         int dayNameIndex = (dayNumber - 1) % 7; // Adjust for zero-based index
+         return DAYS_OF_WEEK_AB[dayNameIndex];
+     }
+-}
++}
+\ No newline at end of file

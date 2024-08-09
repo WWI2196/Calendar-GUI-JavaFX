@@ -1,5 +1,5 @@
 
-#btm_date1{
+.btm_date1{
     -fx-background-color: #3E81F6;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -8,7 +8,7 @@
     -fx-border-color: #3E81F6;
 }
 
-#btm_date2{
+.btm_date2{
     -fx-background-color: #DD493D;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -17,7 +17,7 @@
     -fx-border-color: #DD493D;
 }
 
-#btm_date3{
+.btm_date3{
     -fx-background-color: #FDC437;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -26,7 +26,7 @@
     -fx-border-color: #FDC437;
 }
 
-#btm_date4{
+.btm_date4{
     -fx-background-color: #13BA6A;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -35,7 +35,7 @@
     -fx-border-color: #13BA6A;
 }
 
-#btm_date5{
+.btm_date5{
     -fx-background-color: #6200EE;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -44,7 +44,7 @@
     -fx-border-color: #6200EE;
 }
 
-#btm_date6{
+.btm_date6{
     -fx-background-color: #7F39FB;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -62,7 +62,7 @@
     -fx-border-color: #F26A40;
 }
 
-#btm_date8{
+.btm_date8{
     -fx-background-color: #18CBCF;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;
@@ -71,7 +71,7 @@
     -fx-border-color: #18CBCF;
 }
 
-#btm_date9{
+.btm_date9{
     -fx-background-color: #A1CC00;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 30px;

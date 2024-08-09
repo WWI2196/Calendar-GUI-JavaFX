@@ -16,11 +16,11 @@ public class Time {
         this.minute = minute;
     }
 
-    public boolean isLessThan(Time comparisonTime) {
+    protected boolean isLessThan(Time comparisonTime) {
         return (hour < comparisonTime.hour) || (hour == comparisonTime.hour && minute < comparisonTime.minute);
     }
 
-    public boolean isGreaterThan(Time comparisonTime) {
+    protected boolean isGreaterThan(Time comparisonTime) {
         return (hour > comparisonTime.hour) || (hour == comparisonTime.hour && minute > comparisonTime.minute);
     }
 
@@ -29,9 +29,9 @@ public class Time {
         return String.format("%02d:%02d", hour, minute);
     }
 
-    public void fromString(String timeString) {
-        // Split the string using any non-numeric character as the divider
-        String[] parts = timeString.split("\\D+");
+    protected void fromString(String timeString) {
+
+        String[] parts = timeString.split("\\D+"); // separate the string using any character as the divider
         if (parts.length != 2) {
             throw new IllegalArgumentException("Invalid time format");
         }
@@ -49,13 +49,5 @@ public class Time {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid time format", e);
         }
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
     }
 }
